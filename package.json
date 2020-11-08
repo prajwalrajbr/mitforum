@@ -28,6 +28,6 @@
         "vue": "^2.6.12",
         "vue-router": "^3.4.9",
         "vuetify": "^2.3.16",
-        "vuetify-loader": "^1.6.0"
+        "vuetify-loader": "^1.4.3"
     }
 }
