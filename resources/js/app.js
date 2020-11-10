@@ -8,8 +8,12 @@ import routes from './routes';
 
 Vue.use(VueRouter);
 
+import App from "./App.vue";
 const app = new Vue({
     vuetify: Vuetify,
     el: '#app',
-    router: new VueRouter(routes)
+    router: new VueRouter(routes),
+    components: {
+        App
+    }
 });
