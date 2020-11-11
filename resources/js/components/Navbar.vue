@@ -1,51 +1,51 @@
 <template>
     <nav>
-        <v-toolbar app color="blue">
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer">
-                <v-icon class="black--text">menu</v-icon>
-            </v-app-bar-nav-icon>
-            <v-toolbar-title class="black--text" style="font-size: 0">
-                    <span class="font-weight-medium text-lg-h6" id="mit">MIT</span>
-                    <span class="font-weight-bold text-lg-h6" id="forum">Forum</span>
-            </v-toolbar-title>
-            <router-link to='/'>Home</router-link>
-            <router-link to='/about'>About</router-link>
-            <v-spacer></v-spacer>
-            <v-btn>
-                <span class="grey--text text--darken-4 font-weight-bold">Sign Out</span>
-                <v-icon right class="font-weight-bold">exit_to_app</v-icon>
-            </v-btn>
-        </v-toolbar>
-        <v-navigation-drawer v-model="drawer" absolute bottom temporary>
-            <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
+      <v-toolbar app color="blue">
+
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+              <v-icon class="black--text">menu</v-icon>
+          </v-app-bar-nav-icon>
+
+          <v-toolbar-title class="black--text" style="font-size: 0">
+                  <span class="font-weight-medium text-h6">MIT</span>
+                  <span class="font-weight-bold text-h6">Forum</span>
+          </v-toolbar-title>
+
+          <v-spacer></v-spacer>
+
+          <v-btn>
+              <span class="grey--text text--darken-4 font-weight-bold">Sign Out</span>
+              <v-icon right class="font-weight-bold">exit_to_app</v-icon>
+          </v-btn>
+
+      </v-toolbar>
+
+      <v-navigation-drawer v-model="drawer" absolute bottom temporary dark>
+        <v-list nav dense>
+
+          <v-list-item-group v-model="group" active-class="light-blue--text text--accent-4">       
+            <v-list-item v-for="item in items" :key="item.title" link :to=item.to>         
+                <v-list-item-content>
+                  <v-list-item-title class="font-weight-medium text-h6 ">
+                    <v-icon class="pb-1 px-2">{{ item.icon }}</v-icon>
+                    {{ item.title }}
+                  </v-list-item-title>    
+                </v-list-item-content>    
+            </v-list-item>      
+          </v-list-item-group>
           
-            <router-link to='/about'><v-list-item>
-            <v-list-item-title>About</v-list-item-title></v-list-item></router-link>
-            <router-link to='/'><v-list-item>
-            <v-list-item-title>home</v-list-item-title></v-list-item></router-link>
-          
+        </v-list>
 
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
+        <template v-slot:append>
+        <div class="pa-3">
+          <v-btn block class="white" v-bind:color="type==='guest' ? 'white' : 'grey'">
+            <span class="black--text font-weight-bold">Sign Out</span>
+            <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+          </v-btn>
+        </div>
+      </template>
+      </v-navigation-drawer>
 
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-        </v-navigation-drawer>
     </nav>
 </template>
 
@@ -54,18 +54,16 @@
 export default{
     data(){
         return{
-            drawer: false
+            drawer: false,
+            items: [
+              { title: 'Home', icon: 'home', to:'/' },
+              { title: 'About', icon: 'help_center', to:'/about' },
+            ]
         }
     }
 }
 </script>
 
 <style>
-#mit{
-    padding-right: 0;
-}
-#forum{
-    padding-left: 0;
-}
 
 </style>
