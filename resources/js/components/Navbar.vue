@@ -12,6 +12,12 @@
           </v-toolbar-title>
 
           <v-spacer></v-spacer>
+    <SignInPopup/>
+    <RegisterPopup/>
+          <v-btn>
+              <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
+              <v-icon right class="font-weight-bold">exit_to_app</v-icon>
+          </v-btn>
 
           <v-btn>
               <span class="grey--text text--darken-4 font-weight-bold">Sign Out</span>
@@ -39,7 +45,14 @@
               <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
             </v-btn>
           </div>
+          <div class="pa-3">
+            <v-btn block class="white" v-bind:color="type==='guest' ? 'white' : 'grey'">
+              <span class="black--text font-weight-bold">Sign In</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+            </v-btn>
+          </div>
         </template>
+        
       </v-navigation-drawer>
       </div>
       
@@ -73,7 +86,13 @@
 
 
 <script>
+import SignInPopup from "./SignInPopup";
+import RegisterPopup from "./RegisterPopup";
 export default{
+  components: {
+      SignInPopup,
+      RegisterPopup
+    },
     data(){
         return{
             drawer: false,

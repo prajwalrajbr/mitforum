@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="pa-5"></div>
-    <v-layout row wrap >
+    <v-layout row wrap align-center>
       <v-flex xs12 sm12 md6 lg6 v-for="item in items" :key="item.name" >
         <v-card elevation="5" class="ma-10 " max-width="800" link :to=item.to>
           <v-img height="300" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
@@ -13,6 +13,7 @@
       </v-flex>
     </v-layout>
   </v-container>
+  
 </template>
 <script>
 export default {
