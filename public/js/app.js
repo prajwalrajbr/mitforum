@@ -1926,6 +1926,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      dialog: false
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
@@ -1937,6 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SignInPopup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignInPopup */ "./resources/js/components/SignInPopup.vue");
 /* harmony import */ var _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterPopup */ "./resources/js/components/RegisterPopup.vue");
+/* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.vue");
 //
 //
 //
@@ -2024,12 +2073,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     SignInPopup: _SignInPopup__WEBPACK_IMPORTED_MODULE_0__["default"],
-    RegisterPopup: _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__["default"]
+    RegisterPopup: _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ForgotPassword: _ForgotPassword__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -2114,70 +2165,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      sem: ['1', '2', '3', '4', '5', '6', '7', '8'],
+      branches: ['Computer Science', 'Information Science', 'Eletronics and Communication', 'Civil', 'Mechanical']
     };
   }
 });
@@ -2193,6 +2186,34 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4105,6 +4126,25 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 // module
 exports.push([module.i, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  font-display: block;\n  src: url(" + escape(__webpack_require__(/*! ./fonts/MaterialIcons-Regular.eot */ "./node_modules/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.eot")) + ");\n  /* For IE6-8 */\n  src: local(\"\\263A\"), url(" + escape(__webpack_require__(/*! ./fonts/MaterialIcons-Regular.woff2 */ "./node_modules/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.woff2")) + ") format(\"woff2\"), url(" + escape(__webpack_require__(/*! ./fonts/MaterialIcons-Regular.woff */ "./node_modules/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.woff")) + ") format(\"woff\"), url(" + escape(__webpack_require__(/*! ./fonts/MaterialIcons-Regular.ttf */ "./node_modules/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.ttf")) + ") format(\"truetype\"); }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  /* Preferred icon size */\n  display: inline-block;\n  line-height: 1;\n  text-transform: none;\n  letter-spacing: normal;\n  word-wrap: normal;\n  white-space: nowrap;\n  direction: ltr;\n  /* Support for all WebKit browsers. */\n  -webkit-font-smoothing: antialiased;\n  /* Support for Safari and Chrome. */\n  text-rendering: optimizeLegibility;\n  /* Support for Firefox. */\n  -moz-osx-font-smoothing: grayscale;\n  /* Support for IE. */\n  font-feature-settings: 'liga'; }\n  .material-icons._10k:before {\n    content: \"\\E951\"; }\n  .material-icons._10mp:before {\n    content: \"\\E952\"; }\n  .material-icons._11mp:before {\n    content: \"\\E953\"; }\n  .material-icons._12mp:before {\n    content: \"\\E954\"; }\n  .material-icons._13mp:before {\n    content: \"\\E955\"; }\n  .material-icons._14mp:before {\n    content: \"\\E956\"; }\n  .material-icons._15mp:before {\n    content: \"\\E957\"; }\n  .material-icons._16mp:before {\n    content: \"\\E958\"; }\n  .material-icons._17mp:before {\n    content: \"\\E959\"; }\n  .material-icons._18mp:before {\n    content: \"\\E95A\"; }\n  .material-icons._19mp:before {\n    content: \"\\E95B\"; }\n  .material-icons._1k:before {\n    content: \"\\E95C\"; }\n  .material-icons._1k_plus:before {\n    content: \"\\E95D\"; }\n  .material-icons._20mp:before {\n    content: \"\\E95E\"; }\n  .material-icons._21mp:before {\n    content: \"\\E95F\"; }\n  .material-icons._22mp:before {\n    content: \"\\E960\"; }\n  .material-icons._23mp:before {\n    content: \"\\E961\"; }\n  .material-icons._24mp:before {\n    content: \"\\E962\"; }\n  .material-icons._2k:before {\n    content: \"\\E963\"; }\n  .material-icons._2k_plus:before {\n    content: \"\\E964\"; }\n  .material-icons._2mp:before {\n    content: \"\\E965\"; }\n  .material-icons._360:before {\n    content: \"\\E577\"; }\n  .material-icons._3d_rotation:before {\n    content: \"\\E84D\"; }\n  .material-icons._3k:before {\n    content: \"\\E966\"; }\n  .material-icons._3k_plus:before {\n    content: \"\\E967\"; }\n  .material-icons._3mp:before {\n    content: \"\\E968\"; }\n  .material-icons._4k:before {\n    content: \"\\E072\"; }\n  .material-icons._4k_plus:before {\n    content: \"\\E969\"; }\n  .material-icons._4mp:before {\n    content: \"\\E96A\"; }\n  .material-icons._5g:before {\n    content: \"\\EF38\"; }\n  .material-icons._5k:before {\n    content: \"\\E96B\"; }\n  .material-icons._5k_plus:before {\n    content: \"\\E96C\"; }\n  .material-icons._5mp:before {\n    content: \"\\E96D\"; }\n  .material-icons._6_ft_apart:before {\n    content: \"\\F21E\"; }\n  .material-icons._6k:before {\n    content: \"\\E96E\"; }\n  .material-icons._6k_plus:before {\n    content: \"\\E96F\"; }\n  .material-icons._6mp:before {\n    content: \"\\E970\"; }\n  .material-icons._7k:before {\n    content: \"\\E971\"; }\n  .material-icons._7k_plus:before {\n    content: \"\\E972\"; }\n  .material-icons._7mp:before {\n    content: \"\\E973\"; }\n  .material-icons._8k:before {\n    content: \"\\E974\"; }\n  .material-icons._8k_plus:before {\n    content: \"\\E975\"; }\n  .material-icons._8mp:before {\n    content: \"\\E976\"; }\n  .material-icons._9k:before {\n    content: \"\\E977\"; }\n  .material-icons._9k_plus:before {\n    content: \"\\E978\"; }\n  .material-icons._9mp:before {\n    content: \"\\E979\"; }\n  .material-icons.ac_unit:before {\n    content: \"\\EB3B\"; }\n  .material-icons.access_alarm:before {\n    content: \"\\E190\"; }\n  .material-icons.access_alarms:before {\n    content: \"\\E191\"; }\n  .material-icons.access_time:before {\n    content: \"\\E192\"; }\n  .material-icons.accessibility:before {\n    content: \"\\E84E\"; }\n  .material-icons.accessibility_new:before {\n    content: \"\\E92C\"; }\n  .material-icons.accessible:before {\n    content: \"\\E914\"; }\n  .material-icons.accessible_forward:before {\n    content: \"\\E934\"; }\n  .material-icons.account_balance:before {\n    content: \"\\E84F\"; }\n  .material-icons.account_balance_wallet:before {\n    content: \"\\E850\"; }\n  .material-icons.account_box:before {\n    content: \"\\E851\"; }\n  .material-icons.account_circle:before {\n    content: \"\\E853\"; }\n  .material-icons.account_tree:before {\n    content: \"\\E97A\"; }\n  .material-icons.ad_units:before {\n    content: \"\\EF39\"; }\n  .material-icons.adb:before {\n    content: \"\\E60E\"; }\n  .material-icons.add:before {\n    content: \"\\E145\"; }\n  .material-icons.add_a_photo:before {\n    content: \"\\E439\"; }\n  .material-icons.add_alarm:before {\n    content: \"\\E193\"; }\n  .material-icons.add_alert:before {\n    content: \"\\E003\"; }\n  .material-icons.add_box:before {\n    content: \"\\E146\"; }\n  .material-icons.add_business:before {\n    content: \"\\E729\"; }\n  .material-icons.add_call:before {\n    content: \"\\E0E8\"; }\n  .material-icons.add_chart:before {\n    content: \"\\E97B\"; }\n  .material-icons.add_circle:before {\n    content: \"\\E147\"; }\n  .material-icons.add_circle_outline:before {\n    content: \"\\E148\"; }\n  .material-icons.add_comment:before {\n    content: \"\\E266\"; }\n  .material-icons.add_ic_call:before {\n    content: \"\\E97C\"; }\n  .material-icons.add_link:before {\n    content: \"\\E178\"; }\n  .material-icons.add_location:before {\n    content: \"\\E567\"; }\n  .material-icons.add_location_alt:before {\n    content: \"\\EF3A\"; }\n  .material-icons.add_moderator:before {\n    content: \"\\E97D\"; }\n  .material-icons.add_photo_alternate:before {\n    content: \"\\E43E\"; }\n  .material-icons.add_road:before {\n    content: \"\\EF3B\"; }\n  .material-icons.add_shopping_cart:before {\n    content: \"\\E854\"; }\n  .material-icons.add_task:before {\n    content: \"\\F23A\"; }\n  .material-icons.add_to_drive:before {\n    content: \"\\E65C\"; }\n  .material-icons.add_to_home_screen:before {\n    content: \"\\E1FE\"; }\n  .material-icons.add_to_photos:before {\n    content: \"\\E39D\"; }\n  .material-icons.add_to_queue:before {\n    content: \"\\E05C\"; }\n  .material-icons.addchart:before {\n    content: \"\\EF3C\"; }\n  .material-icons.adjust:before {\n    content: \"\\E39E\"; }\n  .material-icons.admin_panel_settings:before {\n    content: \"\\EF3D\"; }\n  .material-icons.agriculture:before {\n    content: \"\\EA79\"; }\n  .material-icons.airline_seat_flat:before {\n    content: \"\\E630\"; }\n  .material-icons.airline_seat_flat_angled:before {\n    content: \"\\E631\"; }\n  .material-icons.airline_seat_individual_suite:before {\n    content: \"\\E632\"; }\n  .material-icons.airline_seat_legroom_extra:before {\n    content: \"\\E633\"; }\n  .material-icons.airline_seat_legroom_normal:before {\n    content: \"\\E634\"; }\n  .material-icons.airline_seat_legroom_reduced:before {\n    content: \"\\E635\"; }\n  .material-icons.airline_seat_recline_extra:before {\n    content: \"\\E636\"; }\n  .material-icons.airline_seat_recline_normal:before {\n    content: \"\\E637\"; }\n  .material-icons.airplanemode_active:before {\n    content: \"\\E195\"; }\n  .material-icons.airplanemode_inactive:before {\n    content: \"\\E194\"; }\n  .material-icons.airplanemode_off:before {\n    content: \"\\E194\"; }\n  .material-icons.airplanemode_on:before {\n    content: \"\\E195\"; }\n  .material-icons.airplay:before {\n    content: \"\\E055\"; }\n  .material-icons.airport_shuttle:before {\n    content: \"\\EB3C\"; }\n  .material-icons.alarm:before {\n    content: \"\\E855\"; }\n  .material-icons.alarm_add:before {\n    content: \"\\E856\"; }\n  .material-icons.alarm_off:before {\n    content: \"\\E857\"; }\n  .material-icons.alarm_on:before {\n    content: \"\\E858\"; }\n  .material-icons.album:before {\n    content: \"\\E019\"; }\n  .material-icons.align_horizontal_center:before {\n    content: \"\\E00F\"; }\n  .material-icons.align_horizontal_left:before {\n    content: \"\\E00D\"; }\n  .material-icons.align_horizontal_right:before {\n    content: \"\\E010\"; }\n  .material-icons.align_vertical_bottom:before {\n    content: \"\\E015\"; }\n  .material-icons.align_vertical_center:before {\n    content: \"\\E011\"; }\n  .material-icons.align_vertical_top:before {\n    content: \"\\E00C\"; }\n  .material-icons.all_inbox:before {\n    content: \"\\E97F\"; }\n  .material-icons.all_inclusive:before {\n    content: \"\\EB3D\"; }\n  .material-icons.all_out:before {\n    content: \"\\E90B\"; }\n  .material-icons.alt_route:before {\n    content: \"\\F184\"; }\n  .material-icons.alternate_email:before {\n    content: \"\\E0E6\"; }\n  .material-icons.amp_stories:before {\n    content: \"\\EA13\"; }\n  .material-icons.analytics:before {\n    content: \"\\EF3E\"; }\n  .material-icons.anchor:before {\n    content: \"\\F1CD\"; }\n  .material-icons.android:before {\n    content: \"\\E859\"; }\n  .material-icons.animation:before {\n    content: \"\\E71C\"; }\n  .material-icons.announcement:before {\n    content: \"\\E85A\"; }\n  .material-icons.apartment:before {\n    content: \"\\EA40\"; }\n  .material-icons.api:before {\n    content: \"\\F1B7\"; }\n  .material-icons.app_blocking:before {\n    content: \"\\EF3F\"; }\n  .material-icons.app_registration:before {\n    content: \"\\EF40\"; }\n  .material-icons.app_settings_alt:before {\n    content: \"\\EF41\"; }\n  .material-icons.approval:before {\n    content: \"\\E982\"; }\n  .material-icons.apps:before {\n    content: \"\\E5C3\"; }\n  .material-icons.architecture:before {\n    content: \"\\EA3B\"; }\n  .material-icons.archive:before {\n    content: \"\\E149\"; }\n  .material-icons.arrow_back:before {\n    content: \"\\E5C4\"; }\n  .material-icons.arrow_back_ios:before {\n    content: \"\\E5E0\"; }\n  .material-icons.arrow_circle_down:before {\n    content: \"\\F181\"; }\n  .material-icons.arrow_circle_up:before {\n    content: \"\\F182\"; }\n  .material-icons.arrow_downward:before {\n    content: \"\\E5DB\"; }\n  .material-icons.arrow_drop_down:before {\n    content: \"\\E5C5\"; }\n  .material-icons.arrow_drop_down_circle:before {\n    content: \"\\E5C6\"; }\n  .material-icons.arrow_drop_up:before {\n    content: \"\\E5C7\"; }\n  .material-icons.arrow_forward:before {\n    content: \"\\E5C8\"; }\n  .material-icons.arrow_forward_ios:before {\n    content: \"\\E5E1\"; }\n  .material-icons.arrow_left:before {\n    content: \"\\E5DE\"; }\n  .material-icons.arrow_right:before {\n    content: \"\\E5DF\"; }\n  .material-icons.arrow_right_alt:before {\n    content: \"\\E941\"; }\n  .material-icons.arrow_upward:before {\n    content: \"\\E5D8\"; }\n  .material-icons.art_track:before {\n    content: \"\\E060\"; }\n  .material-icons.article:before {\n    content: \"\\EF42\"; }\n  .material-icons.aspect_ratio:before {\n    content: \"\\E85B\"; }\n  .material-icons.assessment:before {\n    content: \"\\E85C\"; }\n  .material-icons.assignment:before {\n    content: \"\\E85D\"; }\n  .material-icons.assignment_ind:before {\n    content: \"\\E85E\"; }\n  .material-icons.assignment_late:before {\n    content: \"\\E85F\"; }\n  .material-icons.assignment_return:before {\n    content: \"\\E860\"; }\n  .material-icons.assignment_returned:before {\n    content: \"\\E861\"; }\n  .material-icons.assignment_turned_in:before {\n    content: \"\\E862\"; }\n  .material-icons.assistant:before {\n    content: \"\\E39F\"; }\n  .material-icons.assistant_direction:before {\n    content: \"\\E988\"; }\n  .material-icons.assistant_navigation:before {\n    content: \"\\E989\"; }\n  .material-icons.assistant_photo:before {\n    content: \"\\E3A0\"; }\n  .material-icons.atm:before {\n    content: \"\\E573\"; }\n  .material-icons.attach_email:before {\n    content: \"\\EA5E\"; }\n  .material-icons.attach_file:before {\n    content: \"\\E226\"; }\n  .material-icons.attach_money:before {\n    content: \"\\E227\"; }\n  .material-icons.attachment:before {\n    content: \"\\E2BC\"; }\n  .material-icons.attractions:before {\n    content: \"\\EA52\"; }\n  .material-icons.audiotrack:before {\n    content: \"\\E3A1\"; }\n  .material-icons.auto_awesome:before {\n    content: \"\\E65F\"; }\n  .material-icons.auto_awesome_mosaic:before {\n    content: \"\\E660\"; }\n  .material-icons.auto_awesome_motion:before {\n    content: \"\\E661\"; }\n  .material-icons.auto_delete:before {\n    content: \"\\EA4C\"; }\n  .material-icons.auto_fix_high:before {\n    content: \"\\E663\"; }\n  .material-icons.auto_fix_normal:before {\n    content: \"\\E664\"; }\n  .material-icons.auto_fix_off:before {\n    content: \"\\E665\"; }\n  .material-icons.auto_stories:before {\n    content: \"\\E666\"; }\n  .material-icons.autorenew:before {\n    content: \"\\E863\"; }\n  .material-icons.av_timer:before {\n    content: \"\\E01B\"; }\n  .material-icons.baby_changing_station:before {\n    content: \"\\F19B\"; }\n  .material-icons.backpack:before {\n    content: \"\\F19C\"; }\n  .material-icons.backspace:before {\n    content: \"\\E14A\"; }\n  .material-icons.backup:before {\n    content: \"\\E864\"; }\n  .material-icons.backup_table:before {\n    content: \"\\EF43\"; }\n  .material-icons.badge:before {\n    content: \"\\EA67\"; }\n  .material-icons.bakery_dining:before {\n    content: \"\\EA53\"; }\n  .material-icons.ballot:before {\n    content: \"\\E172\"; }\n  .material-icons.bar_chart:before {\n    content: \"\\E26B\"; }\n  .material-icons.batch_prediction:before {\n    content: \"\\F0F5\"; }\n  .material-icons.bathtub:before {\n    content: \"\\EA41\"; }\n  .material-icons.battery_alert:before {\n    content: \"\\E19C\"; }\n  .material-icons.battery_charging_full:before {\n    content: \"\\E1A3\"; }\n  .material-icons.battery_full:before {\n    content: \"\\E1A4\"; }\n  .material-icons.battery_std:before {\n    content: \"\\E1A5\"; }\n  .material-icons.battery_unknown:before {\n    content: \"\\E1A6\"; }\n  .material-icons.beach_access:before {\n    content: \"\\EB3E\"; }\n  .material-icons.bedtime:before {\n    content: \"\\EF44\"; }\n  .material-icons.beenhere:before {\n    content: \"\\E52D\"; }\n  .material-icons.bento:before {\n    content: \"\\F1F4\"; }\n  .material-icons.bike_scooter:before {\n    content: \"\\EF45\"; }\n  .material-icons.biotech:before {\n    content: \"\\EA3A\"; }\n  .material-icons.block:before {\n    content: \"\\E14B\"; }\n  .material-icons.block_flipped:before {\n    content: \"\\EF46\"; }\n  .material-icons.bluetooth:before {\n    content: \"\\E1A7\"; }\n  .material-icons.bluetooth_audio:before {\n    content: \"\\E60F\"; }\n  .material-icons.bluetooth_connected:before {\n    content: \"\\E1A8\"; }\n  .material-icons.bluetooth_disabled:before {\n    content: \"\\E1A9\"; }\n  .material-icons.bluetooth_searching:before {\n    content: \"\\E1AA\"; }\n  .material-icons.blur_circular:before {\n    content: \"\\E3A2\"; }\n  .material-icons.blur_linear:before {\n    content: \"\\E3A3\"; }\n  .material-icons.blur_off:before {\n    content: \"\\E3A4\"; }\n  .material-icons.blur_on:before {\n    content: \"\\E3A5\"; }\n  .material-icons.bolt:before {\n    content: \"\\EA0B\"; }\n  .material-icons.book:before {\n    content: \"\\E865\"; }\n  .material-icons.book_online:before {\n    content: \"\\F217\"; }\n  .material-icons.bookmark:before {\n    content: \"\\E866\"; }\n  .material-icons.bookmark_border:before {\n    content: \"\\E867\"; }\n  .material-icons.bookmark_outline:before {\n    content: \"\\E867\"; }\n  .material-icons.bookmarks:before {\n    content: \"\\E98B\"; }\n  .material-icons.border_all:before {\n    content: \"\\E228\"; }\n  .material-icons.border_bottom:before {\n    content: \"\\E229\"; }\n  .material-icons.border_clear:before {\n    content: \"\\E22A\"; }\n  .material-icons.border_color:before {\n    content: \"\\E22B\"; }\n  .material-icons.border_horizontal:before {\n    content: \"\\E22C\"; }\n  .material-icons.border_inner:before {\n    content: \"\\E22D\"; }\n  .material-icons.border_left:before {\n    content: \"\\E22E\"; }\n  .material-icons.border_outer:before {\n    content: \"\\E22F\"; }\n  .material-icons.border_right:before {\n    content: \"\\E230\"; }\n  .material-icons.border_style:before {\n    content: \"\\E231\"; }\n  .material-icons.border_top:before {\n    content: \"\\E232\"; }\n  .material-icons.border_vertical:before {\n    content: \"\\E233\"; }\n  .material-icons.branding_watermark:before {\n    content: \"\\E06B\"; }\n  .material-icons.breakfast_dining:before {\n    content: \"\\EA54\"; }\n  .material-icons.brightness_1:before {\n    content: \"\\E3A6\"; }\n  .material-icons.brightness_2:before {\n    content: \"\\E3A7\"; }\n  .material-icons.brightness_3:before {\n    content: \"\\E3A8\"; }\n  .material-icons.brightness_4:before {\n    content: \"\\E3A9\"; }\n  .material-icons.brightness_5:before {\n    content: \"\\E3AA\"; }\n  .material-icons.brightness_6:before {\n    content: \"\\E3AB\"; }\n  .material-icons.brightness_7:before {\n    content: \"\\E3AC\"; }\n  .material-icons.brightness_auto:before {\n    content: \"\\E1AB\"; }\n  .material-icons.brightness_high:before {\n    content: \"\\E1AC\"; }\n  .material-icons.brightness_low:before {\n    content: \"\\E1AD\"; }\n  .material-icons.brightness_medium:before {\n    content: \"\\E1AE\"; }\n  .material-icons.broken_image:before {\n    content: \"\\E3AD\"; }\n  .material-icons.browser_not_supported:before {\n    content: \"\\EF47\"; }\n  .material-icons.brunch_dining:before {\n    content: \"\\EA73\"; }\n  .material-icons.brush:before {\n    content: \"\\E3AE\"; }\n  .material-icons.bubble_chart:before {\n    content: \"\\E6DD\"; }\n  .material-icons.bug_report:before {\n    content: \"\\E868\"; }\n  .material-icons.build:before {\n    content: \"\\E869\"; }\n  .material-icons.build_circle:before {\n    content: \"\\EF48\"; }\n  .material-icons.burst_mode:before {\n    content: \"\\E43C\"; }\n  .material-icons.bus_alert:before {\n    content: \"\\E98F\"; }\n  .material-icons.business:before {\n    content: \"\\E0AF\"; }\n  .material-icons.business_center:before {\n    content: \"\\EB3F\"; }\n  .material-icons.cached:before {\n    content: \"\\E86A\"; }\n  .material-icons.cake:before {\n    content: \"\\E7E9\"; }\n  .material-icons.calculate:before {\n    content: \"\\EA5F\"; }\n  .material-icons.calendar_today:before {\n    content: \"\\E935\"; }\n  .material-icons.calendar_view_day:before {\n    content: \"\\E936\"; }\n  .material-icons.call:before {\n    content: \"\\E0B0\"; }\n  .material-icons.call_end:before {\n    content: \"\\E0B1\"; }\n  .material-icons.call_made:before {\n    content: \"\\E0B2\"; }\n  .material-icons.call_merge:before {\n    content: \"\\E0B3\"; }\n  .material-icons.call_missed:before {\n    content: \"\\E0B4\"; }\n  .material-icons.call_missed_outgoing:before {\n    content: \"\\E0E4\"; }\n  .material-icons.call_received:before {\n    content: \"\\E0B5\"; }\n  .material-icons.call_split:before {\n    content: \"\\E0B6\"; }\n  .material-icons.call_to_action:before {\n    content: \"\\E06C\"; }\n  .material-icons.camera:before {\n    content: \"\\E3AF\"; }\n  .material-icons.camera_alt:before {\n    content: \"\\E3B0\"; }\n  .material-icons.camera_enhance:before {\n    content: \"\\E8FC\"; }\n  .material-icons.camera_front:before {\n    content: \"\\E3B1\"; }\n  .material-icons.camera_rear:before {\n    content: \"\\E3B2\"; }\n  .material-icons.camera_roll:before {\n    content: \"\\E3B3\"; }\n  .material-icons.campaign:before {\n    content: \"\\EF49\"; }\n  .material-icons.cancel:before {\n    content: \"\\E5C9\"; }\n  .material-icons.cancel_presentation:before {\n    content: \"\\E0E9\"; }\n  .material-icons.cancel_schedule_send:before {\n    content: \"\\EA39\"; }\n  .material-icons.car_rental:before {\n    content: \"\\EA55\"; }\n  .material-icons.car_repair:before {\n    content: \"\\EA56\"; }\n  .material-icons.card_giftcard:before {\n    content: \"\\E8F6\"; }\n  .material-icons.card_membership:before {\n    content: \"\\E8F7\"; }\n  .material-icons.card_travel:before {\n    content: \"\\E8F8\"; }\n  .material-icons.carpenter:before {\n    content: \"\\F1F8\"; }\n  .material-icons.cases:before {\n    content: \"\\E992\"; }\n  .material-icons.casino:before {\n    content: \"\\EB40\"; }\n  .material-icons.cast:before {\n    content: \"\\E307\"; }\n  .material-icons.cast_connected:before {\n    content: \"\\E308\"; }\n  .material-icons.cast_for_education:before {\n    content: \"\\EFEC\"; }\n  .material-icons.category:before {\n    content: \"\\E574\"; }\n  .material-icons.celebration:before {\n    content: \"\\EA65\"; }\n  .material-icons.cell_wifi:before {\n    content: \"\\E0EC\"; }\n  .material-icons.center_focus_strong:before {\n    content: \"\\E3B4\"; }\n  .material-icons.center_focus_weak:before {\n    content: \"\\E3B5\"; }\n  .material-icons.change_history:before {\n    content: \"\\E86B\"; }\n  .material-icons.charging_station:before {\n    content: \"\\F19D\"; }\n  .material-icons.chat:before {\n    content: \"\\E0B7\"; }\n  .material-icons.chat_bubble:before {\n    content: \"\\E0CA\"; }\n  .material-icons.chat_bubble_outline:before {\n    content: \"\\E0CB\"; }\n  .material-icons.check:before {\n    content: \"\\E5CA\"; }\n  .material-icons.check_box:before {\n    content: \"\\E834\"; }\n  .material-icons.check_box_outline_blank:before {\n    content: \"\\E835\"; }\n  .material-icons.check_circle:before {\n    content: \"\\E86C\"; }\n  .material-icons.check_circle_outline:before {\n    content: \"\\E92D\"; }\n  .material-icons.checkroom:before {\n    content: \"\\F19E\"; }\n  .material-icons.chevron_left:before {\n    content: \"\\E5CB\"; }\n  .material-icons.chevron_right:before {\n    content: \"\\E5CC\"; }\n  .material-icons.child_care:before {\n    content: \"\\EB41\"; }\n  .material-icons.child_friendly:before {\n    content: \"\\EB42\"; }\n  .material-icons.chrome_reader_mode:before {\n    content: \"\\E86D\"; }\n  .material-icons.circle:before {\n    content: \"\\EF4A\"; }\n  .material-icons.circle_notifications:before {\n    content: \"\\E994\"; }\n  .material-icons.class:before {\n    content: \"\\E86E\"; }\n  .material-icons.clean_hands:before {\n    content: \"\\F21F\"; }\n  .material-icons.cleaning_services:before {\n    content: \"\\F0FF\"; }\n  .material-icons.clear:before {\n    content: \"\\E14C\"; }\n  .material-icons.clear_all:before {\n    content: \"\\E0B8\"; }\n  .material-icons.close:before {\n    content: \"\\E5CD\"; }\n  .material-icons.close_fullscreen:before {\n    content: \"\\F1CF\"; }\n  .material-icons.closed_caption:before {\n    content: \"\\E01C\"; }\n  .material-icons.closed_caption_disabled:before {\n    content: \"\\F1DC\"; }\n  .material-icons.closed_caption_off:before {\n    content: \"\\E996\"; }\n  .material-icons.cloud:before {\n    content: \"\\E2BD\"; }\n  .material-icons.cloud_circle:before {\n    content: \"\\E2BE\"; }\n  .material-icons.cloud_done:before {\n    content: \"\\E2BF\"; }\n  .material-icons.cloud_download:before {\n    content: \"\\E2C0\"; }\n  .material-icons.cloud_off:before {\n    content: \"\\E2C1\"; }\n  .material-icons.cloud_queue:before {\n    content: \"\\E2C2\"; }\n  .material-icons.cloud_upload:before {\n    content: \"\\E2C3\"; }\n  .material-icons.code:before {\n    content: \"\\E86F\"; }\n  .material-icons.collections:before {\n    content: \"\\E3B6\"; }\n  .material-icons.collections_bookmark:before {\n    content: \"\\E431\"; }\n  .material-icons.color_lens:before {\n    content: \"\\E3B7\"; }\n  .material-icons.colorize:before {\n    content: \"\\E3B8\"; }\n  .material-icons.comment:before {\n    content: \"\\E0B9\"; }\n  .material-icons.comment_bank:before {\n    content: \"\\EA4E\"; }\n  .material-icons.commute:before {\n    content: \"\\E940\"; }\n  .material-icons.compare:before {\n    content: \"\\E3B9\"; }\n  .material-icons.compare_arrows:before {\n    content: \"\\E915\"; }\n  .material-icons.compass_calibration:before {\n    content: \"\\E57C\"; }\n  .material-icons.compress:before {\n    content: \"\\E94D\"; }\n  .material-icons.computer:before {\n    content: \"\\E30A\"; }\n  .material-icons.confirmation_num:before {\n    content: \"\\E638\"; }\n  .material-icons.confirmation_number:before {\n    content: \"\\E638\"; }\n  .material-icons.connect_without_contact:before {\n    content: \"\\F223\"; }\n  .material-icons.connected_tv:before {\n    content: \"\\E998\"; }\n  .material-icons.construction:before {\n    content: \"\\EA3C\"; }\n  .material-icons.contact_mail:before {\n    content: \"\\E0D0\"; }\n  .material-icons.contact_page:before {\n    content: \"\\F22E\"; }\n  .material-icons.contact_phone:before {\n    content: \"\\E0CF\"; }\n  .material-icons.contact_support:before {\n    content: \"\\E94C\"; }\n  .material-icons.contactless:before {\n    content: \"\\EA71\"; }\n  .material-icons.contacts:before {\n    content: \"\\E0BA\"; }\n  .material-icons.content_copy:before {\n    content: \"\\E14D\"; }\n  .material-icons.content_cut:before {\n    content: \"\\E14E\"; }\n  .material-icons.content_paste:before {\n    content: \"\\E14F\"; }\n  .material-icons.control_camera:before {\n    content: \"\\E074\"; }\n  .material-icons.control_point:before {\n    content: \"\\E3BA\"; }\n  .material-icons.control_point_duplicate:before {\n    content: \"\\E3BB\"; }\n  .material-icons.copyright:before {\n    content: \"\\E90C\"; }\n  .material-icons.coronavirus:before {\n    content: \"\\F221\"; }\n  .material-icons.corporate_fare:before {\n    content: \"\\F1D0\"; }\n  .material-icons.countertops:before {\n    content: \"\\F1F7\"; }\n  .material-icons.create:before {\n    content: \"\\E150\"; }\n  .material-icons.create_new_folder:before {\n    content: \"\\E2CC\"; }\n  .material-icons.credit_card:before {\n    content: \"\\E870\"; }\n  .material-icons.crop:before {\n    content: \"\\E3BE\"; }\n  .material-icons.crop_16_9:before {\n    content: \"\\E3BC\"; }\n  .material-icons.crop_3_2:before {\n    content: \"\\E3BD\"; }\n  .material-icons.crop_5_4:before {\n    content: \"\\E3BF\"; }\n  .material-icons.crop_7_5:before {\n    content: \"\\E3C0\"; }\n  .material-icons.crop_din:before {\n    content: \"\\E3C1\"; }\n  .material-icons.crop_free:before {\n    content: \"\\E3C2\"; }\n  .material-icons.crop_landscape:before {\n    content: \"\\E3C3\"; }\n  .material-icons.crop_original:before {\n    content: \"\\E3C4\"; }\n  .material-icons.crop_portrait:before {\n    content: \"\\E3C5\"; }\n  .material-icons.crop_rotate:before {\n    content: \"\\E437\"; }\n  .material-icons.crop_square:before {\n    content: \"\\E3C6\"; }\n  .material-icons.dangerous:before {\n    content: \"\\E99A\"; }\n  .material-icons.dashboard:before {\n    content: \"\\E871\"; }\n  .material-icons.dashboard_customize:before {\n    content: \"\\E99B\"; }\n  .material-icons.data_usage:before {\n    content: \"\\E1AF\"; }\n  .material-icons.date_range:before {\n    content: \"\\E916\"; }\n  .material-icons.deck:before {\n    content: \"\\EA42\"; }\n  .material-icons.dehaze:before {\n    content: \"\\E3C7\"; }\n  .material-icons.delete:before {\n    content: \"\\E872\"; }\n  .material-icons.delete_forever:before {\n    content: \"\\E92B\"; }\n  .material-icons.delete_outline:before {\n    content: \"\\E92E\"; }\n  .material-icons.delete_sweep:before {\n    content: \"\\E16C\"; }\n  .material-icons.delivery_dining:before {\n    content: \"\\EA72\"; }\n  .material-icons.departure_board:before {\n    content: \"\\E576\"; }\n  .material-icons.description:before {\n    content: \"\\E873\"; }\n  .material-icons.design_services:before {\n    content: \"\\F10A\"; }\n  .material-icons.desktop_access_disabled:before {\n    content: \"\\E99D\"; }\n  .material-icons.desktop_mac:before {\n    content: \"\\E30B\"; }\n  .material-icons.desktop_windows:before {\n    content: \"\\E30C\"; }\n  .material-icons.details:before {\n    content: \"\\E3C8\"; }\n  .material-icons.developer_board:before {\n    content: \"\\E30D\"; }\n  .material-icons.developer_mode:before {\n    content: \"\\E1B0\"; }\n  .material-icons.device_hub:before {\n    content: \"\\E335\"; }\n  .material-icons.device_thermostat:before {\n    content: \"\\E1FF\"; }\n  .material-icons.device_unknown:before {\n    content: \"\\E339\"; }\n  .material-icons.devices:before {\n    content: \"\\E1B1\"; }\n  .material-icons.devices_other:before {\n    content: \"\\E337\"; }\n  .material-icons.dialer_sip:before {\n    content: \"\\E0BB\"; }\n  .material-icons.dialpad:before {\n    content: \"\\E0BC\"; }\n  .material-icons.dinner_dining:before {\n    content: \"\\EA57\"; }\n  .material-icons.directions:before {\n    content: \"\\E52E\"; }\n  .material-icons.directions_bike:before {\n    content: \"\\E52F\"; }\n  .material-icons.directions_boat:before {\n    content: \"\\E532\"; }\n  .material-icons.directions_bus:before {\n    content: \"\\E530\"; }\n  .material-icons.directions_car:before {\n    content: \"\\E531\"; }\n  .material-icons.directions_ferry:before {\n    content: \"\\E532\"; }\n  .material-icons.directions_off:before {\n    content: \"\\F10F\"; }\n  .material-icons.directions_railway:before {\n    content: \"\\E534\"; }\n  .material-icons.directions_run:before {\n    content: \"\\E566\"; }\n  .material-icons.directions_subway:before {\n    content: \"\\E533\"; }\n  .material-icons.directions_train:before {\n    content: \"\\E534\"; }\n  .material-icons.directions_transit:before {\n    content: \"\\E535\"; }\n  .material-icons.directions_walk:before {\n    content: \"\\E536\"; }\n  .material-icons.dirty_lens:before {\n    content: \"\\EF4B\"; }\n  .material-icons.disabled_by_default:before {\n    content: \"\\F230\"; }\n  .material-icons.disc_full:before {\n    content: \"\\E610\"; }\n  .material-icons.dnd_forwardslash:before {\n    content: \"\\E611\"; }\n  .material-icons.dns:before {\n    content: \"\\E875\"; }\n  .material-icons.do_not_disturb:before {\n    content: \"\\E612\"; }\n  .material-icons.do_not_disturb_alt:before {\n    content: \"\\E611\"; }\n  .material-icons.do_not_disturb_off:before {\n    content: \"\\E643\"; }\n  .material-icons.do_not_disturb_on:before {\n    content: \"\\E644\"; }\n  .material-icons.do_not_step:before {\n    content: \"\\F19F\"; }\n  .material-icons.do_not_touch:before {\n    content: \"\\F1B0\"; }\n  .material-icons.dock:before {\n    content: \"\\E30E\"; }\n  .material-icons.domain:before {\n    content: \"\\E7EE\"; }\n  .material-icons.domain_disabled:before {\n    content: \"\\E0EF\"; }\n  .material-icons.domain_verification:before {\n    content: \"\\EF4C\"; }\n  .material-icons.done:before {\n    content: \"\\E876\"; }\n  .material-icons.done_all:before {\n    content: \"\\E877\"; }\n  .material-icons.done_outline:before {\n    content: \"\\E92F\"; }\n  .material-icons.donut_large:before {\n    content: \"\\E917\"; }\n  .material-icons.donut_small:before {\n    content: \"\\E918\"; }\n  .material-icons.double_arrow:before {\n    content: \"\\EA50\"; }\n  .material-icons.drafts:before {\n    content: \"\\E151\"; }\n  .material-icons.drag_handle:before {\n    content: \"\\E25D\"; }\n  .material-icons.drag_indicator:before {\n    content: \"\\E945\"; }\n  .material-icons.drive_eta:before {\n    content: \"\\E613\"; }\n  .material-icons.drive_file_move:before {\n    content: \"\\E675\"; }\n  .material-icons.drive_file_move_outline:before {\n    content: \"\\E9A1\"; }\n  .material-icons.drive_file_rename_outline:before {\n    content: \"\\E9A2\"; }\n  .material-icons.drive_folder_upload:before {\n    content: \"\\E9A3\"; }\n  .material-icons.dry:before {\n    content: \"\\F1B3\"; }\n  .material-icons.dry_cleaning:before {\n    content: \"\\EA58\"; }\n  .material-icons.duo:before {\n    content: \"\\E9A5\"; }\n  .material-icons.dvr:before {\n    content: \"\\E1B2\"; }\n  .material-icons.dynamic_feed:before {\n    content: \"\\EA14\"; }\n  .material-icons.dynamic_form:before {\n    content: \"\\F1BF\"; }\n  .material-icons.east:before {\n    content: \"\\F1DF\"; }\n  .material-icons.eco:before {\n    content: \"\\EA35\"; }\n  .material-icons.edit:before {\n    content: \"\\E3C9\"; }\n  .material-icons.edit_attributes:before {\n    content: \"\\E578\"; }\n  .material-icons.edit_location:before {\n    content: \"\\E568\"; }\n  .material-icons.edit_off:before {\n    content: \"\\E950\"; }\n  .material-icons.edit_road:before {\n    content: \"\\EF4D\"; }\n  .material-icons.eject:before {\n    content: \"\\E8FB\"; }\n  .material-icons.elderly:before {\n    content: \"\\F21A\"; }\n  .material-icons.electric_bike:before {\n    content: \"\\EB1B\"; }\n  .material-icons.electric_car:before {\n    content: \"\\EB1C\"; }\n  .material-icons.electric_moped:before {\n    content: \"\\EB1D\"; }\n  .material-icons.electric_rickshaw:before {\n    content: \"\\EB1E\"; }\n  .material-icons.electric_scooter:before {\n    content: \"\\EB1F\"; }\n  .material-icons.electrical_services:before {\n    content: \"\\F102\"; }\n  .material-icons.elevator:before {\n    content: \"\\F1A0\"; }\n  .material-icons.email:before {\n    content: \"\\E0BE\"; }\n  .material-icons.emoji_emotions:before {\n    content: \"\\EA22\"; }\n  .material-icons.emoji_events:before {\n    content: \"\\EA23\"; }\n  .material-icons.emoji_flags:before {\n    content: \"\\EA1A\"; }\n  .material-icons.emoji_food_beverage:before {\n    content: \"\\EA1B\"; }\n  .material-icons.emoji_nature:before {\n    content: \"\\EA1C\"; }\n  .material-icons.emoji_objects:before {\n    content: \"\\EA24\"; }\n  .material-icons.emoji_people:before {\n    content: \"\\EA1D\"; }\n  .material-icons.emoji_symbols:before {\n    content: \"\\EA1E\"; }\n  .material-icons.emoji_transportation:before {\n    content: \"\\EA1F\"; }\n  .material-icons.engineering:before {\n    content: \"\\EA3D\"; }\n  .material-icons.enhance_photo_translate:before {\n    content: \"\\E8FC\"; }\n  .material-icons.enhanced_encryption:before {\n    content: \"\\E63F\"; }\n  .material-icons.equalizer:before {\n    content: \"\\E01D\"; }\n  .material-icons.error:before {\n    content: \"\\E000\"; }\n  .material-icons.error_outline:before {\n    content: \"\\E001\"; }\n  .material-icons.escalator:before {\n    content: \"\\F1A1\"; }\n  .material-icons.escalator_warning:before {\n    content: \"\\F1AC\"; }\n  .material-icons.euro:before {\n    content: \"\\EA15\"; }\n  .material-icons.euro_symbol:before {\n    content: \"\\E926\"; }\n  .material-icons.ev_station:before {\n    content: \"\\E56D\"; }\n  .material-icons.event:before {\n    content: \"\\E878\"; }\n  .material-icons.event_available:before {\n    content: \"\\E614\"; }\n  .material-icons.event_busy:before {\n    content: \"\\E615\"; }\n  .material-icons.event_note:before {\n    content: \"\\E616\"; }\n  .material-icons.event_seat:before {\n    content: \"\\E903\"; }\n  .material-icons.exit_to_app:before {\n    content: \"\\E879\"; }\n  .material-icons.expand:before {\n    content: \"\\E94F\"; }\n  .material-icons.expand_less:before {\n    content: \"\\E5CE\"; }\n  .material-icons.expand_more:before {\n    content: \"\\E5CF\"; }\n  .material-icons.explicit:before {\n    content: \"\\E01E\"; }\n  .material-icons.explore:before {\n    content: \"\\E87A\"; }\n  .material-icons.explore_off:before {\n    content: \"\\E9A8\"; }\n  .material-icons.exposure:before {\n    content: \"\\E3CA\"; }\n  .material-icons.exposure_minus_1:before {\n    content: \"\\E3CB\"; }\n  .material-icons.exposure_minus_2:before {\n    content: \"\\E3CC\"; }\n  .material-icons.exposure_neg_1:before {\n    content: \"\\E3CB\"; }\n  .material-icons.exposure_neg_2:before {\n    content: \"\\E3CC\"; }\n  .material-icons.exposure_plus_1:before {\n    content: \"\\E3CD\"; }\n  .material-icons.exposure_plus_2:before {\n    content: \"\\E3CE\"; }\n  .material-icons.exposure_zero:before {\n    content: \"\\E3CF\"; }\n  .material-icons.extension:before {\n    content: \"\\E87B\"; }\n  .material-icons.face:before {\n    content: \"\\E87C\"; }\n  .material-icons.face_retouching_natural:before {\n    content: \"\\EF4E\"; }\n  .material-icons.facebook:before {\n    content: \"\\F234\"; }\n  .material-icons.fact_check:before {\n    content: \"\\F0C5\"; }\n  .material-icons.family_restroom:before {\n    content: \"\\F1A2\"; }\n  .material-icons.fast_forward:before {\n    content: \"\\E01F\"; }\n  .material-icons.fast_rewind:before {\n    content: \"\\E020\"; }\n  .material-icons.fastfood:before {\n    content: \"\\E57A\"; }\n  .material-icons.favorite:before {\n    content: \"\\E87D\"; }\n  .material-icons.favorite_border:before {\n    content: \"\\E87E\"; }\n  .material-icons.favorite_outline:before {\n    content: \"\\E87E\"; }\n  .material-icons.featured_play_list:before {\n    content: \"\\E06D\"; }\n  .material-icons.featured_video:before {\n    content: \"\\E06E\"; }\n  .material-icons.feedback:before {\n    content: \"\\E87F\"; }\n  .material-icons.fence:before {\n    content: \"\\F1F6\"; }\n  .material-icons.festival:before {\n    content: \"\\EA68\"; }\n  .material-icons.fiber_dvr:before {\n    content: \"\\E05D\"; }\n  .material-icons.fiber_manual_record:before {\n    content: \"\\E061\"; }\n  .material-icons.fiber_new:before {\n    content: \"\\E05E\"; }\n  .material-icons.fiber_pin:before {\n    content: \"\\E06A\"; }\n  .material-icons.fiber_smart_record:before {\n    content: \"\\E062\"; }\n  .material-icons.file_copy:before {\n    content: \"\\E173\"; }\n  .material-icons.file_download:before {\n    content: \"\\E2C4\"; }\n  .material-icons.file_download_done:before {\n    content: \"\\E9AA\"; }\n  .material-icons.file_present:before {\n    content: \"\\EA0E\"; }\n  .material-icons.file_upload:before {\n    content: \"\\E2C6\"; }\n  .material-icons.filter:before {\n    content: \"\\E3D3\"; }\n  .material-icons.filter_1:before {\n    content: \"\\E3D0\"; }\n  .material-icons.filter_2:before {\n    content: \"\\E3D1\"; }\n  .material-icons.filter_3:before {\n    content: \"\\E3D2\"; }\n  .material-icons.filter_4:before {\n    content: \"\\E3D4\"; }\n  .material-icons.filter_5:before {\n    content: \"\\E3D5\"; }\n  .material-icons.filter_6:before {\n    content: \"\\E3D6\"; }\n  .material-icons.filter_7:before {\n    content: \"\\E3D7\"; }\n  .material-icons.filter_8:before {\n    content: \"\\E3D8\"; }\n  .material-icons.filter_9:before {\n    content: \"\\E3D9\"; }\n  .material-icons.filter_9_plus:before {\n    content: \"\\E3DA\"; }\n  .material-icons.filter_alt:before {\n    content: \"\\EF4F\"; }\n  .material-icons.filter_b_and_w:before {\n    content: \"\\E3DB\"; }\n  .material-icons.filter_center_focus:before {\n    content: \"\\E3DC\"; }\n  .material-icons.filter_drama:before {\n    content: \"\\E3DD\"; }\n  .material-icons.filter_frames:before {\n    content: \"\\E3DE\"; }\n  .material-icons.filter_hdr:before {\n    content: \"\\E3DF\"; }\n  .material-icons.filter_list:before {\n    content: \"\\E152\"; }\n  .material-icons.filter_list_alt:before {\n    content: \"\\E94E\"; }\n  .material-icons.filter_none:before {\n    content: \"\\E3E0\"; }\n  .material-icons.filter_tilt_shift:before {\n    content: \"\\E3E2\"; }\n  .material-icons.filter_vintage:before {\n    content: \"\\E3E3\"; }\n  .material-icons.find_in_page:before {\n    content: \"\\E880\"; }\n  .material-icons.find_replace:before {\n    content: \"\\E881\"; }\n  .material-icons.fingerprint:before {\n    content: \"\\E90D\"; }\n  .material-icons.fire_extinguisher:before {\n    content: \"\\F1D8\"; }\n  .material-icons.fire_hydrant:before {\n    content: \"\\F1A3\"; }\n  .material-icons.fireplace:before {\n    content: \"\\EA43\"; }\n  .material-icons.first_page:before {\n    content: \"\\E5DC\"; }\n  .material-icons.fit_screen:before {\n    content: \"\\EA10\"; }\n  .material-icons.fitness_center:before {\n    content: \"\\EB43\"; }\n  .material-icons.flag:before {\n    content: \"\\E153\"; }\n  .material-icons.flaky:before {\n    content: \"\\EF50\"; }\n  .material-icons.flare:before {\n    content: \"\\E3E4\"; }\n  .material-icons.flash_auto:before {\n    content: \"\\E3E5\"; }\n  .material-icons.flash_off:before {\n    content: \"\\E3E6\"; }\n  .material-icons.flash_on:before {\n    content: \"\\E3E7\"; }\n  .material-icons.flight:before {\n    content: \"\\E539\"; }\n  .material-icons.flight_land:before {\n    content: \"\\E904\"; }\n  .material-icons.flight_takeoff:before {\n    content: \"\\E905\"; }\n  .material-icons.flip:before {\n    content: \"\\E3E8\"; }\n  .material-icons.flip_camera_android:before {\n    content: \"\\EA37\"; }\n  .material-icons.flip_camera_ios:before {\n    content: \"\\EA38\"; }\n  .material-icons.flip_to_back:before {\n    content: \"\\E882\"; }\n  .material-icons.flip_to_front:before {\n    content: \"\\E883\"; }\n  .material-icons.folder:before {\n    content: \"\\E2C7\"; }\n  .material-icons.folder_open:before {\n    content: \"\\E2C8\"; }\n  .material-icons.folder_shared:before {\n    content: \"\\E2C9\"; }\n  .material-icons.folder_special:before {\n    content: \"\\E617\"; }\n  .material-icons.follow_the_signs:before {\n    content: \"\\F222\"; }\n  .material-icons.font_download:before {\n    content: \"\\E167\"; }\n  .material-icons.food_bank:before {\n    content: \"\\F1F2\"; }\n  .material-icons.format_align_center:before {\n    content: \"\\E234\"; }\n  .material-icons.format_align_justify:before {\n    content: \"\\E235\"; }\n  .material-icons.format_align_left:before {\n    content: \"\\E236\"; }\n  .material-icons.format_align_right:before {\n    content: \"\\E237\"; }\n  .material-icons.format_bold:before {\n    content: \"\\E238\"; }\n  .material-icons.format_clear:before {\n    content: \"\\E239\"; }\n  .material-icons.format_color_fill:before {\n    content: \"\\E23A\"; }\n  .material-icons.format_color_reset:before {\n    content: \"\\E23B\"; }\n  .material-icons.format_color_text:before {\n    content: \"\\E23C\"; }\n  .material-icons.format_indent_decrease:before {\n    content: \"\\E23D\"; }\n  .material-icons.format_indent_increase:before {\n    content: \"\\E23E\"; }\n  .material-icons.format_italic:before {\n    content: \"\\E23F\"; }\n  .material-icons.format_line_spacing:before {\n    content: \"\\E240\"; }\n  .material-icons.format_list_bulleted:before {\n    content: \"\\E241\"; }\n  .material-icons.format_list_numbered:before {\n    content: \"\\E242\"; }\n  .material-icons.format_list_numbered_rtl:before {\n    content: \"\\E267\"; }\n  .material-icons.format_paint:before {\n    content: \"\\E243\"; }\n  .material-icons.format_quote:before {\n    content: \"\\E244\"; }\n  .material-icons.format_shapes:before {\n    content: \"\\E25E\"; }\n  .material-icons.format_size:before {\n    content: \"\\E245\"; }\n  .material-icons.format_strikethrough:before {\n    content: \"\\E246\"; }\n  .material-icons.format_textdirection_l_to_r:before {\n    content: \"\\E247\"; }\n  .material-icons.format_textdirection_r_to_l:before {\n    content: \"\\E248\"; }\n  .material-icons.format_underline:before {\n    content: \"\\E249\"; }\n  .material-icons.format_underlined:before {\n    content: \"\\E249\"; }\n  .material-icons.forum:before {\n    content: \"\\E0BF\"; }\n  .material-icons.forward:before {\n    content: \"\\E154\"; }\n  .material-icons.forward_10:before {\n    content: \"\\E056\"; }\n  .material-icons.forward_30:before {\n    content: \"\\E057\"; }\n  .material-icons.forward_5:before {\n    content: \"\\E058\"; }\n  .material-icons.forward_to_inbox:before {\n    content: \"\\F187\"; }\n  .material-icons.foundation:before {\n    content: \"\\F200\"; }\n  .material-icons.free_breakfast:before {\n    content: \"\\EB44\"; }\n  .material-icons.fullscreen:before {\n    content: \"\\E5D0\"; }\n  .material-icons.fullscreen_exit:before {\n    content: \"\\E5D1\"; }\n  .material-icons.functions:before {\n    content: \"\\E24A\"; }\n  .material-icons.g_translate:before {\n    content: \"\\E927\"; }\n  .material-icons.gamepad:before {\n    content: \"\\E30F\"; }\n  .material-icons.games:before {\n    content: \"\\E021\"; }\n  .material-icons.gavel:before {\n    content: \"\\E90E\"; }\n  .material-icons.gesture:before {\n    content: \"\\E155\"; }\n  .material-icons.get_app:before {\n    content: \"\\E884\"; }\n  .material-icons.gif:before {\n    content: \"\\E908\"; }\n  .material-icons.goat:before {\n    content: \"\\EBFF\"; }\n  .material-icons.golf_course:before {\n    content: \"\\EB45\"; }\n  .material-icons.gps_fixed:before {\n    content: \"\\E1B3\"; }\n  .material-icons.gps_not_fixed:before {\n    content: \"\\E1B4\"; }\n  .material-icons.gps_off:before {\n    content: \"\\E1B5\"; }\n  .material-icons.grade:before {\n    content: \"\\E885\"; }\n  .material-icons.gradient:before {\n    content: \"\\E3E9\"; }\n  .material-icons.grading:before {\n    content: \"\\EA4F\"; }\n  .material-icons.grain:before {\n    content: \"\\E3EA\"; }\n  .material-icons.graphic_eq:before {\n    content: \"\\E1B8\"; }\n  .material-icons.grass:before {\n    content: \"\\F205\"; }\n  .material-icons.grid_off:before {\n    content: \"\\E3EB\"; }\n  .material-icons.grid_on:before {\n    content: \"\\E3EC\"; }\n  .material-icons.grid_view:before {\n    content: \"\\E9B0\"; }\n  .material-icons.group:before {\n    content: \"\\E7EF\"; }\n  .material-icons.group_add:before {\n    content: \"\\E7F0\"; }\n  .material-icons.group_work:before {\n    content: \"\\E886\"; }\n  .material-icons.groups:before {\n    content: \"\\F233\"; }\n  .material-icons.hail:before {\n    content: \"\\E9B1\"; }\n  .material-icons.handyman:before {\n    content: \"\\F10B\"; }\n  .material-icons.hardware:before {\n    content: \"\\EA59\"; }\n  .material-icons.hd:before {\n    content: \"\\E052\"; }\n  .material-icons.hdr_enhanced_select:before {\n    content: \"\\EF51\"; }\n  .material-icons.hdr_off:before {\n    content: \"\\E3ED\"; }\n  .material-icons.hdr_on:before {\n    content: \"\\E3EE\"; }\n  .material-icons.hdr_strong:before {\n    content: \"\\E3F1\"; }\n  .material-icons.hdr_weak:before {\n    content: \"\\E3F2\"; }\n  .material-icons.headset:before {\n    content: \"\\E310\"; }\n  .material-icons.headset_mic:before {\n    content: \"\\E311\"; }\n  .material-icons.headset_off:before {\n    content: \"\\E33A\"; }\n  .material-icons.healing:before {\n    content: \"\\E3F3\"; }\n  .material-icons.hearing:before {\n    content: \"\\E023\"; }\n  .material-icons.hearing_disabled:before {\n    content: \"\\F104\"; }\n  .material-icons.height:before {\n    content: \"\\EA16\"; }\n  .material-icons.help:before {\n    content: \"\\E887\"; }\n  .material-icons.help_center:before {\n    content: \"\\F1C0\"; }\n  .material-icons.help_outline:before {\n    content: \"\\E8FD\"; }\n  .material-icons.high_quality:before {\n    content: \"\\E024\"; }\n  .material-icons.highlight:before {\n    content: \"\\E25F\"; }\n  .material-icons.highlight_alt:before {\n    content: \"\\EF52\"; }\n  .material-icons.highlight_off:before {\n    content: \"\\E888\"; }\n  .material-icons.highlight_remove:before {\n    content: \"\\E888\"; }\n  .material-icons.history:before {\n    content: \"\\E889\"; }\n  .material-icons.history_edu:before {\n    content: \"\\EA3E\"; }\n  .material-icons.history_toggle_off:before {\n    content: \"\\F17D\"; }\n  .material-icons.home:before {\n    content: \"\\E88A\"; }\n  .material-icons.home_filled:before {\n    content: \"\\E9B2\"; }\n  .material-icons.home_repair_service:before {\n    content: \"\\F100\"; }\n  .material-icons.home_work:before {\n    content: \"\\EA09\"; }\n  .material-icons.horizontal_distribute:before {\n    content: \"\\E014\"; }\n  .material-icons.horizontal_rule:before {\n    content: \"\\F108\"; }\n  .material-icons.horizontal_split:before {\n    content: \"\\E947\"; }\n  .material-icons.hot_tub:before {\n    content: \"\\EB46\"; }\n  .material-icons.hotel:before {\n    content: \"\\E53A\"; }\n  .material-icons.hourglass_bottom:before {\n    content: \"\\EA5C\"; }\n  .material-icons.hourglass_disabled:before {\n    content: \"\\EF53\"; }\n  .material-icons.hourglass_empty:before {\n    content: \"\\E88B\"; }\n  .material-icons.hourglass_full:before {\n    content: \"\\E88C\"; }\n  .material-icons.hourglass_top:before {\n    content: \"\\EA5B\"; }\n  .material-icons.house:before {\n    content: \"\\EA44\"; }\n  .material-icons.house_siding:before {\n    content: \"\\F202\"; }\n  .material-icons.how_to_reg:before {\n    content: \"\\E174\"; }\n  .material-icons.how_to_vote:before {\n    content: \"\\E175\"; }\n  .material-icons.http:before {\n    content: \"\\E902\"; }\n  .material-icons.https:before {\n    content: \"\\E88D\"; }\n  .material-icons.hvac:before {\n    content: \"\\F10E\"; }\n  .material-icons.icecream:before {\n    content: \"\\EA69\"; }\n  .material-icons.image:before {\n    content: \"\\E3F4\"; }\n  .material-icons.image_aspect_ratio:before {\n    content: \"\\E3F5\"; }\n  .material-icons.image_not_supported:before {\n    content: \"\\F116\"; }\n  .material-icons.image_search:before {\n    content: \"\\E43F\"; }\n  .material-icons.imagesearch_roller:before {\n    content: \"\\E9B4\"; }\n  .material-icons.import_contacts:before {\n    content: \"\\E0E0\"; }\n  .material-icons.import_export:before {\n    content: \"\\E0C3\"; }\n  .material-icons.important_devices:before {\n    content: \"\\E912\"; }\n  .material-icons.inbox:before {\n    content: \"\\E156\"; }\n  .material-icons.indeterminate_check_box:before {\n    content: \"\\E909\"; }\n  .material-icons.info:before {\n    content: \"\\E88E\"; }\n  .material-icons.info_outline:before {\n    content: \"\\E88F\"; }\n  .material-icons.input:before {\n    content: \"\\E890\"; }\n  .material-icons.insert_chart:before {\n    content: \"\\E24B\"; }\n  .material-icons.insert_chart_outlined:before {\n    content: \"\\E26A\"; }\n  .material-icons.insert_comment:before {\n    content: \"\\E24C\"; }\n  .material-icons.insert_drive_file:before {\n    content: \"\\E24D\"; }\n  .material-icons.insert_emoticon:before {\n    content: \"\\E24E\"; }\n  .material-icons.insert_invitation:before {\n    content: \"\\E24F\"; }\n  .material-icons.insert_link:before {\n    content: \"\\E250\"; }\n  .material-icons.insert_photo:before {\n    content: \"\\E251\"; }\n  .material-icons.insights:before {\n    content: \"\\F092\"; }\n  .material-icons.integration_instructions:before {\n    content: \"\\EF54\"; }\n  .material-icons.inventory:before {\n    content: \"\\E179\"; }\n  .material-icons.invert_colors:before {\n    content: \"\\E891\"; }\n  .material-icons.invert_colors_off:before {\n    content: \"\\E0C4\"; }\n  .material-icons.invert_colors_on:before {\n    content: \"\\E891\"; }\n  .material-icons.ios_share:before {\n    content: \"\\E6B8\"; }\n  .material-icons.iso:before {\n    content: \"\\E3F6\"; }\n  .material-icons.keyboard:before {\n    content: \"\\E312\"; }\n  .material-icons.keyboard_arrow_down:before {\n    content: \"\\E313\"; }\n  .material-icons.keyboard_arrow_left:before {\n    content: \"\\E314\"; }\n  .material-icons.keyboard_arrow_right:before {\n    content: \"\\E315\"; }\n  .material-icons.keyboard_arrow_up:before {\n    content: \"\\E316\"; }\n  .material-icons.keyboard_backspace:before {\n    content: \"\\E317\"; }\n  .material-icons.keyboard_capslock:before {\n    content: \"\\E318\"; }\n  .material-icons.keyboard_control:before {\n    content: \"\\E5D3\"; }\n  .material-icons.keyboard_hide:before {\n    content: \"\\E31A\"; }\n  .material-icons.keyboard_return:before {\n    content: \"\\E31B\"; }\n  .material-icons.keyboard_tab:before {\n    content: \"\\E31C\"; }\n  .material-icons.keyboard_voice:before {\n    content: \"\\E31D\"; }\n  .material-icons.king_bed:before {\n    content: \"\\EA45\"; }\n  .material-icons.kitchen:before {\n    content: \"\\EB47\"; }\n  .material-icons.label:before {\n    content: \"\\E892\"; }\n  .material-icons.label_important:before {\n    content: \"\\E937\"; }\n  .material-icons.label_important_outline:before {\n    content: \"\\E948\"; }\n  .material-icons.label_off:before {\n    content: \"\\E9B6\"; }\n  .material-icons.label_outline:before {\n    content: \"\\E893\"; }\n  .material-icons.landscape:before {\n    content: \"\\E3F7\"; }\n  .material-icons.language:before {\n    content: \"\\E894\"; }\n  .material-icons.laptop:before {\n    content: \"\\E31E\"; }\n  .material-icons.laptop_chromebook:before {\n    content: \"\\E31F\"; }\n  .material-icons.laptop_mac:before {\n    content: \"\\E320\"; }\n  .material-icons.laptop_windows:before {\n    content: \"\\E321\"; }\n  .material-icons.last_page:before {\n    content: \"\\E5DD\"; }\n  .material-icons.launch:before {\n    content: \"\\E895\"; }\n  .material-icons.layers:before {\n    content: \"\\E53B\"; }\n  .material-icons.layers_clear:before {\n    content: \"\\E53C\"; }\n  .material-icons.leaderboard:before {\n    content: \"\\F20C\"; }\n  .material-icons.leak_add:before {\n    content: \"\\E3F8\"; }\n  .material-icons.leak_remove:before {\n    content: \"\\E3F9\"; }\n  .material-icons.leave_bags_at_home:before {\n    content: \"\\F21B\"; }\n  .material-icons.legend_toggle:before {\n    content: \"\\F11B\"; }\n  .material-icons.lens:before {\n    content: \"\\E3FA\"; }\n  .material-icons.library_add:before {\n    content: \"\\E02E\"; }\n  .material-icons.library_add_check:before {\n    content: \"\\E9B7\"; }\n  .material-icons.library_books:before {\n    content: \"\\E02F\"; }\n  .material-icons.library_music:before {\n    content: \"\\E030\"; }\n  .material-icons.lightbulb:before {\n    content: \"\\E0F0\"; }\n  .material-icons.lightbulb_outline:before {\n    content: \"\\E90F\"; }\n  .material-icons.line_style:before {\n    content: \"\\E919\"; }\n  .material-icons.line_weight:before {\n    content: \"\\E91A\"; }\n  .material-icons.linear_scale:before {\n    content: \"\\E260\"; }\n  .material-icons.link:before {\n    content: \"\\E157\"; }\n  .material-icons.link_off:before {\n    content: \"\\E16F\"; }\n  .material-icons.linked_camera:before {\n    content: \"\\E438\"; }\n  .material-icons.liquor:before {\n    content: \"\\EA60\"; }\n  .material-icons.list:before {\n    content: \"\\E896\"; }\n  .material-icons.list_alt:before {\n    content: \"\\E0EE\"; }\n  .material-icons.live_help:before {\n    content: \"\\E0C6\"; }\n  .material-icons.live_tv:before {\n    content: \"\\E639\"; }\n  .material-icons.local_activity:before {\n    content: \"\\E53F\"; }\n  .material-icons.local_airport:before {\n    content: \"\\E53D\"; }\n  .material-icons.local_atm:before {\n    content: \"\\E53E\"; }\n  .material-icons.local_attraction:before {\n    content: \"\\E53F\"; }\n  .material-icons.local_bar:before {\n    content: \"\\E540\"; }\n  .material-icons.local_cafe:before {\n    content: \"\\E541\"; }\n  .material-icons.local_car_wash:before {\n    content: \"\\E542\"; }\n  .material-icons.local_convenience_store:before {\n    content: \"\\E543\"; }\n  .material-icons.local_dining:before {\n    content: \"\\E556\"; }\n  .material-icons.local_drink:before {\n    content: \"\\E544\"; }\n  .material-icons.local_fire_department:before {\n    content: \"\\EF55\"; }\n  .material-icons.local_florist:before {\n    content: \"\\E545\"; }\n  .material-icons.local_gas_station:before {\n    content: \"\\E546\"; }\n  .material-icons.local_grocery_store:before {\n    content: \"\\E547\"; }\n  .material-icons.local_hospital:before {\n    content: \"\\E548\"; }\n  .material-icons.local_hotel:before {\n    content: \"\\E549\"; }\n  .material-icons.local_laundry_service:before {\n    content: \"\\E54A\"; }\n  .material-icons.local_library:before {\n    content: \"\\E54B\"; }\n  .material-icons.local_mall:before {\n    content: \"\\E54C\"; }\n  .material-icons.local_movies:before {\n    content: \"\\E54D\"; }\n  .material-icons.local_offer:before {\n    content: \"\\E54E\"; }\n  .material-icons.local_parking:before {\n    content: \"\\E54F\"; }\n  .material-icons.local_pharmacy:before {\n    content: \"\\E550\"; }\n  .material-icons.local_phone:before {\n    content: \"\\E551\"; }\n  .material-icons.local_pizza:before {\n    content: \"\\E552\"; }\n  .material-icons.local_play:before {\n    content: \"\\E553\"; }\n  .material-icons.local_police:before {\n    content: \"\\EF56\"; }\n  .material-icons.local_post_office:before {\n    content: \"\\E554\"; }\n  .material-icons.local_print_shop:before {\n    content: \"\\E555\"; }\n  .material-icons.local_printshop:before {\n    content: \"\\E555\"; }\n  .material-icons.local_restaurant:before {\n    content: \"\\E556\"; }\n  .material-icons.local_see:before {\n    content: \"\\E557\"; }\n  .material-icons.local_shipping:before {\n    content: \"\\E558\"; }\n  .material-icons.local_taxi:before {\n    content: \"\\E559\"; }\n  .material-icons.location_city:before {\n    content: \"\\E7F1\"; }\n  .material-icons.location_disabled:before {\n    content: \"\\E1B6\"; }\n  .material-icons.location_history:before {\n    content: \"\\E55A\"; }\n  .material-icons.location_off:before {\n    content: \"\\E0C7\"; }\n  .material-icons.location_on:before {\n    content: \"\\E0C8\"; }\n  .material-icons.location_pin:before {\n    content: \"\\F1DB\"; }\n  .material-icons.location_searching:before {\n    content: \"\\E1B7\"; }\n  .material-icons.lock:before {\n    content: \"\\E897\"; }\n  .material-icons.lock_clock:before {\n    content: \"\\EF57\"; }\n  .material-icons.lock_open:before {\n    content: \"\\E898\"; }\n  .material-icons.lock_outline:before {\n    content: \"\\E899\"; }\n  .material-icons.login:before {\n    content: \"\\EA77\"; }\n  .material-icons.logout:before {\n    content: \"\\E9BA\"; }\n  .material-icons.looks:before {\n    content: \"\\E3FC\"; }\n  .material-icons.looks_3:before {\n    content: \"\\E3FB\"; }\n  .material-icons.looks_4:before {\n    content: \"\\E3FD\"; }\n  .material-icons.looks_5:before {\n    content: \"\\E3FE\"; }\n  .material-icons.looks_6:before {\n    content: \"\\E3FF\"; }\n  .material-icons.looks_one:before {\n    content: \"\\E400\"; }\n  .material-icons.looks_two:before {\n    content: \"\\E401\"; }\n  .material-icons.loop:before {\n    content: \"\\E028\"; }\n  .material-icons.loupe:before {\n    content: \"\\E402\"; }\n  .material-icons.low_priority:before {\n    content: \"\\E16D\"; }\n  .material-icons.loyalty:before {\n    content: \"\\E89A\"; }\n  .material-icons.luggage:before {\n    content: \"\\F235\"; }\n  .material-icons.lunch_dining:before {\n    content: \"\\EA61\"; }\n  .material-icons.mail:before {\n    content: \"\\E158\"; }\n  .material-icons.mail_outline:before {\n    content: \"\\E0E1\"; }\n  .material-icons.map:before {\n    content: \"\\E55B\"; }\n  .material-icons.maps_ugc:before {\n    content: \"\\EF58\"; }\n  .material-icons.margin:before {\n    content: \"\\E9BB\"; }\n  .material-icons.mark_as_unread:before {\n    content: \"\\E9BC\"; }\n  .material-icons.mark_chat_read:before {\n    content: \"\\F18B\"; }\n  .material-icons.mark_chat_unread:before {\n    content: \"\\F189\"; }\n  .material-icons.mark_email_read:before {\n    content: \"\\F18C\"; }\n  .material-icons.mark_email_unread:before {\n    content: \"\\F18A\"; }\n  .material-icons.markunread:before {\n    content: \"\\E159\"; }\n  .material-icons.markunread_mailbox:before {\n    content: \"\\E89B\"; }\n  .material-icons.masks:before {\n    content: \"\\F218\"; }\n  .material-icons.maximize:before {\n    content: \"\\E930\"; }\n  .material-icons.mediation:before {\n    content: \"\\EFA7\"; }\n  .material-icons.medical_services:before {\n    content: \"\\F109\"; }\n  .material-icons.meeting_room:before {\n    content: \"\\EB4F\"; }\n  .material-icons.memory:before {\n    content: \"\\E322\"; }\n  .material-icons.menu:before {\n    content: \"\\E5D2\"; }\n  .material-icons.menu_book:before {\n    content: \"\\EA19\"; }\n  .material-icons.menu_open:before {\n    content: \"\\E9BD\"; }\n  .material-icons.merge_type:before {\n    content: \"\\E252\"; }\n  .material-icons.message:before {\n    content: \"\\E0C9\"; }\n  .material-icons.messenger:before {\n    content: \"\\E0CA\"; }\n  .material-icons.messenger_outline:before {\n    content: \"\\E0CB\"; }\n  .material-icons.mic:before {\n    content: \"\\E029\"; }\n  .material-icons.mic_external_off:before {\n    content: \"\\EF59\"; }\n  .material-icons.mic_external_on:before {\n    content: \"\\EF5A\"; }\n  .material-icons.mic_none:before {\n    content: \"\\E02A\"; }\n  .material-icons.mic_off:before {\n    content: \"\\E02B\"; }\n  .material-icons.microwave:before {\n    content: \"\\F204\"; }\n  .material-icons.military_tech:before {\n    content: \"\\EA3F\"; }\n  .material-icons.minimize:before {\n    content: \"\\E931\"; }\n  .material-icons.miscellaneous_services:before {\n    content: \"\\F10C\"; }\n  .material-icons.missed_video_call:before {\n    content: \"\\E073\"; }\n  .material-icons.mms:before {\n    content: \"\\E618\"; }\n  .material-icons.mobile_friendly:before {\n    content: \"\\E200\"; }\n  .material-icons.mobile_off:before {\n    content: \"\\E201\"; }\n  .material-icons.mobile_screen_share:before {\n    content: \"\\E0E7\"; }\n  .material-icons.mode_comment:before {\n    content: \"\\E253\"; }\n  .material-icons.mode_edit:before {\n    content: \"\\E254\"; }\n  .material-icons.model_training:before {\n    content: \"\\F0CF\"; }\n  .material-icons.monetization_on:before {\n    content: \"\\E263\"; }\n  .material-icons.money:before {\n    content: \"\\E57D\"; }\n  .material-icons.money_off:before {\n    content: \"\\E25C\"; }\n  .material-icons.monitor:before {\n    content: \"\\EF5B\"; }\n  .material-icons.monochrome_photos:before {\n    content: \"\\E403\"; }\n  .material-icons.mood:before {\n    content: \"\\E7F2\"; }\n  .material-icons.mood_bad:before {\n    content: \"\\E7F3\"; }\n  .material-icons.moped:before {\n    content: \"\\EB28\"; }\n  .material-icons.more:before {\n    content: \"\\E619\"; }\n  .material-icons.more_horiz:before {\n    content: \"\\E5D3\"; }\n  .material-icons.more_time:before {\n    content: \"\\EA5D\"; }\n  .material-icons.more_vert:before {\n    content: \"\\E5D4\"; }\n  .material-icons.motion_photos_off:before {\n    content: \"\\E9C0\"; }\n  .material-icons.motion_photos_on:before {\n    content: \"\\E9C1\"; }\n  .material-icons.motion_photos_pause:before {\n    content: \"\\F227\"; }\n  .material-icons.motion_photos_paused:before {\n    content: \"\\E9C2\"; }\n  .material-icons.motorcycle:before {\n    content: \"\\E91B\"; }\n  .material-icons.mouse:before {\n    content: \"\\E323\"; }\n  .material-icons.move_to_inbox:before {\n    content: \"\\E168\"; }\n  .material-icons.movie:before {\n    content: \"\\E02C\"; }\n  .material-icons.movie_creation:before {\n    content: \"\\E404\"; }\n  .material-icons.movie_filter:before {\n    content: \"\\E43A\"; }\n  .material-icons.mp:before {\n    content: \"\\E9C3\"; }\n  .material-icons.multiline_chart:before {\n    content: \"\\E6DF\"; }\n  .material-icons.multiple_stop:before {\n    content: \"\\F1B9\"; }\n  .material-icons.multitrack_audio:before {\n    content: \"\\E1B8\"; }\n  .material-icons.museum:before {\n    content: \"\\EA36\"; }\n  .material-icons.music_note:before {\n    content: \"\\E405\"; }\n  .material-icons.music_off:before {\n    content: \"\\E440\"; }\n  .material-icons.music_video:before {\n    content: \"\\E063\"; }\n  .material-icons.my_library_add:before {\n    content: \"\\E02E\"; }\n  .material-icons.my_library_books:before {\n    content: \"\\E02F\"; }\n  .material-icons.my_library_music:before {\n    content: \"\\E030\"; }\n  .material-icons.my_location:before {\n    content: \"\\E55C\"; }\n  .material-icons.nat:before {\n    content: \"\\EF5C\"; }\n  .material-icons.nature:before {\n    content: \"\\E406\"; }\n  .material-icons.nature_people:before {\n    content: \"\\E407\"; }\n  .material-icons.navigate_before:before {\n    content: \"\\E408\"; }\n  .material-icons.navigate_next:before {\n    content: \"\\E409\"; }\n  .material-icons.navigation:before {\n    content: \"\\E55D\"; }\n  .material-icons.near_me:before {\n    content: \"\\E569\"; }\n  .material-icons.near_me_disabled:before {\n    content: \"\\F1EF\"; }\n  .material-icons.network_cell:before {\n    content: \"\\E1B9\"; }\n  .material-icons.network_check:before {\n    content: \"\\E640\"; }\n  .material-icons.network_locked:before {\n    content: \"\\E61A\"; }\n  .material-icons.network_wifi:before {\n    content: \"\\E1BA\"; }\n  .material-icons.new_releases:before {\n    content: \"\\E031\"; }\n  .material-icons.next_plan:before {\n    content: \"\\EF5D\"; }\n  .material-icons.next_week:before {\n    content: \"\\E16A\"; }\n  .material-icons.nfc:before {\n    content: \"\\E1BB\"; }\n  .material-icons.night_shelter:before {\n    content: \"\\F1F1\"; }\n  .material-icons.nightlife:before {\n    content: \"\\EA62\"; }\n  .material-icons.nightlight_round:before {\n    content: \"\\EF5E\"; }\n  .material-icons.nights_stay:before {\n    content: \"\\EA46\"; }\n  .material-icons.no_backpack:before {\n    content: \"\\F237\"; }\n  .material-icons.no_cell:before {\n    content: \"\\F1A4\"; }\n  .material-icons.no_drinks:before {\n    content: \"\\F1A5\"; }\n  .material-icons.no_encryption:before {\n    content: \"\\E641\"; }\n  .material-icons.no_flash:before {\n    content: \"\\F1A6\"; }\n  .material-icons.no_food:before {\n    content: \"\\F1A7\"; }\n  .material-icons.no_luggage:before {\n    content: \"\\F23B\"; }\n  .material-icons.no_meals:before {\n    content: \"\\F1D6\"; }\n  .material-icons.no_meals_ouline:before {\n    content: \"\\F229\"; }\n  .material-icons.no_meeting_room:before {\n    content: \"\\EB4E\"; }\n  .material-icons.no_photography:before {\n    content: \"\\F1A8\"; }\n  .material-icons.no_sim:before {\n    content: \"\\E0CC\"; }\n  .material-icons.no_stroller:before {\n    content: \"\\F1AF\"; }\n  .material-icons.no_transfer:before {\n    content: \"\\F1D5\"; }\n  .material-icons.north:before {\n    content: \"\\F1E0\"; }\n  .material-icons.north_east:before {\n    content: \"\\F1E1\"; }\n  .material-icons.north_west:before {\n    content: \"\\F1E2\"; }\n  .material-icons.not_accessible:before {\n    content: \"\\F0FE\"; }\n  .material-icons.not_interested:before {\n    content: \"\\E033\"; }\n  .material-icons.not_listed_location:before {\n    content: \"\\E575\"; }\n  .material-icons.not_started:before {\n    content: \"\\F0D1\"; }\n  .material-icons.note:before {\n    content: \"\\E06F\"; }\n  .material-icons.note_add:before {\n    content: \"\\E89C\"; }\n  .material-icons.notes:before {\n    content: \"\\E26C\"; }\n  .material-icons.notification_important:before {\n    content: \"\\E004\"; }\n  .material-icons.notifications:before {\n    content: \"\\E7F4\"; }\n  .material-icons.notifications_active:before {\n    content: \"\\E7F7\"; }\n  .material-icons.notifications_none:before {\n    content: \"\\E7F5\"; }\n  .material-icons.notifications_off:before {\n    content: \"\\E7F6\"; }\n  .material-icons.notifications_on:before {\n    content: \"\\E7F7\"; }\n  .material-icons.notifications_paused:before {\n    content: \"\\E7F8\"; }\n  .material-icons.now_wallpaper:before {\n    content: \"\\E1BC\"; }\n  .material-icons.now_widgets:before {\n    content: \"\\E1BD\"; }\n  .material-icons.offline_bolt:before {\n    content: \"\\E932\"; }\n  .material-icons.offline_pin:before {\n    content: \"\\E90A\"; }\n  .material-icons.offline_share:before {\n    content: \"\\E9C5\"; }\n  .material-icons.ondemand_video:before {\n    content: \"\\E63A\"; }\n  .material-icons.online_prediction:before {\n    content: \"\\F0EB\"; }\n  .material-icons.opacity:before {\n    content: \"\\E91C\"; }\n  .material-icons.open_in_browser:before {\n    content: \"\\E89D\"; }\n  .material-icons.open_in_full:before {\n    content: \"\\F1CE\"; }\n  .material-icons.open_in_new:before {\n    content: \"\\E89E\"; }\n  .material-icons.open_with:before {\n    content: \"\\E89F\"; }\n  .material-icons.outbond:before {\n    content: \"\\F228\"; }\n  .material-icons.outbox:before {\n    content: \"\\EF5F\"; }\n  .material-icons.outdoor_grill:before {\n    content: \"\\EA47\"; }\n  .material-icons.outgoing_mail:before {\n    content: \"\\F0D2\"; }\n  .material-icons.outlet:before {\n    content: \"\\F1D4\"; }\n  .material-icons.outlined_flag:before {\n    content: \"\\E16E\"; }\n  .material-icons.padding:before {\n    content: \"\\E9C8\"; }\n  .material-icons.pages:before {\n    content: \"\\E7F9\"; }\n  .material-icons.pageview:before {\n    content: \"\\E8A0\"; }\n  .material-icons.palette:before {\n    content: \"\\E40A\"; }\n  .material-icons.pan_tool:before {\n    content: \"\\E925\"; }\n  .material-icons.panorama:before {\n    content: \"\\E40B\"; }\n  .material-icons.panorama_fish_eye:before {\n    content: \"\\E40C\"; }\n  .material-icons.panorama_fisheye:before {\n    content: \"\\E40C\"; }\n  .material-icons.panorama_horizontal:before {\n    content: \"\\E40D\"; }\n  .material-icons.panorama_horizontal_select:before {\n    content: \"\\EF60\"; }\n  .material-icons.panorama_photosphere:before {\n    content: \"\\E9C9\"; }\n  .material-icons.panorama_photosphere_select:before {\n    content: \"\\E9CA\"; }\n  .material-icons.panorama_vertical:before {\n    content: \"\\E40E\"; }\n  .material-icons.panorama_vertical_select:before {\n    content: \"\\EF61\"; }\n  .material-icons.panorama_wide_angle:before {\n    content: \"\\E40F\"; }\n  .material-icons.panorama_wide_angle_select:before {\n    content: \"\\EF62\"; }\n  .material-icons.park:before {\n    content: \"\\EA63\"; }\n  .material-icons.party_mode:before {\n    content: \"\\E7FA\"; }\n  .material-icons.pause:before {\n    content: \"\\E034\"; }\n  .material-icons.pause_circle_filled:before {\n    content: \"\\E035\"; }\n  .material-icons.pause_circle_outline:before {\n    content: \"\\E036\"; }\n  .material-icons.pause_presentation:before {\n    content: \"\\E0EA\"; }\n  .material-icons.payment:before {\n    content: \"\\E8A1\"; }\n  .material-icons.payments:before {\n    content: \"\\EF63\"; }\n  .material-icons.pedal_bike:before {\n    content: \"\\EB29\"; }\n  .material-icons.pending:before {\n    content: \"\\EF64\"; }\n  .material-icons.pending_actions:before {\n    content: \"\\F1BB\"; }\n  .material-icons.people:before {\n    content: \"\\E7FB\"; }\n  .material-icons.people_alt:before {\n    content: \"\\EA21\"; }\n  .material-icons.people_outline:before {\n    content: \"\\E7FC\"; }\n  .material-icons.perm_camera_mic:before {\n    content: \"\\E8A2\"; }\n  .material-icons.perm_contact_cal:before {\n    content: \"\\E8A3\"; }\n  .material-icons.perm_contact_calendar:before {\n    content: \"\\E8A3\"; }\n  .material-icons.perm_data_setting:before {\n    content: \"\\E8A4\"; }\n  .material-icons.perm_device_info:before {\n    content: \"\\E8A5\"; }\n  .material-icons.perm_device_information:before {\n    content: \"\\E8A5\"; }\n  .material-icons.perm_identity:before {\n    content: \"\\E8A6\"; }\n  .material-icons.perm_media:before {\n    content: \"\\E8A7\"; }\n  .material-icons.perm_phone_msg:before {\n    content: \"\\E8A8\"; }\n  .material-icons.perm_scan_wifi:before {\n    content: \"\\E8A9\"; }\n  .material-icons.person:before {\n    content: \"\\E7FD\"; }\n  .material-icons.person_add:before {\n    content: \"\\E7FE\"; }\n  .material-icons.person_add_alt:before {\n    content: \"\\EA4D\"; }\n  .material-icons.person_add_alt_1:before {\n    content: \"\\EF65\"; }\n  .material-icons.person_add_disabled:before {\n    content: \"\\E9CB\"; }\n  .material-icons.person_outline:before {\n    content: \"\\E7FF\"; }\n  .material-icons.person_pin:before {\n    content: \"\\E55A\"; }\n  .material-icons.person_pin_circle:before {\n    content: \"\\E56A\"; }\n  .material-icons.person_remove:before {\n    content: \"\\EF66\"; }\n  .material-icons.person_remove_alt_1:before {\n    content: \"\\EF67\"; }\n  .material-icons.person_search:before {\n    content: \"\\F106\"; }\n  .material-icons.personal_video:before {\n    content: \"\\E63B\"; }\n  .material-icons.pest_control:before {\n    content: \"\\F0FA\"; }\n  .material-icons.pest_control_rodent:before {\n    content: \"\\F0FD\"; }\n  .material-icons.pets:before {\n    content: \"\\E91D\"; }\n  .material-icons.phone:before {\n    content: \"\\E0CD\"; }\n  .material-icons.phone_android:before {\n    content: \"\\E324\"; }\n  .material-icons.phone_bluetooth_speaker:before {\n    content: \"\\E61B\"; }\n  .material-icons.phone_callback:before {\n    content: \"\\E649\"; }\n  .material-icons.phone_disabled:before {\n    content: \"\\E9CC\"; }\n  .material-icons.phone_enabled:before {\n    content: \"\\E9CD\"; }\n  .material-icons.phone_forwarded:before {\n    content: \"\\E61C\"; }\n  .material-icons.phone_in_talk:before {\n    content: \"\\E61D\"; }\n  .material-icons.phone_iphone:before {\n    content: \"\\E325\"; }\n  .material-icons.phone_locked:before {\n    content: \"\\E61E\"; }\n  .material-icons.phone_missed:before {\n    content: \"\\E61F\"; }\n  .material-icons.phone_paused:before {\n    content: \"\\E620\"; }\n  .material-icons.phonelink:before {\n    content: \"\\E326\"; }\n  .material-icons.phonelink_erase:before {\n    content: \"\\E0DB\"; }\n  .material-icons.phonelink_lock:before {\n    content: \"\\E0DC\"; }\n  .material-icons.phonelink_off:before {\n    content: \"\\E327\"; }\n  .material-icons.phonelink_ring:before {\n    content: \"\\E0DD\"; }\n  .material-icons.phonelink_setup:before {\n    content: \"\\E0DE\"; }\n  .material-icons.photo:before {\n    content: \"\\E410\"; }\n  .material-icons.photo_album:before {\n    content: \"\\E411\"; }\n  .material-icons.photo_camera:before {\n    content: \"\\E412\"; }\n  .material-icons.photo_camera_back:before {\n    content: \"\\EF68\"; }\n  .material-icons.photo_camera_front:before {\n    content: \"\\EF69\"; }\n  .material-icons.photo_filter:before {\n    content: \"\\E43B\"; }\n  .material-icons.photo_library:before {\n    content: \"\\E413\"; }\n  .material-icons.photo_size_select_actual:before {\n    content: \"\\E432\"; }\n  .material-icons.photo_size_select_large:before {\n    content: \"\\E433\"; }\n  .material-icons.photo_size_select_small:before {\n    content: \"\\E434\"; }\n  .material-icons.picture_as_pdf:before {\n    content: \"\\E415\"; }\n  .material-icons.picture_in_picture:before {\n    content: \"\\E8AA\"; }\n  .material-icons.picture_in_picture_alt:before {\n    content: \"\\E911\"; }\n  .material-icons.pie_chart:before {\n    content: \"\\E6C4\"; }\n  .material-icons.pie_chart_outlined:before {\n    content: \"\\E6C5\"; }\n  .material-icons.pin_drop:before {\n    content: \"\\E55E\"; }\n  .material-icons.pivot_table_chart:before {\n    content: \"\\E9CE\"; }\n  .material-icons.place:before {\n    content: \"\\E55F\"; }\n  .material-icons.plagiarism:before {\n    content: \"\\EA5A\"; }\n  .material-icons.play_arrow:before {\n    content: \"\\E037\"; }\n  .material-icons.play_circle_fill:before {\n    content: \"\\E038\"; }\n  .material-icons.play_circle_filled:before {\n    content: \"\\E038\"; }\n  .material-icons.play_circle_outline:before {\n    content: \"\\E039\"; }\n  .material-icons.play_disabled:before {\n    content: \"\\EF6A\"; }\n  .material-icons.play_for_work:before {\n    content: \"\\E906\"; }\n  .material-icons.playlist_add:before {\n    content: \"\\E03B\"; }\n  .material-icons.playlist_add_check:before {\n    content: \"\\E065\"; }\n  .material-icons.playlist_play:before {\n    content: \"\\E05F\"; }\n  .material-icons.plumbing:before {\n    content: \"\\F107\"; }\n  .material-icons.plus_one:before {\n    content: \"\\E800\"; }\n  .material-icons.point_of_sale:before {\n    content: \"\\F17E\"; }\n  .material-icons.policy:before {\n    content: \"\\EA17\"; }\n  .material-icons.poll:before {\n    content: \"\\E801\"; }\n  .material-icons.polymer:before {\n    content: \"\\E8AB\"; }\n  .material-icons.pool:before {\n    content: \"\\EB48\"; }\n  .material-icons.portable_wifi_off:before {\n    content: \"\\E0CE\"; }\n  .material-icons.portrait:before {\n    content: \"\\E416\"; }\n  .material-icons.post_add:before {\n    content: \"\\EA20\"; }\n  .material-icons.power:before {\n    content: \"\\E63C\"; }\n  .material-icons.power_input:before {\n    content: \"\\E336\"; }\n  .material-icons.power_off:before {\n    content: \"\\E646\"; }\n  .material-icons.power_settings_new:before {\n    content: \"\\E8AC\"; }\n  .material-icons.pregnant_woman:before {\n    content: \"\\E91E\"; }\n  .material-icons.present_to_all:before {\n    content: \"\\E0DF\"; }\n  .material-icons.preview:before {\n    content: \"\\F1C5\"; }\n  .material-icons.print:before {\n    content: \"\\E8AD\"; }\n  .material-icons.print_disabled:before {\n    content: \"\\E9CF\"; }\n  .material-icons.priority_high:before {\n    content: \"\\E645\"; }\n  .material-icons.privacy_tip:before {\n    content: \"\\F0DC\"; }\n  .material-icons.psychology:before {\n    content: \"\\EA4A\"; }\n  .material-icons.public:before {\n    content: \"\\E80B\"; }\n  .material-icons.public_off:before {\n    content: \"\\F1CA\"; }\n  .material-icons.publish:before {\n    content: \"\\E255\"; }\n  .material-icons.published_with_changes:before {\n    content: \"\\F232\"; }\n  .material-icons.push_pin:before {\n    content: \"\\F10D\"; }\n  .material-icons.qr_code:before {\n    content: \"\\EF6B\"; }\n  .material-icons.qr_code_2:before {\n    content: \"\\E00A\"; }\n  .material-icons.qr_code_scanner:before {\n    content: \"\\F206\"; }\n  .material-icons.query_builder:before {\n    content: \"\\E8AE\"; }\n  .material-icons.question_answer:before {\n    content: \"\\E8AF\"; }\n  .material-icons.queue:before {\n    content: \"\\E03C\"; }\n  .material-icons.queue_music:before {\n    content: \"\\E03D\"; }\n  .material-icons.queue_play_next:before {\n    content: \"\\E066\"; }\n  .material-icons.quick_contacts_dialer:before {\n    content: \"\\E0CF\"; }\n  .material-icons.quick_contacts_mail:before {\n    content: \"\\E0D0\"; }\n  .material-icons.quickreply:before {\n    content: \"\\EF6C\"; }\n  .material-icons.radio:before {\n    content: \"\\E03E\"; }\n  .material-icons.radio_button_checked:before {\n    content: \"\\E837\"; }\n  .material-icons.radio_button_off:before {\n    content: \"\\E836\"; }\n  .material-icons.radio_button_on:before {\n    content: \"\\E837\"; }\n  .material-icons.radio_button_unchecked:before {\n    content: \"\\E836\"; }\n  .material-icons.railway_alert:before {\n    content: \"\\E9D1\"; }\n  .material-icons.ramen_dining:before {\n    content: \"\\EA64\"; }\n  .material-icons.rate_review:before {\n    content: \"\\E560\"; }\n  .material-icons.read_more:before {\n    content: \"\\EF6D\"; }\n  .material-icons.receipt:before {\n    content: \"\\E8B0\"; }\n  .material-icons.receipt_long:before {\n    content: \"\\EF6E\"; }\n  .material-icons.recent_actors:before {\n    content: \"\\E03F\"; }\n  .material-icons.recommend:before {\n    content: \"\\E9D2\"; }\n  .material-icons.record_voice_over:before {\n    content: \"\\E91F\"; }\n  .material-icons.redeem:before {\n    content: \"\\E8B1\"; }\n  .material-icons.redo:before {\n    content: \"\\E15A\"; }\n  .material-icons.reduce_capacity:before {\n    content: \"\\F21C\"; }\n  .material-icons.refresh:before {\n    content: \"\\E5D5\"; }\n  .material-icons.remove:before {\n    content: \"\\E15B\"; }\n  .material-icons.remove_circle:before {\n    content: \"\\E15C\"; }\n  .material-icons.remove_circle_outline:before {\n    content: \"\\E15D\"; }\n  .material-icons.remove_done:before {\n    content: \"\\E9D3\"; }\n  .material-icons.remove_from_queue:before {\n    content: \"\\E067\"; }\n  .material-icons.remove_moderator:before {\n    content: \"\\E9D4\"; }\n  .material-icons.remove_red_eye:before {\n    content: \"\\E417\"; }\n  .material-icons.remove_shopping_cart:before {\n    content: \"\\E928\"; }\n  .material-icons.reorder:before {\n    content: \"\\E8FE\"; }\n  .material-icons.repeat:before {\n    content: \"\\E040\"; }\n  .material-icons.repeat_on:before {\n    content: \"\\E9D6\"; }\n  .material-icons.repeat_one:before {\n    content: \"\\E041\"; }\n  .material-icons.repeat_one_on:before {\n    content: \"\\E9D7\"; }\n  .material-icons.replay:before {\n    content: \"\\E042\"; }\n  .material-icons.replay_10:before {\n    content: \"\\E059\"; }\n  .material-icons.replay_30:before {\n    content: \"\\E05A\"; }\n  .material-icons.replay_5:before {\n    content: \"\\E05B\"; }\n  .material-icons.replay_circle_filled:before {\n    content: \"\\E9D8\"; }\n  .material-icons.reply:before {\n    content: \"\\E15E\"; }\n  .material-icons.reply_all:before {\n    content: \"\\E15F\"; }\n  .material-icons.report:before {\n    content: \"\\E160\"; }\n  .material-icons.report_off:before {\n    content: \"\\E170\"; }\n  .material-icons.report_problem:before {\n    content: \"\\E8B2\"; }\n  .material-icons.request_page:before {\n    content: \"\\F22C\"; }\n  .material-icons.request_quote:before {\n    content: \"\\F1B6\"; }\n  .material-icons.reset_tv:before {\n    content: \"\\E9D9\"; }\n  .material-icons.restaurant:before {\n    content: \"\\E56C\"; }\n  .material-icons.restaurant_menu:before {\n    content: \"\\E561\"; }\n  .material-icons.restore:before {\n    content: \"\\E8B3\"; }\n  .material-icons.restore_from_trash:before {\n    content: \"\\E938\"; }\n  .material-icons.restore_page:before {\n    content: \"\\E929\"; }\n  .material-icons.rice_bowl:before {\n    content: \"\\F1F5\"; }\n  .material-icons.ring_volume:before {\n    content: \"\\E0D1\"; }\n  .material-icons.roofing:before {\n    content: \"\\F201\"; }\n  .material-icons.room:before {\n    content: \"\\E8B4\"; }\n  .material-icons.room_preferences:before {\n    content: \"\\F1B8\"; }\n  .material-icons.room_service:before {\n    content: \"\\EB49\"; }\n  .material-icons.rotate_90_degrees_ccw:before {\n    content: \"\\E418\"; }\n  .material-icons.rotate_left:before {\n    content: \"\\E419\"; }\n  .material-icons.rotate_right:before {\n    content: \"\\E41A\"; }\n  .material-icons.rounded_corner:before {\n    content: \"\\E920\"; }\n  .material-icons.router:before {\n    content: \"\\E328\"; }\n  .material-icons.rowing:before {\n    content: \"\\E921\"; }\n  .material-icons.rss_feed:before {\n    content: \"\\E0E5\"; }\n  .material-icons.rtt:before {\n    content: \"\\E9AD\"; }\n  .material-icons.rule:before {\n    content: \"\\F1C2\"; }\n  .material-icons.rule_folder:before {\n    content: \"\\F1C9\"; }\n  .material-icons.run_circle:before {\n    content: \"\\EF6F\"; }\n  .material-icons.rv_hookup:before {\n    content: \"\\E642\"; }\n  .material-icons.sanitizer:before {\n    content: \"\\F21D\"; }\n  .material-icons.satellite:before {\n    content: \"\\E562\"; }\n  .material-icons.save:before {\n    content: \"\\E161\"; }\n  .material-icons.save_alt:before {\n    content: \"\\E171\"; }\n  .material-icons.saved_search:before {\n    content: \"\\EA11\"; }\n  .material-icons.scanner:before {\n    content: \"\\E329\"; }\n  .material-icons.scatter_plot:before {\n    content: \"\\E268\"; }\n  .material-icons.schedule:before {\n    content: \"\\E8B5\"; }\n  .material-icons.schedule_send:before {\n    content: \"\\EA0A\"; }\n  .material-icons.school:before {\n    content: \"\\E80C\"; }\n  .material-icons.science:before {\n    content: \"\\EA4B\"; }\n  .material-icons.score:before {\n    content: \"\\E269\"; }\n  .material-icons.screen_lock_landscape:before {\n    content: \"\\E1BE\"; }\n  .material-icons.screen_lock_portrait:before {\n    content: \"\\E1BF\"; }\n  .material-icons.screen_lock_rotation:before {\n    content: \"\\E1C0\"; }\n  .material-icons.screen_rotation:before {\n    content: \"\\E1C1\"; }\n  .material-icons.screen_search_desktop:before {\n    content: \"\\EF70\"; }\n  .material-icons.screen_share:before {\n    content: \"\\E0E2\"; }\n  .material-icons.sd:before {\n    content: \"\\E9DD\"; }\n  .material-icons.sd_card:before {\n    content: \"\\E623\"; }\n  .material-icons.sd_storage:before {\n    content: \"\\E1C2\"; }\n  .material-icons.search:before {\n    content: \"\\E8B6\"; }\n  .material-icons.search_off:before {\n    content: \"\\EA76\"; }\n  .material-icons.security:before {\n    content: \"\\E32A\"; }\n  .material-icons.segment:before {\n    content: \"\\E94B\"; }\n  .material-icons.select_all:before {\n    content: \"\\E162\"; }\n  .material-icons.self_improvement:before {\n    content: \"\\EA78\"; }\n  .material-icons.send:before {\n    content: \"\\E163\"; }\n  .material-icons.send_and_archive:before {\n    content: \"\\EA0C\"; }\n  .material-icons.send_to_mobile:before {\n    content: \"\\F05C\"; }\n  .material-icons.sensor_door:before {\n    content: \"\\F1B5\"; }\n  .material-icons.sensor_window:before {\n    content: \"\\F1B4\"; }\n  .material-icons.sentiment_dissatisfied:before {\n    content: \"\\E811\"; }\n  .material-icons.sentiment_neutral:before {\n    content: \"\\E812\"; }\n  .material-icons.sentiment_satisfied:before {\n    content: \"\\E813\"; }\n  .material-icons.sentiment_satisfied_alt:before {\n    content: \"\\E0ED\"; }\n  .material-icons.sentiment_very_dissatisfied:before {\n    content: \"\\E814\"; }\n  .material-icons.sentiment_very_satisfied:before {\n    content: \"\\E815\"; }\n  .material-icons.set_meal:before {\n    content: \"\\F1EA\"; }\n  .material-icons.settings:before {\n    content: \"\\E8B8\"; }\n  .material-icons.settings_applications:before {\n    content: \"\\E8B9\"; }\n  .material-icons.settings_backup_restore:before {\n    content: \"\\E8BA\"; }\n  .material-icons.settings_bluetooth:before {\n    content: \"\\E8BB\"; }\n  .material-icons.settings_brightness:before {\n    content: \"\\E8BD\"; }\n  .material-icons.settings_cell:before {\n    content: \"\\E8BC\"; }\n  .material-icons.settings_display:before {\n    content: \"\\E8BD\"; }\n  .material-icons.settings_ethernet:before {\n    content: \"\\E8BE\"; }\n  .material-icons.settings_input_antenna:before {\n    content: \"\\E8BF\"; }\n  .material-icons.settings_input_component:before {\n    content: \"\\E8C0\"; }\n  .material-icons.settings_input_composite:before {\n    content: \"\\E8C1\"; }\n  .material-icons.settings_input_hdmi:before {\n    content: \"\\E8C2\"; }\n  .material-icons.settings_input_svideo:before {\n    content: \"\\E8C3\"; }\n  .material-icons.settings_overscan:before {\n    content: \"\\E8C4\"; }\n  .material-icons.settings_phone:before {\n    content: \"\\E8C5\"; }\n  .material-icons.settings_power:before {\n    content: \"\\E8C6\"; }\n  .material-icons.settings_remote:before {\n    content: \"\\E8C7\"; }\n  .material-icons.settings_system_daydream:before {\n    content: \"\\E1C3\"; }\n  .material-icons.settings_voice:before {\n    content: \"\\E8C8\"; }\n  .material-icons.share:before {\n    content: \"\\E80D\"; }\n  .material-icons.shield:before {\n    content: \"\\E9E0\"; }\n  .material-icons.shop:before {\n    content: \"\\E8C9\"; }\n  .material-icons.shop_two:before {\n    content: \"\\E8CA\"; }\n  .material-icons.shopping_bag:before {\n    content: \"\\F1CC\"; }\n  .material-icons.shopping_basket:before {\n    content: \"\\E8CB\"; }\n  .material-icons.shopping_cart:before {\n    content: \"\\E8CC\"; }\n  .material-icons.short_text:before {\n    content: \"\\E261\"; }\n  .material-icons.show_chart:before {\n    content: \"\\E6E1\"; }\n  .material-icons.shuffle:before {\n    content: \"\\E043\"; }\n  .material-icons.shuffle_on:before {\n    content: \"\\E9E1\"; }\n  .material-icons.shutter_speed:before {\n    content: \"\\E43D\"; }\n  .material-icons.sick:before {\n    content: \"\\F220\"; }\n  .material-icons.signal_cellular_0_bar:before {\n    content: \"\\F0A8\"; }\n  .material-icons.signal_cellular_4_bar:before {\n    content: \"\\E1C8\"; }\n  .material-icons.signal_cellular_alt:before {\n    content: \"\\E202\"; }\n  .material-icons.signal_cellular_connected_no_internet_4_bar:before {\n    content: \"\\E1CD\"; }\n  .material-icons.signal_cellular_no_sim:before {\n    content: \"\\E1CE\"; }\n  .material-icons.signal_cellular_null:before {\n    content: \"\\E1CF\"; }\n  .material-icons.signal_cellular_off:before {\n    content: \"\\E1D0\"; }\n  .material-icons.signal_wifi_0_bar:before {\n    content: \"\\F0B0\"; }\n  .material-icons.signal_wifi_4_bar:before {\n    content: \"\\E1D8\"; }\n  .material-icons.signal_wifi_4_bar_lock:before {\n    content: \"\\E1D9\"; }\n  .material-icons.signal_wifi_off:before {\n    content: \"\\E1DA\"; }\n  .material-icons.sim_card:before {\n    content: \"\\E32B\"; }\n  .material-icons.sim_card_alert:before {\n    content: \"\\E624\"; }\n  .material-icons.single_bed:before {\n    content: \"\\EA48\"; }\n  .material-icons.skip_next:before {\n    content: \"\\E044\"; }\n  .material-icons.skip_previous:before {\n    content: \"\\E045\"; }\n  .material-icons.slideshow:before {\n    content: \"\\E41B\"; }\n  .material-icons.slow_motion_video:before {\n    content: \"\\E068\"; }\n  .material-icons.smart_button:before {\n    content: \"\\F1C1\"; }\n  .material-icons.smartphone:before {\n    content: \"\\E32C\"; }\n  .material-icons.smoke_free:before {\n    content: \"\\EB4A\"; }\n  .material-icons.smoking_rooms:before {\n    content: \"\\EB4B\"; }\n  .material-icons.sms:before {\n    content: \"\\E625\"; }\n  .material-icons.sms_failed:before {\n    content: \"\\E626\"; }\n  .material-icons.snippet_folder:before {\n    content: \"\\F1C7\"; }\n  .material-icons.snooze:before {\n    content: \"\\E046\"; }\n  .material-icons.soap:before {\n    content: \"\\F1B2\"; }\n  .material-icons.sort:before {\n    content: \"\\E164\"; }\n  .material-icons.sort_by_alpha:before {\n    content: \"\\E053\"; }\n  .material-icons.source:before {\n    content: \"\\F1C4\"; }\n  .material-icons.south:before {\n    content: \"\\F1E3\"; }\n  .material-icons.south_east:before {\n    content: \"\\F1E4\"; }\n  .material-icons.south_west:before {\n    content: \"\\F1E5\"; }\n  .material-icons.spa:before {\n    content: \"\\EB4C\"; }\n  .material-icons.space_bar:before {\n    content: \"\\E256\"; }\n  .material-icons.speaker:before {\n    content: \"\\E32D\"; }\n  .material-icons.speaker_group:before {\n    content: \"\\E32E\"; }\n  .material-icons.speaker_notes:before {\n    content: \"\\E8CD\"; }\n  .material-icons.speaker_notes_off:before {\n    content: \"\\E92A\"; }\n  .material-icons.speaker_phone:before {\n    content: \"\\E0D2\"; }\n  .material-icons.speed:before {\n    content: \"\\E9E4\"; }\n  .material-icons.spellcheck:before {\n    content: \"\\E8CE\"; }\n  .material-icons.sports:before {\n    content: \"\\EA30\"; }\n  .material-icons.sports_bar:before {\n    content: \"\\F1F3\"; }\n  .material-icons.sports_baseball:before {\n    content: \"\\EA51\"; }\n  .material-icons.sports_basketball:before {\n    content: \"\\EA26\"; }\n  .material-icons.sports_cricket:before {\n    content: \"\\EA27\"; }\n  .material-icons.sports_esports:before {\n    content: \"\\EA28\"; }\n  .material-icons.sports_football:before {\n    content: \"\\EA29\"; }\n  .material-icons.sports_golf:before {\n    content: \"\\EA2A\"; }\n  .material-icons.sports_handball:before {\n    content: \"\\EA33\"; }\n  .material-icons.sports_hockey:before {\n    content: \"\\EA2B\"; }\n  .material-icons.sports_kabaddi:before {\n    content: \"\\EA34\"; }\n  .material-icons.sports_mma:before {\n    content: \"\\EA2C\"; }\n  .material-icons.sports_motorsports:before {\n    content: \"\\EA2D\"; }\n  .material-icons.sports_rugby:before {\n    content: \"\\EA2E\"; }\n  .material-icons.sports_soccer:before {\n    content: \"\\EA2F\"; }\n  .material-icons.sports_tennis:before {\n    content: \"\\EA32\"; }\n  .material-icons.sports_volleyball:before {\n    content: \"\\EA31\"; }\n  .material-icons.square_foot:before {\n    content: \"\\EA49\"; }\n  .material-icons.stacked_bar_chart:before {\n    content: \"\\E9E6\"; }\n  .material-icons.stacked_line_chart:before {\n    content: \"\\F22B\"; }\n  .material-icons.stairs:before {\n    content: \"\\F1A9\"; }\n  .material-icons.star:before {\n    content: \"\\E838\"; }\n  .material-icons.star_border:before {\n    content: \"\\E83A\"; }\n  .material-icons.star_half:before {\n    content: \"\\E839\"; }\n  .material-icons.star_outline:before {\n    content: \"\\F06F\"; }\n  .material-icons.star_rate:before {\n    content: \"\\F0EC\"; }\n  .material-icons.stars:before {\n    content: \"\\E8D0\"; }\n  .material-icons.stay_current_landscape:before {\n    content: \"\\E0D3\"; }\n  .material-icons.stay_current_portrait:before {\n    content: \"\\E0D4\"; }\n  .material-icons.stay_primary_landscape:before {\n    content: \"\\E0D5\"; }\n  .material-icons.stay_primary_portrait:before {\n    content: \"\\E0D6\"; }\n  .material-icons.sticky_note_2:before {\n    content: \"\\F1FC\"; }\n  .material-icons.stop:before {\n    content: \"\\E047\"; }\n  .material-icons.stop_circle:before {\n    content: \"\\EF71\"; }\n  .material-icons.stop_screen_share:before {\n    content: \"\\E0E3\"; }\n  .material-icons.storage:before {\n    content: \"\\E1DB\"; }\n  .material-icons.store:before {\n    content: \"\\E8D1\"; }\n  .material-icons.store_mall_directory:before {\n    content: \"\\E563\"; }\n  .material-icons.storefront:before {\n    content: \"\\EA12\"; }\n  .material-icons.straighten:before {\n    content: \"\\E41C\"; }\n  .material-icons.stream:before {\n    content: \"\\E9E9\"; }\n  .material-icons.streetview:before {\n    content: \"\\E56E\"; }\n  .material-icons.strikethrough_s:before {\n    content: \"\\E257\"; }\n  .material-icons.stroller:before {\n    content: \"\\F1AE\"; }\n  .material-icons.style:before {\n    content: \"\\E41D\"; }\n  .material-icons.subdirectory_arrow_left:before {\n    content: \"\\E5D9\"; }\n  .material-icons.subdirectory_arrow_right:before {\n    content: \"\\E5DA\"; }\n  .material-icons.subject:before {\n    content: \"\\E8D2\"; }\n  .material-icons.subscript:before {\n    content: \"\\F111\"; }\n  .material-icons.subscriptions:before {\n    content: \"\\E064\"; }\n  .material-icons.subtitles:before {\n    content: \"\\E048\"; }\n  .material-icons.subtitles_off:before {\n    content: \"\\EF72\"; }\n  .material-icons.subway:before {\n    content: \"\\E56F\"; }\n  .material-icons.superscript:before {\n    content: \"\\F112\"; }\n  .material-icons.supervised_user_circle:before {\n    content: \"\\E939\"; }\n  .material-icons.supervisor_account:before {\n    content: \"\\E8D3\"; }\n  .material-icons.support:before {\n    content: \"\\EF73\"; }\n  .material-icons.support_agent:before {\n    content: \"\\F0E2\"; }\n  .material-icons.surround_sound:before {\n    content: \"\\E049\"; }\n  .material-icons.swap_calls:before {\n    content: \"\\E0D7\"; }\n  .material-icons.swap_horiz:before {\n    content: \"\\E8D4\"; }\n  .material-icons.swap_horizontal_circle:before {\n    content: \"\\E933\"; }\n  .material-icons.swap_vert:before {\n    content: \"\\E8D5\"; }\n  .material-icons.swap_vert_circle:before {\n    content: \"\\E8D6\"; }\n  .material-icons.swap_vertical_circle:before {\n    content: \"\\E8D6\"; }\n  .material-icons.swipe:before {\n    content: \"\\E9EC\"; }\n  .material-icons.switch_account:before {\n    content: \"\\E9ED\"; }\n  .material-icons.switch_camera:before {\n    content: \"\\E41E\"; }\n  .material-icons.switch_left:before {\n    content: \"\\F1D1\"; }\n  .material-icons.switch_right:before {\n    content: \"\\F1D2\"; }\n  .material-icons.switch_video:before {\n    content: \"\\E41F\"; }\n  .material-icons.sync:before {\n    content: \"\\E627\"; }\n  .material-icons.sync_alt:before {\n    content: \"\\EA18\"; }\n  .material-icons.sync_disabled:before {\n    content: \"\\E628\"; }\n  .material-icons.sync_problem:before {\n    content: \"\\E629\"; }\n  .material-icons.system_update:before {\n    content: \"\\E62A\"; }\n  .material-icons.system_update_alt:before {\n    content: \"\\E8D7\"; }\n  .material-icons.system_update_tv:before {\n    content: \"\\E8D7\"; }\n  .material-icons.tab:before {\n    content: \"\\E8D8\"; }\n  .material-icons.tab_unselected:before {\n    content: \"\\E8D9\"; }\n  .material-icons.table_chart:before {\n    content: \"\\E265\"; }\n  .material-icons.table_rows:before {\n    content: \"\\F101\"; }\n  .material-icons.table_view:before {\n    content: \"\\F1BE\"; }\n  .material-icons.tablet:before {\n    content: \"\\E32F\"; }\n  .material-icons.tablet_android:before {\n    content: \"\\E330\"; }\n  .material-icons.tablet_mac:before {\n    content: \"\\E331\"; }\n  .material-icons.tag:before {\n    content: \"\\E9EF\"; }\n  .material-icons.tag_faces:before {\n    content: \"\\E420\"; }\n  .material-icons.takeout_dining:before {\n    content: \"\\EA74\"; }\n  .material-icons.tap_and_play:before {\n    content: \"\\E62B\"; }\n  .material-icons.tapas:before {\n    content: \"\\F1E9\"; }\n  .material-icons.taxi_alert:before {\n    content: \"\\EF74\"; }\n  .material-icons.terrain:before {\n    content: \"\\E564\"; }\n  .material-icons.text_fields:before {\n    content: \"\\E262\"; }\n  .material-icons.text_format:before {\n    content: \"\\E165\"; }\n  .material-icons.text_rotate_up:before {\n    content: \"\\E93A\"; }\n  .material-icons.text_rotate_vertical:before {\n    content: \"\\E93B\"; }\n  .material-icons.text_rotation_angledown:before {\n    content: \"\\E93C\"; }\n  .material-icons.text_rotation_angleup:before {\n    content: \"\\E93D\"; }\n  .material-icons.text_rotation_down:before {\n    content: \"\\E93E\"; }\n  .material-icons.text_rotation_none:before {\n    content: \"\\E93F\"; }\n  .material-icons.text_snippet:before {\n    content: \"\\F1C6\"; }\n  .material-icons.textsms:before {\n    content: \"\\E0D8\"; }\n  .material-icons.texture:before {\n    content: \"\\E421\"; }\n  .material-icons.theater_comedy:before {\n    content: \"\\EA66\"; }\n  .material-icons.theaters:before {\n    content: \"\\E8DA\"; }\n  .material-icons.thumb_down:before {\n    content: \"\\E8DB\"; }\n  .material-icons.thumb_down_alt:before {\n    content: \"\\E816\"; }\n  .material-icons.thumb_down_off_alt:before {\n    content: \"\\E9F2\"; }\n  .material-icons.thumb_up:before {\n    content: \"\\E8DC\"; }\n  .material-icons.thumb_up_alt:before {\n    content: \"\\E817\"; }\n  .material-icons.thumb_up_off_alt:before {\n    content: \"\\E9F3\"; }\n  .material-icons.thumbs_up_down:before {\n    content: \"\\E8DD\"; }\n  .material-icons.time_to_leave:before {\n    content: \"\\E62C\"; }\n  .material-icons.timelapse:before {\n    content: \"\\E422\"; }\n  .material-icons.timeline:before {\n    content: \"\\E922\"; }\n  .material-icons.timer:before {\n    content: \"\\E425\"; }\n  .material-icons.timer_10:before {\n    content: \"\\E423\"; }\n  .material-icons.timer_3:before {\n    content: \"\\E424\"; }\n  .material-icons.timer_off:before {\n    content: \"\\E426\"; }\n  .material-icons.title:before {\n    content: \"\\E264\"; }\n  .material-icons.toc:before {\n    content: \"\\E8DE\"; }\n  .material-icons.today:before {\n    content: \"\\E8DF\"; }\n  .material-icons.toggle_off:before {\n    content: \"\\E9F5\"; }\n  .material-icons.toggle_on:before {\n    content: \"\\E9F6\"; }\n  .material-icons.toll:before {\n    content: \"\\E8E0\"; }\n  .material-icons.tonality:before {\n    content: \"\\E427\"; }\n  .material-icons.topic:before {\n    content: \"\\F1C8\"; }\n  .material-icons.touch_app:before {\n    content: \"\\E913\"; }\n  .material-icons.tour:before {\n    content: \"\\EF75\"; }\n  .material-icons.toys:before {\n    content: \"\\E332\"; }\n  .material-icons.track_changes:before {\n    content: \"\\E8E1\"; }\n  .material-icons.traffic:before {\n    content: \"\\E565\"; }\n  .material-icons.train:before {\n    content: \"\\E570\"; }\n  .material-icons.tram:before {\n    content: \"\\E571\"; }\n  .material-icons.transfer_within_a_station:before {\n    content: \"\\E572\"; }\n  .material-icons.transform:before {\n    content: \"\\E428\"; }\n  .material-icons.transit_enterexit:before {\n    content: \"\\E579\"; }\n  .material-icons.translate:before {\n    content: \"\\E8E2\"; }\n  .material-icons.trending_down:before {\n    content: \"\\E8E3\"; }\n  .material-icons.trending_flat:before {\n    content: \"\\E8E4\"; }\n  .material-icons.trending_neutral:before {\n    content: \"\\E8E4\"; }\n  .material-icons.trending_up:before {\n    content: \"\\E8E5\"; }\n  .material-icons.trip_origin:before {\n    content: \"\\E57B\"; }\n  .material-icons.tty:before {\n    content: \"\\F1AA\"; }\n  .material-icons.tune:before {\n    content: \"\\E429\"; }\n  .material-icons.turned_in:before {\n    content: \"\\E8E6\"; }\n  .material-icons.turned_in_not:before {\n    content: \"\\E8E7\"; }\n  .material-icons.tv:before {\n    content: \"\\E333\"; }\n  .material-icons.tv_off:before {\n    content: \"\\E647\"; }\n  .material-icons.two_wheeler:before {\n    content: \"\\E9F9\"; }\n  .material-icons.umbrella:before {\n    content: \"\\F1AD\"; }\n  .material-icons.unarchive:before {\n    content: \"\\E169\"; }\n  .material-icons.undo:before {\n    content: \"\\E166\"; }\n  .material-icons.unfold_less:before {\n    content: \"\\E5D6\"; }\n  .material-icons.unfold_more:before {\n    content: \"\\E5D7\"; }\n  .material-icons.unpublished:before {\n    content: \"\\F236\"; }\n  .material-icons.unsubscribe:before {\n    content: \"\\E0EB\"; }\n  .material-icons.update:before {\n    content: \"\\E923\"; }\n  .material-icons.update_disabled:before {\n    content: \"\\E075\"; }\n  .material-icons.upgrade:before {\n    content: \"\\F0FB\"; }\n  .material-icons.upload_file:before {\n    content: \"\\E9FC\"; }\n  .material-icons.usb:before {\n    content: \"\\E1E0\"; }\n  .material-icons.verified:before {\n    content: \"\\EF76\"; }\n  .material-icons.verified_user:before {\n    content: \"\\E8E8\"; }\n  .material-icons.vertical_align_bottom:before {\n    content: \"\\E258\"; }\n  .material-icons.vertical_align_center:before {\n    content: \"\\E259\"; }\n  .material-icons.vertical_align_top:before {\n    content: \"\\E25A\"; }\n  .material-icons.vertical_distribute:before {\n    content: \"\\E076\"; }\n  .material-icons.vertical_split:before {\n    content: \"\\E949\"; }\n  .material-icons.vibration:before {\n    content: \"\\E62D\"; }\n  .material-icons.video_call:before {\n    content: \"\\E070\"; }\n  .material-icons.video_collection:before {\n    content: \"\\E04A\"; }\n  .material-icons.video_label:before {\n    content: \"\\E071\"; }\n  .material-icons.video_library:before {\n    content: \"\\E04A\"; }\n  .material-icons.video_settings:before {\n    content: \"\\EA75\"; }\n  .material-icons.videocam:before {\n    content: \"\\E04B\"; }\n  .material-icons.videocam_off:before {\n    content: \"\\E04C\"; }\n  .material-icons.videogame_asset:before {\n    content: \"\\E338\"; }\n  .material-icons.view_agenda:before {\n    content: \"\\E8E9\"; }\n  .material-icons.view_array:before {\n    content: \"\\E8EA\"; }\n  .material-icons.view_carousel:before {\n    content: \"\\E8EB\"; }\n  .material-icons.view_column:before {\n    content: \"\\E8EC\"; }\n  .material-icons.view_comfortable:before {\n    content: \"\\E42A\"; }\n  .material-icons.view_comfy:before {\n    content: \"\\E42A\"; }\n  .material-icons.view_compact:before {\n    content: \"\\E42B\"; }\n  .material-icons.view_day:before {\n    content: \"\\E8ED\"; }\n  .material-icons.view_headline:before {\n    content: \"\\E8EE\"; }\n  .material-icons.view_in_ar:before {\n    content: \"\\E9FE\"; }\n  .material-icons.view_list:before {\n    content: \"\\E8EF\"; }\n  .material-icons.view_module:before {\n    content: \"\\E8F0\"; }\n  .material-icons.view_quilt:before {\n    content: \"\\E8F1\"; }\n  .material-icons.view_sidebar:before {\n    content: \"\\F114\"; }\n  .material-icons.view_stream:before {\n    content: \"\\E8F2\"; }\n  .material-icons.view_week:before {\n    content: \"\\E8F3\"; }\n  .material-icons.vignette:before {\n    content: \"\\E435\"; }\n  .material-icons.visibility:before {\n    content: \"\\E8F4\"; }\n  .material-icons.visibility_off:before {\n    content: \"\\E8F5\"; }\n  .material-icons.voice_chat:before {\n    content: \"\\E62E\"; }\n  .material-icons.voice_over_off:before {\n    content: \"\\E94A\"; }\n  .material-icons.voicemail:before {\n    content: \"\\E0D9\"; }\n  .material-icons.volume_down:before {\n    content: \"\\E04D\"; }\n  .material-icons.volume_mute:before {\n    content: \"\\E04E\"; }\n  .material-icons.volume_off:before {\n    content: \"\\E04F\"; }\n  .material-icons.volume_up:before {\n    content: \"\\E050\"; }\n  .material-icons.volunteer_activism:before {\n    content: \"\\EA70\"; }\n  .material-icons.vpn_key:before {\n    content: \"\\E0DA\"; }\n  .material-icons.vpn_lock:before {\n    content: \"\\E62F\"; }\n  .material-icons.wallet_giftcard:before {\n    content: \"\\E8F6\"; }\n  .material-icons.wallet_membership:before {\n    content: \"\\E8F7\"; }\n  .material-icons.wallet_travel:before {\n    content: \"\\E8F8\"; }\n  .material-icons.wallpaper:before {\n    content: \"\\E1BC\"; }\n  .material-icons.warning:before {\n    content: \"\\E002\"; }\n  .material-icons.wash:before {\n    content: \"\\F1B1\"; }\n  .material-icons.watch:before {\n    content: \"\\E334\"; }\n  .material-icons.watch_later:before {\n    content: \"\\E924\"; }\n  .material-icons.water_damage:before {\n    content: \"\\F203\"; }\n  .material-icons.waterfall_chart:before {\n    content: \"\\EA00\"; }\n  .material-icons.waves:before {\n    content: \"\\E176\"; }\n  .material-icons.wb_auto:before {\n    content: \"\\E42C\"; }\n  .material-icons.wb_cloudy:before {\n    content: \"\\E42D\"; }\n  .material-icons.wb_incandescent:before {\n    content: \"\\E42E\"; }\n  .material-icons.wb_iridescent:before {\n    content: \"\\E436\"; }\n  .material-icons.wb_shade:before {\n    content: \"\\EA01\"; }\n  .material-icons.wb_sunny:before {\n    content: \"\\E430\"; }\n  .material-icons.wb_twighlight:before {\n    content: \"\\EA02\"; }\n  .material-icons.wc:before {\n    content: \"\\E63D\"; }\n  .material-icons.web:before {\n    content: \"\\E051\"; }\n  .material-icons.web_asset:before {\n    content: \"\\E069\"; }\n  .material-icons.weekend:before {\n    content: \"\\E16B\"; }\n  .material-icons.west:before {\n    content: \"\\F1E6\"; }\n  .material-icons.whatshot:before {\n    content: \"\\E80E\"; }\n  .material-icons.wheelchair_pickup:before {\n    content: \"\\F1AB\"; }\n  .material-icons.where_to_vote:before {\n    content: \"\\E177\"; }\n  .material-icons.widgets:before {\n    content: \"\\E1BD\"; }\n  .material-icons.wifi:before {\n    content: \"\\E63E\"; }\n  .material-icons.wifi_calling:before {\n    content: \"\\EF77\"; }\n  .material-icons.wifi_lock:before {\n    content: \"\\E1E1\"; }\n  .material-icons.wifi_off:before {\n    content: \"\\E648\"; }\n  .material-icons.wifi_protected_setup:before {\n    content: \"\\F0FC\"; }\n  .material-icons.wifi_tethering:before {\n    content: \"\\E1E2\"; }\n  .material-icons.wine_bar:before {\n    content: \"\\F1E8\"; }\n  .material-icons.work:before {\n    content: \"\\E8F9\"; }\n  .material-icons.work_off:before {\n    content: \"\\E942\"; }\n  .material-icons.work_outline:before {\n    content: \"\\E943\"; }\n  .material-icons.workspaces_filled:before {\n    content: \"\\EA0D\"; }\n  .material-icons.workspaces_outline:before {\n    content: \"\\EA0F\"; }\n  .material-icons.wrap_text:before {\n    content: \"\\E25B\"; }\n  .material-icons.wrong_location:before {\n    content: \"\\EF78\"; }\n  .material-icons.wysiwyg:before {\n    content: \"\\F1C3\"; }\n  .material-icons.youtube_searched_for:before {\n    content: \"\\E8FA\"; }\n  .material-icons.zoom_in:before {\n    content: \"\\E8FF\"; }\n  .material-icons.zoom_out:before {\n    content: \"\\E900\"; }\n  .material-icons.zoom_out_map:before {\n    content: \"\\E56B\"; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.paragraph-text {\n  font-size: 18px;\n}\n", ""]);
 
 // exports
 
@@ -21857,6 +21897,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PageNotFound.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -22465,6 +22535,136 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09&":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-row",
+    { attrs: { justify: "center" } },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { "max-width": "500px" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function(ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "primary", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [_vm._v("Forgot")]
+                  )
+                ]
+              }
+            }
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "headline" }, [_vm._v("Forgot")])
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "v-container",
+                    [
+                      _c(
+                        "v-row",
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "Email/USN", required: "" }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "info darken-1 font-weight-bold ma-5" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_vm._v("Send Reset")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
 /*!****************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
@@ -22517,7 +22717,7 @@ var render = function() {
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
-          _c("SignInPopup"),
+          _c("ForgotPassword"),
           _vm._v(" "),
           _c("RegisterPopup"),
           _vm._v(" "),
@@ -22882,7 +23082,7 @@ var render = function() {
                       ),
                       on
                     ),
-                    [_vm._v("\n        Open Dialog\n      ")]
+                    [_vm._v("Register")]
                   )
                 ]
               }
@@ -22903,7 +23103,7 @@ var render = function() {
             [
               _c("v-card-title", [
                 _c("span", { staticClass: "headline" }, [
-                  _vm._v("User Profile")
+                  _vm._v("Create account")
                 ])
               ]),
               _vm._v(" "),
@@ -22921,10 +23121,7 @@ var render = function() {
                             { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal first name*",
-                                  required: ""
-                                }
+                                attrs: { label: "First Name*", required: "" }
                               })
                             ],
                             1
@@ -22935,10 +23132,7 @@ var render = function() {
                             { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal middle name",
-                                  hint: "example of helper text only on focus"
-                                }
+                                attrs: { label: "Middle Name" }
                               })
                             ],
                             1
@@ -22949,12 +23143,7 @@ var render = function() {
                             { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal last name*",
-                                  hint: "example of persistent helper text",
-                                  "persistent-hint": "",
-                                  required: ""
-                                }
+                                attrs: { label: "Last Name*", required: "" }
                               })
                             ],
                             1
@@ -22962,10 +23151,25 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12" } },
+                            { attrs: { cols: "12", sm: "6", md: "6" } },
                             [
                               _c("v-text-field", {
-                                attrs: { label: "Email*", required: "" }
+                                attrs: { label: "USN*", required: "" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", md: "6" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Email*",
+                                  type: "email",
+                                  required: ""
+                                }
                               })
                             ],
                             1
@@ -22988,12 +23192,27 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Confirm Password*",
+                                  type: "password",
+                                  required: ""
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
                             { attrs: { cols: "12", sm: "6" } },
                             [
                               _c("v-select", {
                                 attrs: {
-                                  items: ["0-17", "18-29", "30-54", "54+"],
-                                  label: "Age*",
+                                  items: _vm.sem,
+                                  label: "Semester*",
                                   required: ""
                                 }
                               })
@@ -23006,21 +23225,7 @@ var render = function() {
                             { attrs: { cols: "12", sm: "6" } },
                             [
                               _c("v-autocomplete", {
-                                attrs: {
-                                  items: [
-                                    "Skiing",
-                                    "Ice hockey",
-                                    "Soccer",
-                                    "Basketball",
-                                    "Hockey",
-                                    "Reading",
-                                    "Writing",
-                                    "Coding",
-                                    "Basejump"
-                                  ],
-                                  label: "Interests",
-                                  multiple: ""
-                                }
+                                attrs: { items: _vm.branches, label: "Branch*" }
                               })
                             ],
                             1
@@ -23040,32 +23245,56 @@ var render = function() {
               _c(
                 "v-card-actions",
                 [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "info darken-1 ", text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "text-uppercase font-weight-bold" },
+                        [_vm._v("S")]
+                      ),
+                      _c(
+                        "div",
+                        { staticClass: "text-lowercase font-weight-bold" },
+                        [_vm._v("ign-in instead")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
                   _c("v-spacer"),
                   _vm._v(" "),
                   _c(
                     "v-btn",
                     {
-                      attrs: { color: "blue darken-1", text: "" },
+                      attrs: { color: "error darken-1 font-weight-bold" },
                       on: {
                         click: function($event) {
                           _vm.dialog = false
                         }
                       }
                     },
-                    [_vm._v("\n          Close\n        ")]
+                    [_vm._v("Close")]
                   ),
                   _vm._v(" "),
                   _c(
                     "v-btn",
                     {
-                      attrs: { color: "blue darken-1", text: "" },
+                      attrs: { color: "success darken-1 font-weight-bold" },
                       on: {
                         click: function($event) {
                           _vm.dialog = false
                         }
                       }
                     },
-                    [_vm._v("\n          Save\n        ")]
+                    [_vm._v("Register")]
                   )
                 ],
                 1
@@ -23103,20 +23332,231 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-dialog",
-    { attrs: { "max-width": "600px" } },
+    "v-row",
+    { attrs: { justify: "center" } },
     [
       _c(
-        "v-btn",
+        "v-dialog",
         {
-          staticClass: "success",
-          attrs: { slot: "activator" },
-          slot: "activator"
+          attrs: { "max-width": "500px" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function(ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "primary", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [_vm._v("Sign In")]
+                  )
+                ]
+              }
+            }
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
         },
-        [_vm._v("Sign In")]
-      ),
-      _vm._v(" "),
-      _c("v-card", [_c("v-card-title", [_c("h2", [_vm._v("LOG-IN")])])], 1)
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "headline" }, [_vm._v("Sign-in")])
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "v-container",
+                    [
+                      _c(
+                        "v-row",
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "Email/USN", required: "" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Password",
+                                  type: "password",
+                                  required: ""
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                {},
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "ma-5",
+                      attrs: { color: "info darken-1", text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "text-uppercase font-weight-bold " },
+                        [_vm._v("C")]
+                      ),
+                      _c(
+                        "div",
+                        { staticClass: "text-lowercase font-weight-bold " },
+                        [_vm._v("reate account")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "ma-5",
+                      attrs: { color: "info darken-1", text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-uppercase font-weight-bold d-none d-sm-flex"
+                        },
+                        [_vm._v("F")]
+                      ),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-lowercase font-weight-bold d-none d-sm-flex"
+                        },
+                        [_vm._v("orgot password?")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color:
+                          "info darken-1 font-weight-bold ma-5 d-none d-sm-flex"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_vm._v("Sign-in")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                { staticClass: "d-flex d-sm-none" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "ma-5",
+                      attrs: { color: "info darken-1", text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "text-uppercase font-weight-bold" },
+                        [_vm._v("F")]
+                      ),
+                      _c(
+                        "div",
+                        { staticClass: "text-lowercase font-weight-bold" },
+                        [_vm._v("orgot password")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "info darken-1 font-weight-bold ma-5" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_vm._v("Sign-in")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -23215,6 +23655,82 @@ var render = function() {
             1
           )
         }),
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PageNotFound.vue?vue&type=template&id=444d8c86&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/PageNotFound.vue?vue&type=template&id=444d8c86& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "NotFound ma-8" },
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c(
+                    "v-card",
+                    {
+                      attrs: { height: "400", color: "transparent", flat: "" }
+                    },
+                    [
+                      _c("div", { staticClass: "display-3 mt-5" }, [
+                        _vm._v("Page not found.")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "grey--text lighten-5" }, [
+                        _vm._v(
+                          "\n            The page you are trying to get to never existed in this reality,\n            or has migrated to a parallel universe.\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "paragraph-text mt-2" }, [
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(
+                          "Try going back to home page and repeating your action. Or,\n            contact helpdesk for support.\n          "
+                        )
+                      ])
+                    ]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
         1
       )
     ],
@@ -81334,6 +81850,98 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/ForgotPassword.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/ForgotPassword.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ForgotPassword_vue_vue_type_template_id_3ac5fb09___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForgotPassword.vue?vue&type=template&id=3ac5fb09& */ "./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09&");
+/* harmony import */ var _ForgotPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ForgotPassword.vue?vue&type=script&lang=js& */ "./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
+/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ForgotPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ForgotPassword_vue_vue_type_template_id_3ac5fb09___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ForgotPassword_vue_vue_type_template_id_3ac5fb09___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* vuetify-loader */
+
+
+
+
+
+
+
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__["VTextField"]})
+
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ForgotPassword.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ForgotPassword.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPassword_vue_vue_type_template_id_3ac5fb09___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ForgotPassword.vue?vue&type=template&id=3ac5fb09& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPassword_vue_vue_type_template_id_3ac5fb09___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPassword_vue_vue_type_template_id_3ac5fb09___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Navbar.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Navbar.vue ***!
@@ -81541,7 +82149,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
-/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
 
 
 
@@ -81566,7 +82176,14 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__["VDialog"]})
+
+
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__["VTextField"]})
 
 
 /* hot reload */
@@ -81619,11 +82236,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/Home */ "./resources/js/views/Home.vue");
 /* harmony import */ var _views_About__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/About */ "./resources/js/views/About.vue");
+/* harmony import */ var _views_PageNotFound__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/PageNotFound */ "./resources/js/views/PageNotFound.vue");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mode: 'history',
   routes: [{
+    path: '*',
+    component: _views_PageNotFound__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
     path: '/',
     component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
   }, {
@@ -81793,6 +82415,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_63cd6604___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_63cd6604___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/PageNotFound.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/views/PageNotFound.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PageNotFound_vue_vue_type_template_id_444d8c86___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PageNotFound.vue?vue&type=template&id=444d8c86& */ "./resources/js/views/PageNotFound.vue?vue&type=template&id=444d8c86&");
+/* harmony import */ var _PageNotFound_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageNotFound.vue?vue&type=style&index=0&lang=css& */ "./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+
+var script = {}
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  script,
+  _PageNotFound_vue_vue_type_template_id_444d8c86___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PageNotFound_vue_vue_type_template_id_444d8c86___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* vuetify-loader */
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__["VCard"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VContainer"],VFlex: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VFlex"],VLayout: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VLayout"]})
+
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/PageNotFound.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PageNotFound.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PageNotFound.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/views/PageNotFound.vue?vue&type=template&id=444d8c86&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/views/PageNotFound.vue?vue&type=template&id=444d8c86& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_444d8c86___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PageNotFound.vue?vue&type=template&id=444d8c86& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/PageNotFound.vue?vue&type=template&id=444d8c86&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_444d8c86___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_444d8c86___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

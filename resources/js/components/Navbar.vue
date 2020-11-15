@@ -12,7 +12,7 @@
           </v-toolbar-title>
 
           <v-spacer></v-spacer>
-    <SignInPopup/>
+    <ForgotPassword/>
     <RegisterPopup/>
           <v-btn>
               <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
@@ -88,10 +88,12 @@
 <script>
 import SignInPopup from "./SignInPopup";
 import RegisterPopup from "./RegisterPopup";
+import ForgotPassword from "./ForgotPassword";
 export default{
   components: {
       SignInPopup,
-      RegisterPopup
+      RegisterPopup,
+      ForgotPassword
     },
     data(){
         return{
