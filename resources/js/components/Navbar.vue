@@ -12,7 +12,7 @@
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
-        <ForgotPassword />
+        <RegisterPopup />
         <SignInPopup />
       </v-app-bar>
 

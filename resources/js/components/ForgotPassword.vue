@@ -10,15 +10,14 @@
           <span class="headline">Reset password</span>
         </v-card-title>
         <v-card-text>
-          <form>
-            <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Name" required @input="$v.name.$touch()" @blur="$v.name.$touch()"></v-text-field>
-            <v-btn class="mr-4" @click="submit">Submit</v-btn>
-            <v-btn @click="clear">Clear</v-btn>
-          </form>
+          <v-form>
+            <v-text-field v-model="email" :error-messages="nameErrors" label="Email/USN" required @input="$v.email.$touch()" @blur="$v.email.$touch()"></v-text-field>
+          </v-form>
         </v-card-text>
         <v-card-actions >
             <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5" @click="dialog = false">Submit</v-btn>
+          <v-btn color="grey lighten-1 font-weight-bold ma-5" @click="clear">Clear</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5" @click="submit">Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -28,11 +27,34 @@
 
 <script>
 import { validationMixin } from 'vuelidate'
-import { required, maxLength, email } from 'vuelidate/lib/validators'
+import { required, maxLength} from 'vuelidate/lib/validators'
 export default{
+  mixins: [validationMixin],
+  validations: {
+    email: { required, maxLength: maxLength(20) },
+  },
   data: () => ({
-    dialog: false
+    email: '',
+    dialog: false,
   }),
-  
+  computed: {
+      nameErrors () {
+        const errors = []
+        if (!this.$v.email.$dirty) return errors
+        !this.$v.email.maxLength && errors.push('Email/USN must be at most 20 characters long')
+        !this.$v.email.required && errors.push('Email/USN is required.')
+        return errors
+      },
+    },
+    methods: {
+      submit () {
+        this.dialog = false
+        this.$v.$touch()
+      },
+      clear () {
+        this.$v.$reset()
+        this.email = ''
+      },
+    },
 }
 </script>

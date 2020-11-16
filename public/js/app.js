@@ -1935,11 +1935,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);
-//
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -1970,10 +1969,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_0__["validationMixin"]],
+  validations: {
+    email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["maxLength"])(20)
+    }
+  },
   data: function data() {
     return {
+      email: '',
       dialog: false
     };
+  },
+  computed: {
+    nameErrors: function nameErrors() {
+      var errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.maxLength && errors.push('Email/USN must be at most 20 characters long');
+      !this.$v.email.required && errors.push('Email/USN is required.');
+      return errors;
+    }
+  },
+  methods: {
+    submit: function submit() {
+      this.dialog = false;
+      this.$v.$touch();
+    },
+    clear: function clear() {
+      this.$v.$reset();
+      this.email = '';
+    }
   }
 });
 
@@ -2104,6 +2130,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2160,13 +2190,123 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_0__["validationMixin"]],
+  validations: {
+    fullName: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(1),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["maxLength"])(20)
+    },
+    usn: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["maxLength"])(10)
+    },
+    email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["email"]
+    },
+    password: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(8),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["maxLength"])(20)
+    },
+    repeatPassword: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      sameAsPassword: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["sameAs"])('password')
+    },
+    sem: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+    },
+    branch: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+    }
+  },
   data: function data() {
     return {
       dialog: false,
-      sem: ['1', '2', '3', '4', '5', '6', '7', '8'],
-      branches: ['Computer Science', 'Information Science', 'Eletronics and Communication', 'Civil', 'Mechanical']
+      fullName: '',
+      usn: '',
+      email: '',
+      password: '',
+      show1: false,
+      repeatPassword: '',
+      show2: false,
+      sem: '',
+      semItems: ['1', '2', '3', '4', '5', '6', '7', '8'],
+      branch: '',
+      branchItems: ['Computer Science', 'Information Science', 'Eletronics and Communication', 'Civil', 'Mechanical'],
+      isFaculty: false,
+      checkbox: true
     };
+  },
+  computed: {
+    fullNameErrors: function fullNameErrors() {
+      var errors = [];
+      if (!this.$v.fullName.$dirty) return errors;
+      !this.$v.fullName.maxLength && errors.push('This field must be at most 20 characters long');
+      !this.$v.fullName.minLength && errors.push('This field must be at least 5 characters');
+      !this.$v.fullName.required && errors.push('This field is required.');
+      return errors;
+    },
+    usnErrors: function usnErrors() {
+      var errors = [];
+      if (!this.$v.usn.$dirty) return errors;
+      !this.$v.usn.maxLength && errors.push('This field must be 10 characters long');
+      !this.$v.usn.minLength && errors.push('This field must be 10 characters long');
+      !this.$v.usn.required && errors.push('This field is required.');
+      return errors;
+    },
+    emailErrors: function emailErrors() {
+      var errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.email && errors.push('Must be valid e-mail');
+      !this.$v.email.required && errors.push('E-mail is required');
+      return errors;
+    },
+    passwordErrors: function passwordErrors() {
+      var errors = [];
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.password.maxLength && errors.push('Password must be at most 20 characters long');
+      !this.$v.password.minLength && errors.push('Password must be at least 8 characters');
+      !this.$v.password.required && errors.push('Password is required.');
+      return errors;
+    },
+    repeatPasswordErrors: function repeatPasswordErrors() {
+      var errors = [];
+      if (!this.$v.repeatPassword.$dirty) return errors;
+      !this.$v.repeatPassword.sameAsPassword && errors.push('Passwords must be identical.');
+      !this.$v.password.required && errors.push('This field is required.');
+      return errors;
+    },
+    semErrors: function semErrors() {
+      var errors = [];
+      if (!this.$v.sem.$dirty) return errors;
+      !this.$v.sem.required && errors.push('This field is required');
+      return errors;
+    },
+    branchErrors: function branchErrors() {
+      var errors = [];
+      if (!this.$v.branch.$dirty) return errors;
+      !this.$v.branch.required && errors.push('This field is required');
+      return errors;
+    }
+  },
+  methods: {
+    submit: function submit() {
+      this.dialog = false;
+      this.$v.$touch();
+    }
   }
 });
 
@@ -2183,6 +2323,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.vue");
 /* harmony import */ var _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterPopup */ "./resources/js/components/RegisterPopup.vue");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -2221,23 +2365,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_2__["validationMixin"]],
+  validations: {
+    email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(20)
+    },
+    password: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(8),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(20)
+    }
+  },
   components: {
     RegisterPopup: _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__["default"],
     ForgotPassword: _ForgotPassword__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      show: false,
+      email: '',
+      password: ''
     };
+  },
+  computed: {
+    emailErrors: function emailErrors() {
+      var errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.maxLength && errors.push('Email/USN must be at most 20 characters long');
+      !this.$v.email.minLength && errors.push('Email/USN must be at least 5 characters');
+      !this.$v.email.required && errors.push('Email/USN is required.');
+      return errors;
+    },
+    passwordErrors: function passwordErrors() {
+      var errors = [];
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.password.maxLength && errors.push('Password must be at most 20 characters long');
+      !this.$v.password.minLength && errors.push('Password must be at least 8 characters');
+      !this.$v.password.required && errors.push('Password is required.');
+      return errors;
+    }
+  },
+  methods: {
+    submit: function submit() {
+      this.dialog = false;
+      this.$v.$touch();
+    }
   }
 });
 
@@ -22663,45 +22843,40 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("v-card-text", [
-                _c(
-                  "form",
-                  [
-                    _c("v-text-field", {
-                      attrs: {
-                        "error-messages": _vm.nameErrors,
-                        counter: 10,
-                        label: "Name",
-                        required: ""
-                      },
-                      on: {
-                        input: function($event) {
-                          return _vm.$v.name.$touch()
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "v-form",
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          "error-messages": _vm.nameErrors,
+                          label: "Email/USN",
+                          required: ""
                         },
-                        blur: function($event) {
-                          return _vm.$v.name.$touch()
+                        on: {
+                          input: function($event) {
+                            return _vm.$v.email.$touch()
+                          },
+                          blur: function($event) {
+                            return _vm.$v.email.$touch()
+                          }
+                        },
+                        model: {
+                          value: _vm.email,
+                          callback: function($$v) {
+                            _vm.email = $$v
+                          },
+                          expression: "email"
                         }
-                      },
-                      model: {
-                        value: _vm.name,
-                        callback: function($$v) {
-                          _vm.name = $$v
-                        },
-                        expression: "name"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      { staticClass: "mr-4", on: { click: _vm.submit } },
-                      [_vm._v("Submit")]
-                    ),
-                    _vm._v(" "),
-                    _c("v-btn", { on: { click: _vm.clear } }, [_vm._v("Clear")])
-                  ],
-                  1
-                )
-              ]),
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-card-actions",
@@ -22711,12 +22886,17 @@ var render = function() {
                   _c(
                     "v-btn",
                     {
+                      attrs: { color: "grey lighten-1 font-weight-bold ma-5" },
+                      on: { click: _vm.clear }
+                    },
+                    [_vm._v("Clear")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
                       attrs: { color: "info darken-1 font-weight-bold ma-5" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
+                      on: { click: _vm.submit }
                     },
                     [_vm._v("Submit")]
                   )
@@ -22792,7 +22972,7 @@ var render = function() {
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
-          _c("ForgotPassword"),
+          _c("RegisterPopup"),
           _vm._v(" "),
           _c("SignInPopup")
         ],
@@ -23153,6 +23333,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-card",
+            { ref: "form" },
             [
               _c("v-card-title", [
                 _c("span", { staticClass: "headline" }, [
@@ -23164,64 +23345,99 @@ var render = function() {
                 "v-card-text",
                 [
                   _c(
-                    "v-container",
+                    "v-form",
                     [
                       _c(
                         "v-row",
+                        { attrs: { justify: "center" } },
                         [
                           _c(
                             "v-col",
                             { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-text-field", {
-                                attrs: { label: "First Name*", required: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "4" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: { label: "Middle Name" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "4" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: { label: "Last Name*", required: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "6" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: { label: "USN*", required: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", md: "6" } },
-                            [
-                              _c("v-text-field", {
+                                ref: "fullName",
                                 attrs: {
+                                  "error-messages": _vm.fullNameErrors,
+                                  label: "Full Name*",
+                                  required: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.$v.fullName.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.fullName.$touch()
+                                  }
+                                },
+                                model: {
+                                  value: _vm.fullName,
+                                  callback: function($$v) {
+                                    _vm.fullName = $$v
+                                  },
+                                  expression: "fullName"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                ref: "usn",
+                                attrs: {
+                                  "error-messages": _vm.usnErrors,
+                                  label: "USN*",
+                                  required: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.$v.usn.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.usn.$touch()
+                                  }
+                                },
+                                model: {
+                                  value: _vm.usn,
+                                  callback: function($$v) {
+                                    _vm.usn = $$v
+                                  },
+                                  expression: "usn"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-text-field", {
+                                ref: "email",
+                                attrs: {
+                                  "error-messages": _vm.emailErrors,
                                   label: "Email*",
-                                  type: "email",
                                   required: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.$v.email.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.email.$touch()
+                                  }
+                                },
+                                model: {
+                                  value: _vm.email,
+                                  callback: function($$v) {
+                                    _vm.email = $$v
+                                  },
+                                  expression: "email"
                                 }
                               })
                             ],
@@ -23230,13 +23446,37 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12" } },
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-text-field", {
+                                ref: "password",
                                 attrs: {
+                                  "append-icon": _vm.show1
+                                    ? "visibility"
+                                    : "visibility_off",
+                                  "error-messages": _vm.passwordErrors,
+                                  type: _vm.show1 ? "text" : "password",
                                   label: "Password*",
-                                  type: "password",
-                                  required: ""
+                                  required: "",
+                                  counter: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.$v.password.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.password.$touch()
+                                  },
+                                  "click:append": function($event) {
+                                    _vm.show1 = !_vm.show1
+                                  }
+                                },
+                                model: {
+                                  value: _vm.password,
+                                  callback: function($$v) {
+                                    _vm.password = $$v
+                                  },
+                                  expression: "password"
                                 }
                               })
                             ],
@@ -23245,13 +23485,37 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12" } },
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-text-field", {
+                                ref: "repeatPassword",
                                 attrs: {
+                                  "append-icon": _vm.show2
+                                    ? "visibility"
+                                    : "visibility_off",
+                                  "error-messages": _vm.repeatPasswordErrors,
+                                  type: _vm.show2 ? "text" : "password",
                                   label: "Confirm Password*",
-                                  type: "password",
-                                  required: ""
+                                  required: "",
+                                  counter: ""
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.$v.repeatPassword.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.repeatPassword.$touch()
+                                  },
+                                  "click:append": function($event) {
+                                    _vm.show2 = !_vm.show2
+                                  }
+                                },
+                                model: {
+                                  value: _vm.repeatPassword,
+                                  callback: function($$v) {
+                                    _vm.repeatPassword = $$v
+                                  },
+                                  expression: "repeatPassword"
                                 }
                               })
                             ],
@@ -23260,13 +23524,29 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12", sm: "6" } },
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-select", {
                                 attrs: {
-                                  items: _vm.sem,
+                                  items: _vm.semItems,
+                                  "error-messages": _vm.semErrors,
                                   label: "Semester*",
                                   required: ""
+                                },
+                                on: {
+                                  change: function($event) {
+                                    return _vm.$v.sem.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.sem.$touch()
+                                  }
+                                },
+                                model: {
+                                  value: _vm.sem,
+                                  callback: function($$v) {
+                                    _vm.sem = $$v
+                                  },
+                                  expression: "sem"
                                 }
                               })
                             ],
@@ -23275,11 +23555,70 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12", sm: "6" } },
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
                             [
                               _c("v-autocomplete", {
-                                attrs: { items: _vm.branches, label: "Branch*" }
+                                attrs: {
+                                  items: _vm.branchItems,
+                                  "error-messages": _vm.branchErrors,
+                                  label: "Branch*",
+                                  required: ""
+                                },
+                                on: {
+                                  change: function($event) {
+                                    return _vm.$v.branch.$touch()
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$v.branch.$touch()
+                                  }
+                                },
+                                model: {
+                                  value: _vm.branch,
+                                  callback: function($$v) {
+                                    _vm.branch = $$v
+                                  },
+                                  expression: "branch"
+                                }
                               })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "4" } },
+                            [
+                              _c("v-checkbox", {
+                                attrs: { label: "Faculty" },
+                                model: {
+                                  value: _vm.isFaculty,
+                                  callback: function($$v) {
+                                    _vm.isFaculty = $$v
+                                  },
+                                  expression: "isFaculty"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-container",
+                                { staticClass: "px-0", attrs: { fluid: "" } },
+                                [
+                                  _c("v-checkbox", {
+                                    attrs: {
+                                      label:
+                                        "Checkbox 1: " + _vm.checkbox.toString()
+                                    },
+                                    model: {
+                                      value: _vm.checkbox,
+                                      callback: function($$v) {
+                                        _vm.checkbox = $$v
+                                      },
+                                      expression: "checkbox"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -23451,39 +23790,61 @@ var render = function() {
                 "v-card-text",
                 [
                   _c(
-                    "v-container",
+                    "v-form",
                     [
-                      _c(
-                        "v-row",
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: { label: "Email/USN", required: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Password",
-                                  type: "password",
-                                  required: ""
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
+                      _c("v-text-field", {
+                        attrs: {
+                          "error-messages": _vm.emailErrors,
+                          label: "Email/USN",
+                          required: ""
+                        },
+                        on: {
+                          input: function($event) {
+                            return _vm.$v.email.$touch()
+                          },
+                          blur: function($event) {
+                            return _vm.$v.email.$touch()
+                          }
+                        },
+                        model: {
+                          value: _vm.email,
+                          callback: function($$v) {
+                            _vm.email = $$v
+                          },
+                          expression: "email"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.show
+                            ? "visibility"
+                            : "visibility_off",
+                          "error-messages": _vm.passwordErrors,
+                          type: _vm.show ? "text" : "password",
+                          label: "Password",
+                          required: "",
+                          counter: ""
+                        },
+                        on: {
+                          input: function($event) {
+                            return _vm.$v.password.$touch()
+                          },
+                          blur: function($event) {
+                            return _vm.$v.password.$touch()
+                          },
+                          "click:append": function($event) {
+                            _vm.show = !_vm.show
+                          }
+                        },
+                        model: {
+                          value: _vm.password,
+                          callback: function($$v) {
+                            _vm.password = $$v
+                          },
+                          expression: "password"
+                        }
+                      })
                     ],
                     1
                   )
@@ -23512,11 +23873,7 @@ var render = function() {
                         color:
                           "info darken-1 font-weight-bold ma-5 d-none d-sm-flex"
                       },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
+                      on: { click: _vm.submit }
                     },
                     [_vm._v("Sign-in")]
                   )
@@ -23536,11 +23893,7 @@ var render = function() {
                     "v-btn",
                     {
                       attrs: { color: "info darken-1 font-weight-bold ma-5" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
+                      on: { click: _vm.submit }
                     },
                     [_vm._v("Sign-in")]
                   )
@@ -83804,8 +84157,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
 /* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
-/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VForm */ "./node_modules/vuetify/lib/components/VForm/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
 
 
 
@@ -83835,7 +84189,8 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__["VDialog"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__["VTextField"]})
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__["VDialog"],VForm: vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_7__["VForm"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__["VTextField"]})
 
 
 /* hot reload */
@@ -83989,10 +84344,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VAutocomplete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VAutocomplete */ "./node_modules/vuetify/lib/components/VAutocomplete/index.js");
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
-/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
-/* harmony import */ var vuetify_lib_components_VSelect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VSelect */ "./node_modules/vuetify/lib/components/VSelect/index.js");
-/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VCheckbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VCheckbox */ "./node_modules/vuetify/lib/components/VCheckbox/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
+/* harmony import */ var vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VForm */ "./node_modules/vuetify/lib/components/VForm/index.js");
+/* harmony import */ var vuetify_lib_components_VSelect__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VSelect */ "./node_modules/vuetify/lib/components/VSelect/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
 
 
 
@@ -84026,7 +84383,9 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VAutocomplete: vuetify_lib_components_VAutocomplete__WEBPACK_IMPORTED_MODULE_4__["VAutocomplete"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_8__["VDialog"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["VRow"],VSelect: vuetify_lib_components_VSelect__WEBPACK_IMPORTED_MODULE_9__["VSelect"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_10__["VTextField"]})
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VAutocomplete: vuetify_lib_components_VAutocomplete__WEBPACK_IMPORTED_MODULE_4__["VAutocomplete"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCardTitle"],VCheckbox: vuetify_lib_components_VCheckbox__WEBPACK_IMPORTED_MODULE_7__["VCheckbox"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_9__["VDialog"],VForm: vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_10__["VForm"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VRow"],VSelect: vuetify_lib_components_VSelect__WEBPACK_IMPORTED_MODULE_11__["VSelect"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_12__["VTextField"]})
 
 
 /* hot reload */
@@ -84084,10 +84443,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
-/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
+/* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
+/* harmony import */ var vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VForm */ "./node_modules/vuetify/lib/components/VForm/index.js");
 /* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/index.js");
-/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
 
 
 
@@ -84119,8 +84479,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__["VIcon"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__["VTextField"]})
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_6__["VDialog"],VForm: vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_7__["VForm"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__["VIcon"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_10__["VTextField"]})
 
 
 /* hot reload */
