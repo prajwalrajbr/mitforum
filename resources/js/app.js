@@ -1,5 +1,6 @@
 require('./bootstrap');
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 window.Vue = require('vue');
 import Vuetify from '../plugins/vuetify';
@@ -13,7 +14,7 @@ Vue.use(Vuelidate);
 Vue.use(VueRouter);
 Vue.use(SvgIcon);
 Vue.use(Vuetify, {
-    iconfont: 'mdi' // 'md' || 'mdi' || 'fa' || 'fa4'
+    iconfont: 'mdi' || 'md' 
   })
 
 import App from "./App.vue";
