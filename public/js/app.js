@@ -1964,6 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1986,16 +1987,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SignInPopup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignInPopup */ "./resources/js/components/SignInPopup.vue");
 /* harmony import */ var _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterPopup */ "./resources/js/components/RegisterPopup.vue");
 /* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2186,6 +2177,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.vue");
+/* harmony import */ var _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegisterPopup */ "./resources/js/components/RegisterPopup.vue");
 //
 //
 //
@@ -2225,7 +2218,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    RegisterPopup: _RegisterPopup__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ForgotPassword: _ForgotPassword__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       dialog: false
@@ -22552,7 +22556,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-row",
-    { attrs: { justify: "center" } },
+    { attrs: { justify: "start" } },
     [
       _c(
         "v-dialog",
@@ -22569,14 +22573,68 @@ var render = function() {
                     "v-btn",
                     _vm._g(
                       _vm._b(
-                        { attrs: { color: "primary", dark: "" } },
+                        {
+                          staticClass: "ma-5 d-none d-sm-flex",
+                          attrs: { color: "info darken-1", text: "" }
+                        },
                         "v-btn",
                         attrs,
                         false
                       ),
                       on
                     ),
-                    [_vm._v("Forgot")]
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-uppercase font-weight-bold d-none d-sm-flex"
+                        },
+                        [_vm._v("F")]
+                      ),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-lowercase font-weight-bold d-none d-sm-flex"
+                        },
+                        [_vm._v("orgot password?")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        {
+                          staticClass: "ma-5 d-flex d-sm-none",
+                          attrs: { color: "info darken-1", text: "" }
+                        },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-uppercase font-weight-bold d-flex d-sm-none"
+                        },
+                        [_vm._v("F")]
+                      ),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-lowercase font-weight-bold d-flex d-sm-none"
+                        },
+                        [_vm._v("orgot password")]
+                      )
+                    ]
                   )
                 ]
               }
@@ -22596,7 +22654,9 @@ var render = function() {
             "v-card",
             [
               _c("v-card-title", [
-                _c("span", { staticClass: "headline" }, [_vm._v("Forgot")])
+                _c("span", { staticClass: "headline" }, [
+                  _vm._v("Reset password")
+                ])
               ]),
               _vm._v(" "),
               _c(
@@ -22643,7 +22703,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Send Reset")]
+                    [_vm._v("Submit")]
                   )
                 ],
                 1
@@ -22719,43 +22779,7 @@ var render = function() {
           _vm._v(" "),
           _c("ForgotPassword"),
           _vm._v(" "),
-          _c("RegisterPopup"),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            [
-              _c(
-                "span",
-                { staticClass: "grey--text text--darken-4 font-weight-bold" },
-                [_vm._v("Sign In")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-icon",
-                { staticClass: "font-weight-bold", attrs: { right: "" } },
-                [_vm._v("exit_to_app")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            [
-              _c(
-                "span",
-                { staticClass: "grey--text text--darken-4 font-weight-bold" },
-                [_vm._v("Sign Out")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-icon",
-                { staticClass: "font-weight-bold", attrs: { right: "" } },
-                [_vm._v("exit_to_app")]
-              )
-            ],
-            1
-          )
+          _c("SignInPopup")
         ],
         1
       ),
@@ -23058,7 +23082,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-row",
-    { attrs: { justify: "center" } },
+    { attrs: { justify: "start" } },
     [
       _c(
         "v-dialog",
@@ -23075,14 +23099,28 @@ var render = function() {
                     "v-btn",
                     _vm._g(
                       _vm._b(
-                        { attrs: { color: "primary", dark: "" } },
+                        {
+                          staticClass: "ma-5 ",
+                          attrs: { color: "info darken-1", text: "" }
+                        },
                         "v-btn",
                         attrs,
                         false
                       ),
                       on
                     ),
-                    [_vm._v("Register")]
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "text-uppercase font-weight-bold " },
+                        [_vm._v("C")]
+                      ),
+                      _c(
+                        "div",
+                        { staticClass: "text-lowercase font-weight-bold " },
+                        [_vm._v("reate account")]
+                      )
+                    ]
                   )
                 ]
               }
@@ -23333,7 +23371,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-row",
-    { attrs: { justify: "center" } },
+    { attrs: { justify: "end" } },
     [
       _c(
         "v-dialog",
@@ -23349,15 +23387,29 @@ var render = function() {
                   _c(
                     "v-btn",
                     _vm._g(
-                      _vm._b(
-                        { attrs: { color: "primary", dark: "" } },
-                        "v-btn",
-                        attrs,
-                        false
-                      ),
+                      _vm._b({ staticClass: "mr-5" }, "v-btn", attrs, false),
                       on
                     ),
-                    [_vm._v("Sign In")]
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "grey--text text--darken-4 font-weight-bold"
+                        },
+                        [_vm._v("Sign In")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-icon",
+                        {
+                          staticClass: "font-weight-bold",
+                          attrs: { right: "" }
+                        },
+                        [_vm._v("exit_to_app")]
+                      )
+                    ],
+                    1
                   )
                 ]
               }
@@ -23426,62 +23478,14 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-card-actions",
-                {},
                 [
-                  _c(
-                    "v-btn",
-                    {
-                      staticClass: "ma-5",
-                      attrs: { color: "info darken-1", text: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "text-uppercase font-weight-bold " },
-                        [_vm._v("C")]
-                      ),
-                      _c(
-                        "div",
-                        { staticClass: "text-lowercase font-weight-bold " },
-                        [_vm._v("reate account")]
-                      )
-                    ]
-                  ),
+                  _c("RegisterPopup"),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      staticClass: "ma-5",
-                      attrs: { color: "info darken-1", text: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-uppercase font-weight-bold d-none d-sm-flex"
-                        },
-                        [_vm._v("F")]
-                      ),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-lowercase font-weight-bold d-none d-sm-flex"
-                        },
-                        [_vm._v("orgot password?")]
-                      )
-                    ]
+                    "div",
+                    { staticClass: "d-none d-sm-flex" },
+                    [_c("ForgotPassword")],
+                    1
                   ),
                   _vm._v(" "),
                   _c("v-spacer"),
@@ -23509,30 +23513,7 @@ var render = function() {
                 "v-card-actions",
                 { staticClass: "d-flex d-sm-none" },
                 [
-                  _c(
-                    "v-btn",
-                    {
-                      staticClass: "ma-5",
-                      attrs: { color: "info darken-1", text: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "text-uppercase font-weight-bold" },
-                        [_vm._v("F")]
-                      ),
-                      _c(
-                        "div",
-                        { staticClass: "text-lowercase font-weight-bold" },
-                        [_vm._v("orgot password")]
-                      )
-                    ]
-                  ),
+                  _c("ForgotPassword"),
                   _vm._v(" "),
                   _c("v-spacer"),
                   _vm._v(" "),
@@ -82151,7 +82132,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
 /* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
 /* harmony import */ var vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDialog */ "./node_modules/vuetify/lib/components/VDialog/index.js");
-/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
 
 
 
@@ -82183,7 +82165,8 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_8__["VTextField"]})
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_4__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCard"],VCardActions: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardActions"],VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardText"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__["VCardTitle"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VContainer"],VDialog: vuetify_lib_components_VDialog__WEBPACK_IMPORTED_MODULE_7__["VDialog"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__["VIcon"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VRow"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__["VTextField"]})
 
 
 /* hot reload */

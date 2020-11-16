@@ -1,8 +1,8 @@
 <template>
-  <v-row justify="center">
+  <v-row justify="start">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">Register</v-btn>
+        <v-btn color="info darken-1" class="ma-5 " text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold ">C</div><div class="text-lowercase font-weight-bold ">reate account</div></v-btn>
       </template>
       <v-card>
         <v-card-title>

@@ -2,28 +2,18 @@
     <nav>
       <v-app-bar app color="blue" >
 
-          <v-app-bar-nav-icon @click.stop="drawer = !drawer">
-              <v-icon class="black--text">menu</v-icon>
-          </v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+            <v-icon class="black--text">menu</v-icon>
+        </v-app-bar-nav-icon>
 
-          <v-toolbar-title class="black--text" style="font-size: 0">
-                  <span class="font-weight-medium text-h6">MIT</span>
-                  <span class="font-weight-bold text-h6">Forum</span>
-          </v-toolbar-title>
+        <v-toolbar-title class="black--text" style="font-size: 0">
+                <span class="font-weight-medium text-h6">MIT</span>
+                <span class="font-weight-bold text-h6">Forum</span>
+        </v-toolbar-title>
 
-          <v-spacer></v-spacer>
-    <ForgotPassword/>
-    <RegisterPopup/>
-          <v-btn>
-              <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
-              <v-icon right class="font-weight-bold">exit_to_app</v-icon>
-          </v-btn>
-
-          <v-btn>
-              <span class="grey--text text--darken-4 font-weight-bold">Sign Out</span>
-              <v-icon right class="font-weight-bold">exit_to_app</v-icon>
-          </v-btn>
-
+        <v-spacer></v-spacer>
+        <ForgotPassword />
+        <SignInPopup />
       </v-app-bar>
 
       <div class="d-none d-sm-flex">
