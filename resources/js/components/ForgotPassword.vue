@@ -10,13 +10,11 @@
           <span class="headline">Reset password</span>
         </v-card-title>
         <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field label="Email/USN" required></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
+          <form>
+            <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Name" required @input="$v.name.$touch()" @blur="$v.name.$touch()"></v-text-field>
+            <v-btn class="mr-4" @click="submit">Submit</v-btn>
+            <v-btn @click="clear">Clear</v-btn>
+          </form>
         </v-card-text>
         <v-card-actions >
             <v-spacer></v-spacer>
@@ -29,6 +27,8 @@
 
 
 <script>
+import { validationMixin } from 'vuelidate'
+import { required, maxLength, email } from 'vuelidate/lib/validators'
 export default{
   data: () => ({
     dialog: false
