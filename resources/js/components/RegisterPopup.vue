@@ -42,7 +42,24 @@
       v-model="checkbox"
       :label="`Checkbox 1: ${checkbox.toString()}`"
     ></v-checkbox>
-  </v-container>
+  </v-container><v-btn
+        class="ma-2"
+        color="primary"
+        dark
+      >
+        Accept
+        <v-icon
+          dark
+          right
+        >
+          mdi-checkbox-marked-circle
+        </v-icon>
+      </v-btn><v-icon
+      large
+      color="green darken-2"
+    >
+      mdi-domain
+    </v-icon>
               </v-col>
             </v-row>
             
@@ -64,7 +81,12 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, minLength, email, sameAs } from 'vuelidate/lib/validators'
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiAccount } from '@mdi/js'
 export default{
+  components: {
+        SvgIcon
+    },
   mixins: [validationMixin],
   validations: {
     fullName: { required, minLength: minLength(1), maxLength: maxLength(20) },
@@ -75,7 +97,7 @@ export default{
     sem: { required },
     branch: { required }
   },
-  data: () => ({
+  data: () => ({path: mdiAccount,
     dialog: false,
     fullName: '',
     usn: '',
