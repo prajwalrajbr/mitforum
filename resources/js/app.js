@@ -13,9 +13,6 @@ import { mdiAccount } from '@mdi/js'
 Vue.use(Vuelidate);
 Vue.use(VueRouter);
 Vue.use(SvgIcon);
-Vue.use(Vuetify, {
-    iconfont: 'mdi' || 'md' 
-  })
 
 import App from "./App.vue";
 

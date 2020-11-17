@@ -11,7 +11,7 @@
         </v-card-title>
         <v-card-text>
           <v-form>
-            <v-text-field v-model="email" :error-messages="nameErrors" label="Email/USN" required @input="$v.email.$touch()" @blur="$v.email.$touch()"></v-text-field>
+            <v-text-field v-model="form.email" :error-messages="emailErrors" label="Email/USN" required @input="$v.form.email.$touch()" @blur="$v.form.email.$touch()"></v-text-field>
           </v-form>
         </v-card-text>
         <v-card-actions >
@@ -31,18 +31,22 @@ import { required, maxLength} from 'vuelidate/lib/validators'
 export default{
   mixins: [validationMixin],
   validations: {
-    email: { required, maxLength: maxLength(20) },
+    form:{ 
+      email: { required, maxLength: maxLength(20) },
+    }
   },
   data: () => ({
-    email: '',
     dialog: false,
+    form:{ 
+      email: '',
+    },
   }),
   computed: {
-      nameErrors () {
+      emailErrors () {
         const errors = []
-        if (!this.$v.email.$dirty) return errors
-        !this.$v.email.maxLength && errors.push('Email/USN must be at most 20 characters long')
-        !this.$v.email.required && errors.push('Email/USN is required.')
+        if (!this.$v.form.email.$dirty) return errors
+        !this.$v.form.email.maxLength && errors.push('Email/USN must be at most 20 characters long')
+        !this.$v.form.email.required && errors.push('Email/USN is required.')
         return errors
       },
     },
@@ -53,7 +57,7 @@ export default{
       },
       clear () {
         this.$v.$reset()
-        this.email = ''
+        this.form.email = ''
       },
     },
 }
