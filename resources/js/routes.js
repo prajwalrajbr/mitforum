@@ -16,7 +16,8 @@ export default{
         },
         {
             path: '/about',
-            component: About
+            component: About,
+            name: 'About'
         }
     ]
 }

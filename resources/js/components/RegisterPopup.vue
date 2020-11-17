@@ -15,7 +15,7 @@
                 <v-text-field v-model="form.fullName" :error-messages="fullNameErrors" label="Full Name*" required @input="$v.form.fullName.$touch()" @blur="$v.form.fullName.$touch()"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="6" >
-                <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN*" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
+                <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN*" counter="10" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
               </v-col>
               
               <v-col cols="12" sm="6" md="6" >
@@ -43,7 +43,7 @@
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
-          <v-btn class="font-weight-bold" @click="dialog = false" text>Cancel</v-btn>
+          <v-btn class="font-weight-bold" @click="cancelForm" text>Cancel</v-btn>
           <v-spacer></v-spacer>
           <v-slide-x-reverse-transition>
             <v-tooltip v-if="formHasErrors" left>
@@ -56,18 +56,11 @@
             </v-tooltip>
           </v-slide-x-reverse-transition>
           <v-btn color="primary" text @click="submit">Submit</v-btn>
-
-
-          <!-- <v-btn color="info darken-1 " text @click="dialog = false"><div class="text-uppercase font-weight-bold">S</div><div class="text-lowercase font-weight-bold">ign-in instead</div></v-btn>
-          <v-spacer></v-spacer>
-          <v-btn color="error darken-1 font-weight-bold" @click="dialog = false">Close</v-btn>
-          <v-btn color="success darken-1 font-weight-bold" @click="dialog = false">Register</v-btn> -->
         </v-card-actions>
       </v-card>
     </v-dialog>
   </v-row>
 </template>
-
 
 <script>
 import { validationMixin } from 'vuelidate'
@@ -108,6 +101,8 @@ export default{
         'Mechanical'
       ],
       isFaculty: false,
+      formTouched: false,
+      errors: false,
     },   
     formHasErrors: false,
   }),
@@ -162,33 +157,37 @@ export default{
       !this.$v.form.branch.required && errors.push('This field is required')
       return errors
     },
-    form () {
-      return {
-        fullName: this.fullName,
-        usn: this.usn,
-      }
-    },
-
   },
   methods: {
+    cancelForm() {
+      this.dialog = false
+      this.resetForm()
+    },
     resetForm () {
         this.formHasErrors = false
         this.$v.$reset();
-        this.form.fullName= ''
-        this.form.usn= ''
-        this.form.email= ''
-        this.form.password= ''
-        this.form.show1= false
-        this.form.repeatPassword= ''
-        this.form.show2= false
-        this.form.sem= ''
-        this.form.branch= ''
-        this.form.isFaculty= false
+        var self = this;
+        Object.keys(this.form).forEach(function(key,index) {
+          if(typeof self.form[key] === "string") 
+            self.form[key] = ''; 
+          else if (typeof self.form[key] === "boolean") 
+            self.form[key] = false;
+        });
       },
       submit () {
-        
-        this.formHasErrors = true
-      this.$v.$touch()
+        this.$v.$touch()
+        this.formTouched = !this.$v.form.$anyDirty;
+        this.errors = this.$v.form.$anyError;
+        console.log('submit clicked');
+        if (this.errors === false && this.formTouched === false) {
+          axios.post('/api/register', this.form).then(() =>{
+            console.log('saved');
+          }).catch((error) =>{
+            console.log(error.response.data.errors)
+          })
+        }else{
+          this.formHasErrors = true
+        }
         
       },
   },
