@@ -9,10 +9,10 @@
           <span class="headline">Create account</span>
         </v-card-title>
         <v-card-text>
-          <v-form>
+          
             <v-row>
               <v-col cols="12" sm="6" md="6" >
-                <v-text-field v-model="form.fullName" :error-messages="fullNameErrors" label="Full Name*" required @input="$v.form.fullName.$touch()" @blur="$v.form.fullName.$touch()"></v-text-field>
+                <v-text-field v-model="form.full_name" :error-messages="full_nameErrors" label="Full Name*" required @input="$v.form.full_name.$touch()" @blur="$v.form.full_name.$touch()"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="6" >
                 <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN*" counter="10" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
@@ -26,10 +26,10 @@
               </v-col>
 
               <v-col cols="8" sm="6" md="6" >  
-                <v-select v-model="form.sem" :items="form.semItems" :error-messages="semErrors" label="Semester*" required @change="$v.form.sem.$touch()" @blur="$v.form.sem.$touch()"></v-select>
+                <v-select v-model="form.semester" :items="form.semesterItems" :error-messages="semesterErrors" label="semester*" required @change="$v.form.semester.$touch()" @blur="$v.form.semester.$touch()"></v-select>
               </v-col>
               <v-col cols="4" sm="6" md="6" >  
-                <v-checkbox v-model="form.isFaculty" :error-messages="isFacultyErrors" label="Faculty" @change="$v.form.isFaculty.$touch()" @blur="$v.form.isFaculty.$touch()"></v-checkbox>
+                <v-checkbox v-model="form.is_faculty" :error-messages="is_facultyErrors" label="Faculty" @change="$v.form.is_faculty.$touch()" @blur="$v.form.is_faculty.$touch()"></v-checkbox>
               </v-col>
 
               <v-col cols="12" sm="6" md="6" >  
@@ -38,8 +38,7 @@
               <v-col cols="12" sm="6" md="6" >  
                 <v-text-field v-model="form.repeatPassword" :append-icon="form.show2 ? 'visibility' : 'visibility_off'" :error-messages="repeatPasswordErrors" :type="form.show2 ? 'text' : 'password'" label="Confirm Password*" required counter @input="$v.form.repeatPassword.$touch()" @blur="$v.form.repeatPassword.$touch()" @click:append="form.show2 = !form.show2"></v-text-field>
               </v-col>
-            </v-row>    
-          </v-form><v-divider class="mt-1"></v-divider>
+            </v-row><v-divider class="mt-1"></v-divider>
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
@@ -55,7 +54,7 @@
               <span>Refresh form</span>
             </v-tooltip>
           </v-slide-x-reverse-transition>
-          <v-btn color="primary" text @click="submit">Submit</v-btn>
+          <v-btn color="primary" text @click.prevent="submit">Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -63,33 +62,34 @@
 </template>
 
 <script>
+
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, minLength, email, sameAs } from 'vuelidate/lib/validators'
 export default{
   mixins: [validationMixin],
   validations: {
     form: {
-      fullName: { required, minLength: minLength(1), maxLength: maxLength(20) },
+      full_name: { required, minLength: minLength(1), maxLength: maxLength(20) },
       usn: { required, minLength: minLength(10), maxLength: maxLength(10) },
       email : { required, email },
       password: { required, minLength: minLength(8), maxLength: maxLength(20) },
       repeatPassword: { required, sameAsPassword: sameAs('password') },
-      sem: { required },
+      semester: { required },
       branch: { required },
     }
   },
   data: () => ({
     dialog: false,
     form:{ 
-      fullName: '',
+      full_name: '',
       usn: '',
       email: '',
       password: '',
       show1: false,
       repeatPassword: '',
       show2: false,
-      sem: '',
-      semItems: [
+      semester: '',
+      semesterItems: [
         '1','2','3','4','5','6','7','8'
       ],
       branch: '',
@@ -100,19 +100,19 @@ export default{
         'Civil', 
         'Mechanical'
       ],
-      isFaculty: false,
+      is_faculty: false,
       formTouched: false,
       errors: false,
     },   
     formHasErrors: false,
   }),
   computed: {
-    fullNameErrors () {
+    full_nameErrors () {
       const errors = []
-      if (!this.$v.form.fullName.$dirty) return errors
-      !this.$v.form.fullName.maxLength && errors.push('This field must be at most 20 characters long')
-      !this.$v.form.fullName.minLength && errors.push('This field must be at least 5 characters')
-      !this.$v.form.fullName.required && errors.push('This field is required.')
+      if (!this.$v.form.full_name.$dirty) return errors
+      !this.$v.form.full_name.maxLength && errors.push('This field must be at most 20 characters long')
+      !this.$v.form.full_name.minLength && errors.push('This field must be at least 5 characters')
+      !this.$v.form.full_name.required && errors.push('This field is required.')
       return errors
     },
     usnErrors () {
@@ -145,10 +145,10 @@ export default{
       !this.$v.form.password.required && errors.push('This field is required.')
       return errors
     },
-    semErrors () {
+    semesterErrors () {
       const errors = []
-      if (!this.$v.form.sem.$dirty) return errors
-      !this.$v.form.sem.required && errors.push('This field is required')
+      if (!this.$v.form.semester.$dirty) return errors
+      !this.$v.form.semester.required && errors.push('This field is required')
       return errors
     },
     branchErrors () {
@@ -180,10 +180,10 @@ export default{
         this.errors = this.$v.form.$anyError;
         console.log('submit clicked');
         if (this.errors === false && this.formTouched === false) {
-          axios.post('/api/register', this.form).then(() =>{
-            console.log('saved');
-          }).catch((error) =>{
-            console.log(error.response.data.errors)
+          axios.post('/api/register', this.form).then(()=>{
+            console.log('success');
+          }).catch(error =>{
+            console.log('error');
           })
         }else{
           this.formHasErrors = true
