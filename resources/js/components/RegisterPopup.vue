@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import user from "../apis/user";
 
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, minLength, email, sameAs } from 'vuelidate/lib/validators'
@@ -175,20 +176,25 @@ export default{
         });
       },
       submit () {
-        this.$v.$touch()
-        this.formTouched = !this.$v.form.$anyDirty;
-        this.errors = this.$v.form.$anyError;
-        console.log('submit clicked');
-        if (this.errors === false && this.formTouched === false) {
-          axios.post('/api/register', this.form).then(()=>{
-            console.log('success');
-          }).catch(error =>{
-            console.log('error');
+        // this.$v.$touch()
+        // this.formTouched = !this.$v.form.$anyDirty;
+        // this.errors = this.$v.form.$anyError;
+        // console.log('submit clicked');
+        // if (this.errors === false && this.formTouched === false) {
+        //   axios.post('/api/register', this.form).then(()=>{
+        //     this.dialog = false
+        //     this.$router.push({ name: "About" })
+        //   }).catch((error) =>{
+        //     this.errors = error.response.data.errors
+        //     console.log(this.errors);
+        //   })
+        // }else{
+        //   this.formHasErrors = true
+        // }  
+          user.register(this.form).then(()=>{
+            this.dialog = false
+            this.$router.push({ name: "About" })
           })
-        }else{
-          this.formHasErrors = true
-        }
-        
       },
   },
 }

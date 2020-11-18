@@ -23,12 +23,12 @@
           <ForgotPassword/>
           </div>    
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click="submit">Sign-in</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Sign-in</v-btn>
         </v-card-actions>
         <v-card-actions class="d-flex d-sm-none">
           <ForgotPassword/>
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5" @click="submit">Sign-in</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5" @click.prevent="submit">Sign-in</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -37,6 +37,9 @@
 
 
 <script>
+
+import user from "../apis/user";
+
 import ForgotPassword from "./ForgotPassword";
 import RegisterPopup from "./RegisterPopup";
 
@@ -81,10 +84,26 @@ export default{
     },
   },
   methods: {
-    submit () {
-      this.dialog = false
-      this.$v.$touch()
-    },
+    async submit () {
+      // this.dialog = false
+      // this.$v.$touch()
+    //   axios.get('/sanctum/csrf-cookie').then(response => {
+    // axios.post('/api/login', this.form).then(()=>{
+    //         this.dialog = false
+    //         localStorage.setItem("auth","true");
+    //         this.$router.push({ name: "About" })
+    //       }).catch((error) =>{
+    //         this.errors = error.response.data.errors
+    //         console.log(this.errors);
+    //       })
+
+
+      user.login(this.form).then(()=>{
+        this.dialog = false
+        localStorage.setItem("auth","true");
+        this.$router.push({ name: "About" });
+      })
+    }
   },
 }
 </script>

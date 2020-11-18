@@ -12,7 +12,7 @@
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
-        <RegisterPopup />
+        <v-btn @click='logout'>ss</v-btn>
         <SignInPopup />
       </v-app-bar>
 
@@ -76,6 +76,7 @@
 
 
 <script>
+import user from "../apis/user";
 import SignInPopup from "./SignInPopup";
 import RegisterPopup from "./RegisterPopup";
 import ForgotPassword from "./ForgotPassword";
@@ -93,6 +94,14 @@ export default{
               { title: 'About', icon: 'help_center', to:'/about' },
             ]
         }
+    },
+    methods:{
+      logout () {
+        user.logout().then(()=>{
+          localStorage.removeItem("auth");
+        this.$router.push({ name: "About" })
+        })
+      }
     }
 }
 </script>
