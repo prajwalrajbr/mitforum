@@ -17,8 +17,11 @@ export default {
         return api.post("/logout");
     },
 
-    async auth() {
-        await csrf.getCookie()
+    auth() {
         return api.get("/user");
+    },
+
+    authenticated() {
+        return api.get("/authenticated");
     }
 };

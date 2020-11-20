@@ -2,8 +2,8 @@
   <v-row justify="start">
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="info darken-1" class="ma-5 d-none d-sm-flex" text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold d-none d-sm-flex">F</div><div class="text-lowercase font-weight-bold d-none d-sm-flex">orgot password?</div></v-btn>
-        <v-btn color="info darken-1" class="ma-5 d-flex d-sm-none" text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold d-flex d-sm-none">F</div><div class="text-lowercase font-weight-bold d-flex d-sm-none">orgot password</div></v-btn>
+        <v-btn color="info darken-1" :disabled="dialog" class="ma-5 d-none d-sm-flex" text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold d-none d-sm-flex">F</div><div class="text-lowercase font-weight-bold d-none d-sm-flex">orgot password?</div></v-btn>
+        <v-btn color="info darken-1" :disabled="dialog" class="ma-5 d-flex d-sm-none" text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold d-flex d-sm-none">F</div><div class="text-lowercase font-weight-bold d-flex d-sm-none">orgot password</div></v-btn>
       </template>
       <v-card>
         <v-card-title>

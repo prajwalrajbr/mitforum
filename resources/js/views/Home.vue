@@ -16,9 +16,11 @@
   
 </template>
 <script>
+import user from "../apis/user";
 export default {
   data() {
     return {
+      userName: null,
       items: [
         { name: 'Notes', img: 'https://bit.ly/3pdRYV0', to:'/notes' },
         { name: 'Assignments', img: 'Graphic designer', to:'/assignments' },
@@ -26,6 +28,16 @@ export default {
         { name: 'Announcements & Queries', img: 'Social media maverick', to:'/announcements-queries' }
       ]
     }
+  },
+  mounted(){
+    user.auth()
+        .then((res)=>{
+            this.userName = res.data.full_name;
+        })
+        .catch((error) =>{
+        console.log("ff");
+        this.$root.$emit('eventing', "data");
+      })
   }
 }
 </script>

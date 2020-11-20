@@ -18,6 +18,9 @@ Auth::routes();
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:sanctum')->get('/authenticated', function () {
+    return true;
+});
 
 Route::post('/register', 'App\Http\Controllers\RegisterController@register');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');

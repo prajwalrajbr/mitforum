@@ -2,9 +2,9 @@
   <v-row justify="end">
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" class="mr-5">
+        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog">
             <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
-            <v-icon right class="font-weight-bold">exit_to_app</v-icon>
+            <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
         </v-btn>
       </template>
       <v-card>
@@ -57,8 +57,9 @@ export default{
     RegisterPopup,
     ForgotPassword
   },
+  props: ['dialog'],
   data: () => ({
-    dialog: false,
+    // dialog: false,
     form:{ 
       email: '',
       password: '',
@@ -85,25 +86,22 @@ export default{
   },
   methods: {
     async submit () {
-      // this.dialog = false
-      // this.$v.$touch()
-    //   axios.get('/sanctum/csrf-cookie').then(response => {
-    // axios.post('/api/login', this.form).then(()=>{
-    //         this.dialog = false
-    //         localStorage.setItem("auth","true");
-    //         this.$router.push({ name: "About" })
-    //       }).catch((error) =>{
-    //         this.errors = error.response.data.errors
-    //         console.log(this.errors);
-    //       })
-
-
-      user.login(this.form).then(()=>{
+      user.login(this.form)
+      .then(()=>{
         this.dialog = false
         localStorage.setItem("auth","true");
-        this.$router.push({ name: "About" });
+        // this.$router.push({ name: "About" });
+      })
+      .catch((error) =>{
+        this.errors = error.response.data.errors
+        console.log(this.errors);
       })
     }
   },
+  mounted(){
+    this.$root.$on('eventing', data => {
+            this.dialog = true;
+        });
+  }
 }
 </script>

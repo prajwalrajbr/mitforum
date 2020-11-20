@@ -10,6 +10,10 @@ import Vuelidate from 'vuelidate'
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiAccount } from '@mdi/js'
 
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
+
 Vue.use(Vuelidate);
 Vue.use(VueRouter);
 Vue.use(SvgIcon);

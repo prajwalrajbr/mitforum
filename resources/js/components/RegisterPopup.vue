@@ -2,7 +2,7 @@
   <v-row justify="start">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="info darken-1" class="ma-5 " text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold ">C</div><div class="text-lowercase font-weight-bold ">reate account</div></v-btn>
+        <v-btn color="info darken-1" class="ma-5 " :disabled="dialog" text v-bind="attrs" v-on="on"><div class="text-uppercase font-weight-bold ">C</div><div class="text-lowercase font-weight-bold ">reate account</div></v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -47,14 +47,14 @@
           <v-slide-x-reverse-transition>
             <v-tooltip v-if="formHasErrors" left>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn icon class="my-0" v-bind="attrs" @click="resetForm" v-on="on">
+                <v-btn icon class="my-0" v-bind="attrs" @click.prevent="resetForm" v-on="on">
                   <v-icon>mdi-refresh</v-icon>
                 </v-btn>
               </template>
               <span>Refresh form</span>
             </v-tooltip>
           </v-slide-x-reverse-transition>
-          <v-btn color="primary" text @click.prevent="submit">Submit</v-btn>
+          <v-btn color="primary" text @click.prevent="submitForm">Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -165,37 +165,35 @@ export default{
       this.resetForm()
     },
     resetForm () {
-        this.formHasErrors = false
-        this.$v.$reset();
-        var self = this;
-        Object.keys(this.form).forEach(function(key,index) {
-          if(typeof self.form[key] === "string") 
-            self.form[key] = ''; 
-          else if (typeof self.form[key] === "boolean") 
-            self.form[key] = false;
-        });
-      },
-      submit () {
-        // this.$v.$touch()
-        // this.formTouched = !this.$v.form.$anyDirty;
-        // this.errors = this.$v.form.$anyError;
-        // console.log('submit clicked');
-        // if (this.errors === false && this.formTouched === false) {
-        //   axios.post('/api/register', this.form).then(()=>{
-        //     this.dialog = false
-        //     this.$router.push({ name: "About" })
-        //   }).catch((error) =>{
-        //     this.errors = error.response.data.errors
-        //     console.log(this.errors);
-        //   })
-        // }else{
-        //   this.formHasErrors = true
-        // }  
-          user.register(this.form).then(()=>{
-            this.dialog = false
-            this.$router.push({ name: "About" })
-          })
-      },
+      this.formHasErrors = false
+      this.$v.$reset();
+      var self = this;
+      Object.keys(this.form).forEach(function(key,index) {
+        if(typeof self.form[key] === "string") 
+          self.form[key] = ''; 
+        else if (typeof self.form[key] === "boolean") 
+          self.form[key] = false;
+      });
+    },
+    submitForm () {
+      this.$v.$touch()
+      this.formTouched = !this.$v.form.$anyDirty;
+      this.errors = this.$v.form.$anyError;
+      console.log('submit clicked');
+      if (this.errors === false && this.formTouched === false) {
+        user.register(this.form)
+        .then(()=>{
+          this.dialog = false
+          this.$router.push({ name: "About" })
+        })
+        .catch((error) =>{
+          this.errors = error.response.data.errors
+          console.log(this.errors);
+        })
+      }else{
+        this.formHasErrors = true
+      }           
+    },
   },
 }
 </script>

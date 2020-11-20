@@ -8,22 +8,10 @@
 </template>
 
 <script>
-
-import user from "../apis/user";
 export default{
     data() {
         return {
-            userName: null
+            userName: 'gg'
     }},
-    methods:{ 
-        
-    },
-    mounted(){
-        user.auth()
-        .then((res)=>{
-            this.userName = res.data.full_name;
-        })       
-    }
   }
-
-</script>
+</script>  
