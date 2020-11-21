@@ -33,6 +33,8 @@ export default {
     user.auth()
         .then((res)=>{
             this.userName = res.data.full_name;
+        }).catch((err)=>{
+          this.$root.$emit('showSnackbar', "Please log-in to continue");
         })
   }
 }
