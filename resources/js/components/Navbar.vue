@@ -1,12 +1,9 @@
 <template>
     <nav>
-      <v-snackbar v-model="snackbar" :timeout="4000" top dark
-      color="success"
-      outlined
-      >
+      <v-snackbar v-model="snackbar" :timeout="4000" top dark color="success" outlined >
         <span class=" text--darken-4 font-weight-bold">{{ snackbarText }}</span>
         <template v-slot:action="{ attrs }">
-          <v-btn color="error" text v-bind="attrs" @click="snackbar = false">Close</v-btn>
+          <v-btn color="error font-weight-bold" text v-bind="attrs" @click="snackbar = false">Close</v-btn>
         </template>
       </v-snackbar>
       <v-app-bar app color="blue" >
@@ -21,6 +18,9 @@
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
+        <div v-if="userName">
+          <spam class="font-weight-bold text-title pr-10">Logged in as {{ userName }}</spam>
+        </div>
         <div>
           <SignInPopup />
         </div>
@@ -40,8 +40,17 @@
           </v-list-item>
         </v-list>
         <template v-slot:append >
-          <div class="pa-3" id="nav-log">
-            <SignInPopup :navDrawer='true'/>
+          <div class="pa-3" v-if="loggedIn">
+            <v-btn class="white mr-5" @click='logout' block>
+                <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
+                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+            </v-btn>
+          </div>
+          <div class="pa-3" v-else>
+            <v-btn class="white mr-5" @click='login' block>
+                <span class="grey--text text--darken-4 font-weight-bold">Log In</span>
+                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+            </v-btn>
           </div>
         </template>
       </v-navigation-drawer>
@@ -60,8 +69,17 @@
           </v-list-item>
         </v-list>
         <template v-slot:append >
-          <div class="pa-3" id="nav-log">
-            <SignInPopup :navDrawer='true'/>
+          <div class="pa-3" v-if="loggedIn">
+            <v-btn class="white mr-5" @click='logout' block>
+                <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
+                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+            </v-btn>
+          </div>
+          <div class="pa-3" v-else>
+            <v-btn class="white mr-5" @click='login' block>
+                <span class="grey--text text--darken-4 font-weight-bold">Log In</span>
+                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+            </v-btn>
           </div>
         </template>
       </v-navigation-drawer>
@@ -75,6 +93,7 @@
 
 <script>
 import user from "../apis/user";
+
 import SignInPopup from "./SignInPopup";
 import RegisterPopup from "./RegisterPopup";
 import ForgotPassword from "./ForgotPassword";
@@ -87,7 +106,7 @@ export default{
     data(){
         return{
           snackbarText: "",
-          snackbar: false,
+          snackbar: false,loggedIn:false,
             drawer: false,
             userName: null,
             items: [
@@ -96,19 +115,38 @@ export default{
             ]
         }
     },
-    mounted(){
-      user.auth()
-        .then((res)=>{
-            this.userName = res.data.full_name;
-            this.loggedIn = true;
+    methods: {
+      logout () {
+        user.logout().then(()=>{
+          localStorage.removeItem("auth");
+          this.loggedIn = false
+          this.$root.$emit('loggedOut', "true");
+            this.userName = "";
+        this.$root.$emit('userName', this.userName);
+      this.$root.$emit('showSnackbar', "Successfully logged out");
         })
-        .catch((error) =>{
+      },
+      login(){
+        
           this.$root.$emit('showLogInPopup', "true");
+      },
+      
+
+    },
+    mounted(){
+      this.$root.$on('userName', (text)=>{
+        this.userName = text;
       })
       this.$root.$on('showSnackbar', (text) =>{
         this.snackbarText = text;
         this.snackbar = true;
       });
+      this.$root.$on('loggedIn', () =>{
+      this.loggedIn = true
+    });
+    this.$root.$on('loggedOut', () =>{
+      this.loggedIn = false
+    });
     }
 }
 </script>

@@ -67,7 +67,6 @@ export default{
     RegisterPopup,
     ForgotPassword
   },
-  props:['navDrawer'],
   data: () => ({
     dialog: false,
     userName: null,
@@ -97,15 +96,15 @@ export default{
     },
   },
   methods: {
-    async submit () {
+    submit () {
       user.login(this.form)
       .then(()=>{
         this.dialog = false
         localStorage.setItem("auth","true");
         this.loggedIn = true
         this.$root.$emit('loggedIn', "true");
+        this.updateUserData();
         this.$root.$emit('showSnackbar', "Successfully logged in");
-        this.$router.push({ name: "About" });
       })
       .catch((error) =>{
         this.errors = error.response.data.errors
@@ -117,18 +116,31 @@ export default{
           localStorage.removeItem("auth");
           this.loggedIn = false
           this.$root.$emit('loggedOut', "true");
+        
+            this.userName = "";
+        this.$root.$emit('userName', this.userName);
+      this.$root.$emit('showSnackbar', "Successfully logged out");
         })
       },
-  },
-  mounted(){
-    user.auth()
+      updateUserData () {
+user.auth()
         .then((res)=>{
             this.userName = res.data.full_name;
+            
+        this.$root.$emit('userName', this.userName);
             this.loggedIn = true;
+        this.$root.$emit('loggedIn', "true");
         })
         .catch((error) =>{
+            this.userName = "";
+        this.$root.$emit('userName', this.userName);
+          this.$root.$emit('loggedOut', "true");
         this.loggedIn = false;
       })
+      }
+  },
+  mounted(){
+    this.updateUserData();
     this.$root.$on('loggedIn', () =>{
       this.loggedIn = true
     });
@@ -136,9 +148,7 @@ export default{
       this.loggedIn = false
     });
     this.$root.$on('showLogInPopup', () =>{
-      if (this.navDrawer){
-        this.dialog = true
-      }
+      this.dialog = true
     });
   }
 }

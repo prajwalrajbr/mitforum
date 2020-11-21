@@ -103,7 +103,7 @@ export default{
       ],
       is_faculty: false,
       formTouched: false,
-      errors: false,
+      full_nameErrors: [],
     },   
     formHasErrors: false,
   }),
