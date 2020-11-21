@@ -1,11 +1,20 @@
 <template>
-  <v-row justify="end">
+  <v-row justify="center" block>
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog">
+        <div v-if="loggedIn">
+        <v-btn class="white mr-5" @click='logout' >
+            <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
+            <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+        </v-btn>
+        </div>
+        <div v-else>
+        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog" >
             <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
             <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
         </v-btn>
+        </div>
+        
       </template>
       <v-card>
         <v-card-title>
@@ -38,13 +47,14 @@
 
 <script>
 
-import user from "../apis/user";
-
 import ForgotPassword from "./ForgotPassword";
 import RegisterPopup from "./RegisterPopup";
 
+import user from "../apis/user";
+
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, minLength} from 'vuelidate/lib/validators'
+
 export default{
   mixins: [validationMixin],
   validations: {
@@ -57,9 +67,11 @@ export default{
     RegisterPopup,
     ForgotPassword
   },
-  props: ['dialog'],
+  props:['navDrawer'],
   data: () => ({
-    // dialog: false,
+    dialog: false,
+    userName: null,
+    loggedIn: false,
     form:{ 
       email: '',
       password: '',
@@ -90,18 +102,44 @@ export default{
       .then(()=>{
         this.dialog = false
         localStorage.setItem("auth","true");
-        // this.$router.push({ name: "About" });
+        this.loggedIn = true
+        this.$root.$emit('loggedIn', "true");
+        this.$root.$emit('showSnackbar', "Successfully logged in");
+        this.$router.push({ name: "About" });
       })
       .catch((error) =>{
         this.errors = error.response.data.errors
         console.log(this.errors);
       })
-    }
+    },
+    logout () {
+        user.logout().then(()=>{
+          localStorage.removeItem("auth");
+          this.loggedIn = false
+          this.$root.$emit('loggedOut', "true");
+        })
+      },
   },
   mounted(){
-    this.$root.$on('eventing', data => {
-            this.dialog = true;
-        });
+    user.auth()
+        .then((res)=>{
+            this.userName = res.data.full_name;
+            this.loggedIn = true;
+        })
+        .catch((error) =>{
+        this.loggedIn = false;
+      })
+    this.$root.$on('loggedIn', () =>{
+      this.loggedIn = true
+    });
+    this.$root.$on('loggedOut', () =>{
+      this.loggedIn = false
+    });
+    this.$root.$on('showLogInPopup', () =>{
+      if (this.navDrawer){
+        this.dialog = true
+      }
+    });
   }
 }
 </script>

@@ -1,5 +1,11 @@
 <template>
     <nav>
+      <v-snackbar v-model="snackbar" :timeout="4000" top>
+        {{ snackbarText }}
+        <template v-slot:action="{ attrs }">
+          <v-btn color="white" text v-bind="attrs" @click="snackbar = false">Close</v-btn>
+        </template>
+      </v-snackbar>
       <v-app-bar app color="blue" >
 
         <v-app-bar-nav-icon @click.stop="drawer = !drawer">
@@ -12,11 +18,8 @@
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
-        <div v-if="authenticated() == true">
-          <SignInPopup :dialog=dialogA />
-        </div>
-        <div v-else>
-          <v-btn @click='logout'>logout</v-btn>
+        <div>
+          <SignInPopup />
         </div>
         
       </v-app-bar>
@@ -34,8 +37,8 @@
           </v-list-item>
         </v-list>
         <template v-slot:append >
-          <div class="pa-3">
-            <SignInPopup :dialog=dialogB />
+          <div class="pa-3" id="nav-log">
+            <SignInPopup :navDrawer='true'/>
           </div>
         </template>
       </v-navigation-drawer>
@@ -54,8 +57,8 @@
           </v-list-item>
         </v-list>
         <template v-slot:append >
-          <div class="pa-3">
-            <SignInPopup :dialog=dialogB />
+          <div class="pa-3" id="nav-log">
+            <SignInPopup :navDrawer='true'/>
           </div>
         </template>
       </v-navigation-drawer>
@@ -80,40 +83,29 @@ export default{
     },
     data(){
         return{
-          bottom: 'null',
-          dialogA: true,
-          dialogB: false,
+          snackbarText: "",
+          snackbar: false,
             drawer: false,
+            userName: null,
             items: [
               { title: 'Home', icon: 'home', to:'/' },
               { title: 'About', icon: 'help_center', to:'/about' },
             ]
         }
     },
-    computed: {
-    },
-    methods:{
-      logout () {
-        user.logout().then(()=>{
-          localStorage.removeItem("auth");
-          authenticated()
-          this.$router.push({ name: "Home" })
-        })
-      },
-      authenticated() {
-        user.authenticated()
-                .then(() => {
-                  console.log('show logout')
-                    return true;
-                })
-                .catch(()=>{
-                  console.log('show login')
-                    return false;
-                })
-      }
-    },
     mounted(){
-      authenticated()
+      user.auth()
+        .then((res)=>{
+            this.userName = res.data.full_name;
+            this.loggedIn = true;
+        })
+        .catch((error) =>{
+          this.$root.$emit('showLogInPopup', "true");
+      })
+      this.$root.$on('showSnackbar', (text) =>{
+        this.snackbarText = text;
+        this.snackbar = true;
+      });
     }
 }
 </script>

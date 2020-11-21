@@ -34,10 +34,6 @@ export default {
         .then((res)=>{
             this.userName = res.data.full_name;
         })
-        .catch((error) =>{
-        console.log("ff");
-        this.$root.$emit('eventing', "data");
-      })
   }
 }
 </script>
