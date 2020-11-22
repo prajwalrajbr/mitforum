@@ -23,5 +23,9 @@ export default {
 
     authenticated() {
         return api.get("/authenticated");
+    },
+
+    async getAllEmailAndUSN() {
+        return api.get("/get-all-emails-and-usn");
     }
 };

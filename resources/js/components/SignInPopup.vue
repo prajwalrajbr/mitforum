@@ -123,7 +123,7 @@ export default{
         })
       },
       updateUserData () {
-user.auth()
+        user.auth()
         .then((res)=>{
             this.userName = res.data.full_name;
             
@@ -133,6 +133,7 @@ user.auth()
         })
         .catch((error) =>{
             this.userName = "";
+            this.$root.$emit('showLogInPopup', "true");
         this.$root.$emit('userName', this.userName);
           this.$root.$emit('loggedOut', "true");
         this.loggedIn = false;

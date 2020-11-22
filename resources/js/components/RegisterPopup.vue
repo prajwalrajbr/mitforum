@@ -26,7 +26,7 @@
               </v-col>
 
               <v-col cols="8" sm="6" md="6" >  
-                <v-select v-model="form.semester" :items="form.semesterItems" :error-messages="semesterErrors" label="semester*" required @change="$v.form.semester.$touch()" @blur="$v.form.semester.$touch()"></v-select>
+                <v-select v-model="form.semester" :items="form.semesterItems" :error-messages="semesterErrors" label="Semester*" required @change="$v.form.semester.$touch()" @blur="$v.form.semester.$touch()"></v-select>
               </v-col>
               <v-col cols="4" sm="6" md="6" >  
                 <v-checkbox v-model="form.is_faculty" :error-messages="is_facultyErrors" label="Faculty" @change="$v.form.is_faculty.$touch()" @blur="$v.form.is_faculty.$touch()"></v-checkbox>
@@ -81,10 +81,12 @@ export default{
   },
   data: () => ({
     dialog: false,
+    existingEmailAndUSN: [],
     form:{ 
       full_name: '',
       usn: '',
       email: '',
+      emailTaken: false,
       password: '',
       show1: false,
       repeatPassword: '',
@@ -103,7 +105,6 @@ export default{
       ],
       is_faculty: false,
       formTouched: false,
-      full_nameErrors: [],
     },   
     formHasErrors: false,
   }),
@@ -122,6 +123,11 @@ export default{
       !this.$v.form.usn.maxLength && errors.push('This field must be 10 characters long')
       !this.$v.form.usn.minLength && errors.push('This field must be 10 characters long')
       !this.$v.form.usn.required && errors.push('This field is required.')
+      this.existingEmailAndUSN.forEach((usn)=>{
+        if (usn['usn'] === this.form.usn){
+          errors.push('A user with this USN already exists.')
+        }
+      })
       return errors
     },
     emailErrors () {
@@ -129,6 +135,11 @@ export default{
         if (!this.$v.form.email.$dirty) return errors
         !this.$v.form.email.email && errors.push('Must be valid e-mail')
         !this.$v.form.email.required && errors.push('E-mail is required')
+        this.existingEmailAndUSN.forEach((email)=>{
+          if (email['email'] === this.form.email){
+            errors.push('A user with this Email already exists.')
+          }
+        })
         return errors
     },
     passwordErrors () {
@@ -179,21 +190,37 @@ export default{
       this.$v.$touch()
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
+      console.log(this.errors)
       console.log('submit clicked');
       if (this.errors === false && this.formTouched === false) {
         user.register(this.form)
         .then(()=>{
-          this.dialog = false
+          this.dialog = 
+          this.initializeEmailAndUSN()
+      this.$root.$emit('showSnackbar', "User created successfully");
           this.$router.push({ name: "About" })
         })
         .catch((error) =>{
           this.errors = error.response.data.errors
-          console.log(this.errors);
+          this.$root.$emit('usnError', "true");
+          console.log(this.errors['usn']);
         })
       }else{
         this.formHasErrors = true
       }           
     },
+    initializeEmailAndUSN(){
+        user.getAllEmailAndUSN().then((res)=>{
+          this.existingEmailAndUSN = res.data
+          console.log(this.existingEmailAndUSN[0]['usn'])
+        }).catch((error) =>{
+          this.errors = error.response.data.errors
+          console.log(this.errors);
+        })
+    }
   },
+  created(){
+    this.initializeEmailAndUSN();
+  }
 }
 </script>

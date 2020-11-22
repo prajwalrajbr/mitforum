@@ -31,4 +31,8 @@ class LoginController extends Controller
     public function logout(){
         Auth::logout();
     }
+
+    public function getAllEmailAndUSN(){
+        return User::latest()->get(['email','usn']);
+    }
 }

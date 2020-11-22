@@ -127,8 +127,7 @@ export default{
         })
       },
       login(){
-        
-          this.$root.$emit('showLogInPopup', "true");
+        this.$root.$emit('showLogInPopup', "true");
       },
       
 
