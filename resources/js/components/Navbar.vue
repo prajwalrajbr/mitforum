@@ -7,26 +7,21 @@
         </template>
       </v-snackbar>
       <v-app-bar app color="blue" >
-
         <v-app-bar-nav-icon @click.stop="drawer = !drawer">
             <v-icon class="black--text">menu</v-icon>
         </v-app-bar-nav-icon>
-
         <v-toolbar-title class="black--text" style="font-size: 0">
                 <span class="font-weight-medium text-h6">MIT</span>
                 <span class="font-weight-bold text-h6">Forum</span>
         </v-toolbar-title>
-
         <v-spacer></v-spacer>
         <div v-if="userName">
           <spam class="font-weight-bold text-title pr-10">Logged in as {{ userName }}</spam>
         </div>
         <div>
           <SignInPopup />
-        </div>
-        
+        </div>  
       </v-app-bar>
-
       <div v-if="$vuetify.breakpoint.name === 'xs' || $vuetify.breakpoint.name === 'sm'">
       <v-navigation-drawer v-model="drawer" dark fixed temporary bottom>
         <v-list nav dense>
@@ -42,20 +37,19 @@
         <template v-slot:append >
           <div class="pa-3" v-if="loggedIn">
             <v-btn class="white mr-5" @click='logout' block>
-                <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
-                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+              <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
             </v-btn>
           </div>
           <div class="pa-3" v-else>
             <v-btn class="white mr-5" @click='login' block>
-                <span class="grey--text text--darken-4 font-weight-bold">Log In</span>
-                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+              <span class="grey--text text--darken-4 font-weight-bold">Log In</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
             </v-btn>
           </div>
         </template>
       </v-navigation-drawer>
       </div>
-
       <div v-else>
       <v-navigation-drawer v-model="drawer" dark fixed temporary>
         <v-list nav dense>
@@ -71,84 +65,78 @@
         <template v-slot:append >
           <div class="pa-3" v-if="loggedIn">
             <v-btn class="white mr-5" @click='logout' block>
-                <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
-                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+              <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
             </v-btn>
           </div>
           <div class="pa-3" v-else>
             <v-btn class="white mr-5" @click='login' block>
-                <span class="grey--text text--darken-4 font-weight-bold">Log In</span>
-                <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+              <span class="grey--text text--darken-4 font-weight-bold">Log In</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
             </v-btn>
           </div>
         </template>
       </v-navigation-drawer>
       </div>
-  
-  
-    </nav>
-    
+    </nav> 
 </template>
 
-
 <script>
-import user from "../apis/user";
 
 import SignInPopup from "./SignInPopup";
 import RegisterPopup from "./RegisterPopup";
 import ForgotPassword from "./ForgotPassword";
+
+import user from "../apis/user";
+
 export default{
   components: {
       SignInPopup,
       RegisterPopup,
       ForgotPassword
     },
-    data(){
-        return{
-          snackbarText: "",
-          snackbar: false,loggedIn:false,
-            drawer: false,
-            userName: null,
-            items: [
-              { title: 'Home', icon: 'home', to:'/' },
-              { title: 'About', icon: 'help_center', to:'/about' },
-            ]
-        }
-    },
-    methods: {
-      logout () {
-        user.logout().then(()=>{
-          localStorage.removeItem("auth");
-          this.loggedIn = false
-          this.$root.$emit('loggedOut', "true");
-            this.userName = "";
+  data(){
+    return{
+      snackbarText: "",
+      snackbar: false,
+      loggedIn:false,
+      drawer: false,
+      userName: null,
+      items: [
+        { title: 'Home', icon: 'home', to:'/' },
+        { title: 'About', icon: 'help_center', to:'/about' },
+      ]
+    }
+  },
+  methods: {
+    logout () {
+      user.logout().then(()=>{
+        localStorage.removeItem("auth");
+        this.loggedIn = false
+        this.$root.$emit('loggedOut', "true");
+        this.userName = "";
         this.$root.$emit('userName', this.userName);
-      this.$root.$emit('showSnackbar', "Successfully logged out");
-        })
-      },
-      login(){
-        this.$root.$emit('showLogInPopup', "true");
-      },
-      
-
-    },
-    mounted(){
-      this.$root.$on('userName', (text)=>{
-        this.userName = text;
+        this.$root.$emit('showSnackbar', "Successfully logged out");
       })
-      this.$root.$on('showSnackbar', (text) =>{
-        this.snackbarText = text;
-        this.snackbar = true;
-      });
-      this.$root.$on('loggedIn', () =>{
+    },
+    login(){
+      this.$root.$emit('showLogInPopup', "true");
+    },
+  },
+  mounted(){
+    this.$root.$on('userName', (text)=>{
+      this.userName = text;
+    })
+    this.$root.$on('showSnackbar', (text) =>{
+      this.snackbarText = text;
+      this.snackbar = true;
+    });
+    this.$root.$on('loggedIn', () =>{
       this.loggedIn = true
     });
     this.$root.$on('loggedOut', () =>{
       this.loggedIn = false
     });
-    }
+  }
 }
 </script>
-
-<style>
-</style>

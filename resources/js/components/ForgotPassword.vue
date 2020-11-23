@@ -15,7 +15,7 @@
           </v-form>
         </v-card-text>
         <v-card-actions >
-            <v-spacer></v-spacer>
+          <v-spacer></v-spacer>
           <v-btn color="grey lighten-1 font-weight-bold ma-5" @click="clear">Clear</v-btn>
           <v-btn color="info darken-1 font-weight-bold ma-5" @click="submit">Submit</v-btn>
         </v-card-actions>
@@ -24,10 +24,11 @@
   </v-row>
 </template>
 
-
 <script>
+
 import { validationMixin } from 'vuelidate'
 import { required, maxLength} from 'vuelidate/lib/validators'
+
 export default{
   mixins: [validationMixin],
   validations: {

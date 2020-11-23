@@ -8,37 +8,37 @@
         <v-card-title>
           <span class="headline">Create account</span>
         </v-card-title>
-        <v-card-text>
-          
-            <v-row>
-              <v-col cols="12" sm="6" md="6" >
-                <v-text-field v-model="form.full_name" :error-messages="full_nameErrors" label="Full Name*" required @input="$v.form.full_name.$touch()" @blur="$v.form.full_name.$touch()"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="6" >
-                <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN*" counter="10" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
-              </v-col>
-              
-              <v-col cols="12" sm="6" md="6" >
-                <v-text-field v-model="form.email" :error-messages="emailErrors" label="Email*" required @input="$v.form.email.$touch()" @blur="$v.form.email.$touch()"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="6" >  
-                <v-autocomplete v-model="form.branch" :items="form.branchItems" :error-messages="branchErrors" label="Branch*" required @change="$v.form.branch.$touch()" @blur="$v.form.branch.$touch()"></v-autocomplete>  
-              </v-col>
+        <v-card-text>     
+          <v-row>
+            <v-col cols="12" sm="6" md="6" >
+              <v-text-field v-model="form.full_name" :error-messages="full_nameErrors" label="Full Name*" required @input="$v.form.full_name.$touch()" @blur="$v.form.full_name.$touch()"></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6" md="6" >
+              <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN*" counter="10" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
+            </v-col>
+            
+            <v-col cols="12" sm="6" md="6" >
+              <v-text-field v-model="form.email" :error-messages="emailErrors" label="Email*" required @input="$v.form.email.$touch()" @blur="$v.form.email.$touch()"></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6" md="6" >  
+              <v-autocomplete v-model="form.branch" :items="form.branchItems" :error-messages="branchErrors" label="Branch*" required @change="$v.form.branch.$touch()" @blur="$v.form.branch.$touch()"></v-autocomplete>  
+            </v-col>
 
-              <v-col cols="8" sm="6" md="6" >  
-                <v-select v-model="form.semester" :items="form.semesterItems" :error-messages="semesterErrors" label="Semester*" required @change="$v.form.semester.$touch()" @blur="$v.form.semester.$touch()"></v-select>
-              </v-col>
-              <v-col cols="4" sm="6" md="6" >  
-                <v-checkbox v-model="form.is_faculty" :error-messages="is_facultyErrors" label="Faculty" @change="$v.form.is_faculty.$touch()" @blur="$v.form.is_faculty.$touch()"></v-checkbox>
-              </v-col>
+            <v-col cols="8" sm="6" md="6" >  
+              <v-select v-model="form.semester" :items="form.semesterItems" :error-messages="semesterErrors" label="Semester*" required @change="$v.form.semester.$touch()" @blur="$v.form.semester.$touch()"></v-select>
+            </v-col>
+            <v-col cols="4" sm="6" md="6" >  
+              <v-checkbox v-model="form.is_faculty" :error-messages="is_facultyErrors" label="Faculty" @change="$v.form.is_faculty.$touch()" @blur="$v.form.is_faculty.$touch()"></v-checkbox>
+            </v-col>
 
-              <v-col cols="12" sm="6" md="6" >  
-                <v-text-field v-model="form.password" :append-icon="form.show1 ? 'visibility' : 'visibility_off'" :error-messages="passwordErrors" :type="form.show1 ? 'text' : 'password'" label="Password*" required counter @input="$v.form.password.$touch()" @blur="$v.form.password.$touch()" @click:append="form.show1 = !form.show1"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="6" >  
-                <v-text-field v-model="form.repeatPassword" :append-icon="form.show2 ? 'visibility' : 'visibility_off'" :error-messages="repeatPasswordErrors" :type="form.show2 ? 'text' : 'password'" label="Confirm Password*" required counter @input="$v.form.repeatPassword.$touch()" @blur="$v.form.repeatPassword.$touch()" @click:append="form.show2 = !form.show2"></v-text-field>
-              </v-col>
-            </v-row><v-divider class="mt-1"></v-divider>
+            <v-col cols="12" sm="6" md="6" >  
+              <v-text-field v-model="form.password" :append-icon="form.show1 ? 'visibility' : 'visibility_off'" :error-messages="passwordErrors" :type="form.show1 ? 'text' : 'password'" label="Password*" required counter @input="$v.form.password.$touch()" @blur="$v.form.password.$touch()" @click:append="form.show1 = !form.show1"></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6" md="6" >  
+              <v-text-field v-model="form.repeatPassword" :append-icon="form.show2 ? 'visibility' : 'visibility_off'" :error-messages="repeatPasswordErrors" :type="form.show2 ? 'text' : 'password'" label="Confirm Password*" required counter @input="$v.form.repeatPassword.$touch()" @blur="$v.form.repeatPassword.$touch()" @click:append="form.show2 = !form.show2"></v-text-field>
+            </v-col>
+          </v-row>
+          <v-divider class="mt-1"></v-divider>
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
@@ -62,10 +62,12 @@
 </template>
 
 <script>
+
 import user from "../apis/user";
 
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, minLength, email, sameAs } from 'vuelidate/lib/validators'
+
 export default{
   mixins: [validationMixin],
   validations: {
@@ -104,7 +106,6 @@ export default{
         'Mechanical'
       ],
       is_faculty: false,
-      formTouched: false,
     },   
     formHasErrors: false,
   }),
@@ -190,30 +191,27 @@ export default{
       this.$v.$touch()
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
-      console.log(this.errors)
-      console.log('submit clicked');
       if (this.errors === false && this.formTouched === false) {
         user.register(this.form)
         .then(()=>{
           this.dialog = 
           this.initializeEmailAndUSN()
-      this.$root.$emit('showSnackbar', "User created successfully");
-          this.$router.push({ name: "About" })
+          this.$root.$emit('showSnackbar', "User created successfully");
         })
         .catch((error) =>{
           this.errors = error.response.data.errors
-          this.$root.$emit('usnError', "true");
-          console.log(this.errors['usn']);
+          console.log(this.errors);
         })
       }else{
         this.formHasErrors = true
       }           
     },
     initializeEmailAndUSN(){
-        user.getAllEmailAndUSN().then((res)=>{
+        user.getAllEmailAndUSN()
+        .then((res)=>{
           this.existingEmailAndUSN = res.data
-          console.log(this.existingEmailAndUSN[0]['usn'])
-        }).catch((error) =>{
+        })
+        .catch((error) =>{
           this.errors = error.response.data.errors
           console.log(this.errors);
         })

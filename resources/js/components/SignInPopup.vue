@@ -3,18 +3,17 @@
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
         <div v-if="loggedIn">
-        <v-btn class="white mr-5" @click='logout' >
-            <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
-            <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
-        </v-btn>
+          <v-btn class="white mr-5" @click='logout'>
+              <span class="grey--text text--darken-4 font-weight-bold">logout</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+          </v-btn>
         </div>
         <div v-else>
-        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog" >
-            <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
-            <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
-        </v-btn>
+          <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog">
+              <span class="grey--text text--darken-4 font-weight-bold">Sign In</span>
+              <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
+          </v-btn>
         </div>
-        
       </template>
       <v-card>
         <v-card-title>
@@ -27,9 +26,9 @@
           </v-form>
         </v-card-text>
         <v-card-actions>
-          <RegisterPopup />
+          <RegisterPopup/>
           <div class="d-none d-sm-flex">
-          <ForgotPassword/>
+            <ForgotPassword/>
           </div>    
           <v-spacer></v-spacer>
           <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Sign-in</v-btn>
@@ -43,7 +42,6 @@
     </v-dialog>
   </v-row>
 </template>
-
 
 <script>
 
@@ -116,29 +114,27 @@ export default{
           localStorage.removeItem("auth");
           this.loggedIn = false
           this.$root.$emit('loggedOut', "true");
-        
-            this.userName = "";
-        this.$root.$emit('userName', this.userName);
-      this.$root.$emit('showSnackbar', "Successfully logged out");
+          this.userName = "";
+          this.$root.$emit('userName', this.userName);
+          this.$root.$emit('showSnackbar', "Successfully logged out");
         })
       },
-      updateUserData () {
-        user.auth()
-        .then((res)=>{
-            this.userName = res.data.full_name;
-            
+    updateUserData () {
+      user.auth()
+      .then((res)=>{
+        this.userName = res.data.full_name;
         this.$root.$emit('userName', this.userName);
-            this.loggedIn = true;
+        this.loggedIn = true;
         this.$root.$emit('loggedIn', "true");
-        })
-        .catch((error) =>{
-            this.userName = "";
-            this.$root.$emit('showLogInPopup', "true");
+      })
+      .catch((error) =>{
+        this.userName = "";
+        this.$root.$emit('showLogInPopup', "true");
         this.$root.$emit('userName', this.userName);
-          this.$root.$emit('loggedOut', "true");
+        this.$root.$emit('loggedOut', "true");
         this.loggedIn = false;
       })
-      }
+    }
   },
   mounted(){
     this.updateUserData();
