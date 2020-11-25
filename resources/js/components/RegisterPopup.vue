@@ -194,7 +194,7 @@ export default{
       if (this.errors === false && this.formTouched === false) {
         user.register(this.form)
         .then(()=>{
-          this.dialog = 
+          this.dialog = false
           this.initializeEmailAndUSN()
           this.$root.$emit('showSnackbar', "User created successfully");
         })

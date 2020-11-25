@@ -18,9 +18,9 @@
       </v-card>
       
         <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
-          <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.subCode" >
+          <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.sub_code" >
             <v-card elevation="5" class="ma-10 " max-width="800">
-              <v-card-title>{{ item.subCode }}</v-card-title> 
+              <v-card-title>{{ item.sub_code }}</v-card-title> 
               <v-card-text>
               <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
               </v-card-text>             
@@ -28,7 +28,6 @@
           </v-flex>
         </v-layout>
         <v-layout v-else>
-
               <p>Oops! Subjects unavailable....</p> 
         </v-layout>
         
@@ -65,10 +64,10 @@ AddNoteSubject
         'Mechanical'
       ],
     items: [
-        { sem:1, subCode: 'Notes', subject: 'aq', branch:'Computer Science' },
-        { sem:2, subCode: 'Assignments', subject: 'fafa', branch:'Civil' },
-        { sem:3, subCode: 'Assessments', subject: 'saf', branch:'Civil' },
-        { sem:1, subCode: 'Announcements & Queries', subject: 'fas', branch:'Computer Science' }
+        { sem:1, sub_code: 'Notes', subject: 'aq', branch:'Computer Science' },
+        { sem:2, sub_code: 'Assignments', subject: 'fafa', branch:'Civil' },
+        { sem:3, sub_code: 'Assessments', subject: 'saf', branch:'Civil' },
+        { sem:1, sub_code: 'Announcements & Queries', subject: 'fas', branch:'Computer Science' }
       ]
   }),
   computed: {

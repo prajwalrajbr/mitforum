@@ -13,7 +13,7 @@
         <v-card-text>
           <v-row>
             <v-col cols="12">
-              <v-text-field v-model="form.subject_name" :error-messages="subject_nameErrors" label="Subject Name" required @input="$v.form.subject_name.$touch()" @blur="$v.form.subject_name.$touch()"></v-text-field>
+              <v-text-field v-model="form.subject" :error-messages="subjectErrors" label="Subject Name" required @input="$v.form.subject.$touch()" @blur="$v.form.subject.$touch()"></v-text-field>
             </v-col>
             
             <v-col cols="12">  
@@ -21,10 +21,10 @@
             </v-col>
             
             <v-col cols="12" sm="6" md="6" >
-              <v-text-field v-model="form.subject_code" :error-messages="subject_codeErrors" label="Subject Code" required @input="$v.form.subject_code.$touch()" @blur="$v.subject_code.usn.$touch()"></v-text-field>
+              <v-text-field v-model="form.sub_code" :error-messages="sub_codeErrors" label="Subject Code" required @input="$v.form.sub_code.$touch()" @blur="$v.sub_code.usn.$touch()"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="6" >  
-              <v-select v-model="form.semester" :items="form.semesterItems" :error-messages="semesterErrors" label="Semester*" required @change="$v.form.semester.$touch()" @blur="$v.form.semester.$touch()"></v-select>
+              <v-select v-model="form.sem" :items="form.semesterItems" :error-messages="semErrors" label="Semester*" required @change="$v.form.sem.$touch()" @blur="$v.form.sem.$touch()"></v-select>
             </v-col>
 
           </v-row>
@@ -49,19 +49,19 @@ export default{
   mixins: [validationMixin],
   validations: {
     form: { 
-      subject_name: { required, maxLength: maxLength(40) },
-      subject_code: { required, minLength: minLength(6), maxLength: maxLength(10) },
-      semester: { required },
+      subject: { required, maxLength: maxLength(40) },
+      sub_code: { required, minLength: minLength(6), maxLength: maxLength(10) },
+      sem: { required },
       branch: { required },
     }
   },
   data: () => ({
     dialog: false,
-    user: null,
+    userID: null,
     form:{ 
-      subject_name: '',
-      subject_code: '',
-      semester: '',
+      subject: '',
+      sub_code: '',
+      sem: '',
       semesterItems: [
         '1','2','3','4','5','6','7','8'
       ],
@@ -73,28 +73,29 @@ export default{
         'Civil', 
         'Mechanical'
       ],
+      created_by: '',
     },     
   }),
   computed: {
-    subject_nameErrors () {
+    subjectErrors () {
       const errors = []
-      if (!this.$v.form.subject_name.$dirty) return errors
-      !this.$v.form.subject_name.maxLength && errors.push('This field must be at most 40 characters long')
-      !this.$v.form.subject_name.required && errors.push('This field is required.')
+      if (!this.$v.form.subject.$dirty) return errors
+      !this.$v.form.subject.maxLength && errors.push('This field must be at most 40 characters long')
+      !this.$v.form.subject.required && errors.push('This field is required.')
       return errors
     },
-    subject_codeErrors () {
+    sub_codeErrors () {
       const errors = []
-      if (!this.$v.form.subject_code.$dirty) return errors
-      !this.$v.form.subject_code.maxLength && errors.push('This field must be at most 10 characters long')
-      !this.$v.form.subject_code.minLength && errors.push('This field must be at least 6 characters')
-      !this.$v.form.subject_code.required && errors.push('This field is required.')
+      if (!this.$v.form.sub_code.$dirty) return errors
+      !this.$v.form.sub_code.maxLength && errors.push('This field must be at most 10 characters long')
+      !this.$v.form.sub_code.minLength && errors.push('This field must be at least 6 characters')
+      !this.$v.form.sub_code.required && errors.push('This field is required.')
       return errors
     },
-    semesterErrors () {
+    semErrors () {
       const errors = []
-      if (!this.$v.form.semester.$dirty) return errors
-      !this.$v.form.semester.required && errors.push('This field is required')
+      if (!this.$v.form.sem.$dirty) return errors
+      !this.$v.form.sem.required && errors.push('This field is required')
       return errors
     },
     branchErrors () {
@@ -107,11 +108,25 @@ export default{
   methods: {
     submit () {
       this.$v.$touch()
+      this.formTouched = !this.$v.form.$anyDirty;
+      this.errors = this.$v.form.$anyError;
+      if (this.errors === false && this.formTouched === false) {
+        this.form.created_by = this.userID
+        axios.post('/api/subject',this.form)
+        .then(()=>{
+          this.dialog = false
+          this.$root.$emit('showSnackbar', "Subject Created Successfully");
+        })
+        .catch((error) =>{
+          this.errors = error.response.data.errors
+          console.log(this.errors);
+        })
+      }
     },
     updateUserData () {
       user.auth()
       .then((res)=>{
-        this.userName = res.data.full_name;
+        this.userID = res.data.id;
         this.$root.$emit('userName', this.userName);
         this.loggedIn = true;
         this.$root.$emit('loggedIn', "true");

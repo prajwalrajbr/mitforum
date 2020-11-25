@@ -26,3 +26,5 @@ Route::post('/register', 'App\Http\Controllers\RegisterController@register');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');
 Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
 Route::get('/get-all-emails-and-usn', 'App\Http\Controllers\LoginController@getAllEmailAndUSN');
+
+Route::resource('subject', 'App\Http\Controllers\SubjectsController');
