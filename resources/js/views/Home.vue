@@ -12,14 +12,15 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-container>
-  
+  </v-container> 
 </template>
+
 <script>
+
 import user from "../apis/user";
+
 export default {
-  data() {
-    return {
+  data: () => ({
       userName: null,
       items: [
         { name: 'Notes', img: 'https://bit.ly/3pdRYV0', to:'/notes' },
@@ -27,8 +28,7 @@ export default {
         { name: 'Assessments', img: 'Web developer', to:'/assessments' },
         { name: 'Announcements & Queries', img: 'Social media maverick', to:'/announcements-queries' }
       ]
-    }
-  },
+  }),
   mounted(){
     user.auth()
     .then((res)=>{
