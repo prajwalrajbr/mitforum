@@ -19,7 +19,7 @@
       
         <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
           <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.sub_code" >
-            <v-card elevation="5" class="ma-10 " max-width="800">
+            <v-card elevation="5" class="ma-10 " max-width="800" link :to="toSubPage(item.branch, item.sem, item.sub_code)">
               <v-card-title>{{ item.sub_code }}</v-card-title> 
               <v-card-text>
               <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
@@ -63,12 +63,7 @@ AddNoteSubject
         'Civil', 
         'Mechanical'
       ],
-    items: [
-        { sem:1, sub_code: 'Notes', subject: 'aq', branch:'Computer Science' },
-        { sem:2, sub_code: 'Assignments', subject: 'fafa', branch:'Civil' },
-        { sem:3, sub_code: 'Assessments', subject: 'saf', branch:'Civil' },
-        { sem:1, sub_code: 'Announcements & Queries', subject: 'fas', branch:'Computer Science' }
-      ]
+    items: []
   }),
   computed: {
     filteredItems () {
@@ -83,23 +78,32 @@ AddNoteSubject
     },
   },
   methods:{
+    toSubPage(branch, sem, sub_code){
+      let branchUpdated = branch.replace(/\s/g,'-')
+      let sub_codeUpdated = sub_code.replace(/\s/g,'-')
+      return "/note/"+branchUpdated+"/"+sem+"/"+sub_codeUpdated
+    },
     showCreateSubjectPopup(){
       this.$root.$emit('showCreateSubjectPopup', "true");
     },
-    sortByBranch(){
-      console.log('HH')
-    },
-    sortBySemester(){
-
-    }
   },
   mounted(){
+    axios.get('/api/subject')
+    .then((res)=>{
+      this.items = res.data
+    })
+    .catch((error) =>{
+        console.log(error)
+      })
     user.auth()
     .then((res)=>{
         this.userName = res.data.full_name;
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
+    this.$root.$on('addSubject', (data) =>{
+      this.items.push(data)
+    });
   }
 }
 </script>

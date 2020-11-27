@@ -116,6 +116,7 @@ export default{
         .then(()=>{
           this.dialog = false
           this.$root.$emit('showSnackbar', "Subject Created Successfully");
+          this.$root.$emit('addSubject', this.form);
         })
         .catch((error) =>{
           this.errors = error.response.data.errors
@@ -124,6 +125,7 @@ export default{
       }
     },
     updateUserData () {
+      
       user.auth()
       .then((res)=>{
         this.userID = res.data.id;

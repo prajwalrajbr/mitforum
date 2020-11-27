@@ -14,7 +14,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
+        return subjects::latest()->get(['sub_code','subject','sem','branch']);
     }
 
     /**

@@ -52,7 +52,7 @@ export default{
             }
         },
         {
-            path: '/note/:subject',
+            path: '/note/:branch/:sem/:sub_code',
             component: SubjectNote,
             name: 'SubjectNote',
             
