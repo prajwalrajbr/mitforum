@@ -35,4 +35,9 @@ class LoginController extends Controller
     public function getAllEmailAndUSN(){
         return User::latest()->get(['email','usn']);
     }
+
+    public function getFullname(Request $request){
+        $id = $request->id;
+        return User::where('id',$id)->get(['full_name']);
+    }
 }

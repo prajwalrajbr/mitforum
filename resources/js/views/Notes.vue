@@ -22,7 +22,7 @@
             <v-card elevation="5" class="ma-10 " max-width="800" link :to="toSubPage(item.branch, item.sem, item.sub_code)">
               <v-card-title>{{ item.sub_code }}</v-card-title> 
               <v-card-text>
-              <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+              <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.{{ createdBy(item.created_by) }}</div>
               </v-card-text>             
             </v-card>
           </v-flex>
@@ -86,11 +86,25 @@ AddNoteSubject
     showCreateSubjectPopup(){
       this.$root.$emit('showCreateSubjectPopup', "true");
     },
+    async createdBy( id ){
+      let cb = ''
+      axios.put('/api/get-fullname',{'id':id})
+      .then((res)=>{
+         cb = res.data[0].full_name;
+        console.log(cb)
+      })
+      .catch((error) =>{
+        console.log(error)
+      })
+        console.log(cb)
+        return cb
+    }
   },
   mounted(){
     axios.get('/api/subject')
     .then((res)=>{
       this.items = res.data
+      
     })
     .catch((error) =>{
         console.log(error)

@@ -25,6 +25,9 @@ Route::middleware('auth:sanctum')->get('/authenticated', function () {
 Route::post('/register', 'App\Http\Controllers\RegisterController@register');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');
 Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
+
 Route::get('/get-all-emails-and-usn', 'App\Http\Controllers\LoginController@getAllEmailAndUSN');
+Route::put('/get-fullname', 'App\Http\Controllers\LoginController@getFullname');
 
 Route::resource('subject', 'App\Http\Controllers\SubjectsController');
+Route::resource('notes', 'App\Http\Controllers\NotesController');
