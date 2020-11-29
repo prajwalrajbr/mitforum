@@ -22,7 +22,7 @@
             <v-card elevation="5" class="ma-10 " max-width="800" link :to="toSubPage(item.branch, item.sem, item.sub_code)">
               <v-card-title>{{ item.sub_code }}</v-card-title> 
               <v-card-text>
-              <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.{{ createdBy(item.created_by) }}</div>
+              <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.{{ item.created_by_name }}</div>
               </v-card-text>             
             </v-card>
           </v-flex>
@@ -86,25 +86,23 @@ AddNoteSubject
     showCreateSubjectPopup(){
       this.$root.$emit('showCreateSubjectPopup', "true");
     },
-    async createdBy( id ){
-      let cb = ''
-      axios.put('/api/get-fullname',{'id':id})
-      .then((res)=>{
-         cb = res.data[0].full_name;
-        console.log(cb)
+    addCreatedBy(){
+      this.items.forEach((i)=>{
+        axios.put('/api/get-fullname',{'id':i.created_by})
+        .then((res)=>{
+          i['created_by_name'] = res.data[0].full_name;
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
       })
-      .catch((error) =>{
-        console.log(error)
-      })
-        console.log(cb)
-        return cb
     }
   },
   mounted(){
     axios.get('/api/subject')
     .then((res)=>{
       this.items = res.data
-      
+      this.addCreatedBy();
     })
     .catch((error) =>{
         console.log(error)
