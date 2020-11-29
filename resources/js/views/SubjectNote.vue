@@ -4,20 +4,15 @@
       <div class="pa-9"></div>
       <v-card flat tile class="d-flex flex-row-reverse pa-3" app>
         <v-row>
-          <v-col class="d-flex" cols="12" sm="3">
-            <v-select v-model="semester" :items="semesterItems" label="Semester" outlined @change="sortBySemester"></v-select>
-          </v-col>
-          <v-col class="d-flex" cols="12" sm="4">
-            <v-select v-model="branch" :items="branchItems" label="Branch" outlined @change="sortByBranch"></v-select>
-          </v-col>
           <v-spacer></v-spacer>
           <v-col class="d-flex" cols="12" sm="2">
-            <AddNotes/>
+              
+            <AddNotes :uploaded_subject_id='uploaded_subject_id' />
           </v-col>
         </v-row>
       </v-card>
       
-        <!-- <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
+        <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
           <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.sub_code" >
             <v-card elevation="5" class="ma-10 " max-width="800" link :to="toSubPage(item.branch, item.sem, item.sub_code)">
               <v-card-title>{{ item.sub_code }}</v-card-title> 
@@ -29,7 +24,7 @@
         </v-layout>
         <v-layout v-else>
               <p>Oops! Subjects unavailable....</p> 
-        </v-layout> -->
+        </v-layout>
         
     </v-container>
     <v-fab-transition >
@@ -50,27 +45,39 @@ AddNotes
   },
   data: () => ({
       dialog: false,
-    semester: '',
-    semesterItems: [
-        '1','2','3','4','5','6','7','8'
-      ],
-      branch: '',
-    branchItems: [
-        'Computer Science', 
-        'Information Science', 
-        'Eletronics and Communication', 
-        'Civil', 
-        'Mechanical'
-      ],
+      uploaded_subject_id:'',
     items: []
   }),
+  computed:{
+    filteredItems () {
+      // const sem= this.semester 
+      // const branch= this.branch 
+      // let fItems = this.items.filter(function(i){
+      //   return i.sem == sem && i.branch == branch;
+      // })
+      // if (fItems.length == 0)
+      //   return null;
+      return null
+    },
+  },
   methods:{
     showAddNotesPopup(){
       this.$root.$emit('showAddNotesPopup', "true");
     },
+    add_uploaded_subject_id(){
+      let branchUpdated = this.$route.params.branch.replace(/\-/g,' ')
+      let sub_codeUpdated = this.$route.params.sub_code.replace(/\-/g,' ')
+      axios.put('/api/get-uploaded-subject-id',{'sem':this.$route.params.sem, 'branch':branchUpdated, 'sub_code':sub_codeUpdated})
+        .then((res)=>{
+          this.uploaded_subject_id = res.data[0].id;
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+    },
   },
   mounted(){
-    
+    this.add_uploaded_subject_id();
   }
 }
 </script>

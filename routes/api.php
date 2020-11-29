@@ -30,4 +30,5 @@ Route::get('/get-all-emails-and-usn', 'App\Http\Controllers\LoginController@getA
 Route::put('/get-fullname', 'App\Http\Controllers\LoginController@getFullname');
 
 Route::resource('subject', 'App\Http\Controllers\SubjectsController');
+Route::put('/get-uploaded-subject-id', 'App\Http\Controllers\SubjectsController@getSubjectId');
 Route::resource('notes', 'App\Http\Controllers\NotesController');

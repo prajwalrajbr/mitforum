@@ -16,8 +16,10 @@ class CreateNotesTable extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();   
             $table->string('fileName');
+            $table->integer('uploaded_subject_id')->unsigned();
+            $table->foreign('uploaded_subject_id')->references('id')->on('subjects');
             $table->integer('uploaded_by')->unsigned();
-            $table->foreign('uploaded_by')->references('id')->on('subjects');
+            $table->foreign('uploaded_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

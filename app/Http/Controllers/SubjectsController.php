@@ -95,4 +95,12 @@ class SubjectsController extends Controller
     {
         //
     }
+
+    public function getSubjectId(Request $request){
+        return subjects::where([
+            ['sem',$request->sem],
+            ['branch',$request->branch],
+            ['sub_code',$request->sub_code],
+        ])->get(['id']);
+    }
 }

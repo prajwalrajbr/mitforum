@@ -46,6 +46,7 @@ class NotesController extends Controller
         notes::create([
             'fileName' => $path,
             'uploaded_by' => $request->uploaded_by,
+            'uploaded_subject_id' => $request->uploaded_subject_id,
         ]);
 
     }

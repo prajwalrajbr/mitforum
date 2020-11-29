@@ -39,9 +39,10 @@ export default{
     form: { 
     }
   },
+  props: ['uploaded_subject_id'],
   data: () => ({
     dialog: false,
-    userID: null,my_file: null,
+    userID: null,
     form:{ 
         fileName: null,
         uploaded_by: 1
@@ -60,7 +61,8 @@ export default{
             console.log(this.form.fileName);
             var data = new FormData()
     data.append('fileName', this.form.fileName)
-    data.append('uploaded_by', this.form.uploaded_by)
+    data.append('uploaded_by', this.userID)
+    data.append('uploaded_subject_id', this.uploaded_subject_id)
         axios.post('/api/notes',data ,{headers:{'Content-Type': 'multipart/form-data'}})
         .then((res)=>{
             console.log(res);
@@ -75,59 +77,20 @@ export default{
     //     })
     //   }
     },
-    fileChanged(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length){
-            console.log("ss")
-                return;}
-            this.createImage(files[0]);
-        },
-
-        createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
-            var vm = this;
-
-            reader.onload = (e) => {
-                vm.my_file = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        },
-
-        update() {
-            var data = new FormData()
-    var file = this.$refs.fileInput.files[0]
-    console.log(file)
-    data.append('my_file', file)
-    axios.post('/api/notes', data,{headers:{'Content-Type': 'multipart/form-data'}})     
-    .then(response => {
-        console.log(response.data)
-    })
-    .catch(error => {
-        console.log(error)
-    });
-        },
     selectFile(file) {
       this.form.fileName = file;
-      // var fileReader = new FileReader()
-      // fileReader.readAsDataURL(file.name);
-      // fileReader.onload = (e) =>{
-
-      // }
     },
     updateUserData () {
       
       user.auth()
       .then((res)=>{
         this.userID = res.data.id;
-        this.$root.$emit('userName', this.userName);
         this.loggedIn = true;
         this.$root.$emit('loggedIn', "true");
       })
       .catch((error) =>{
         this.userName = "";
         this.$root.$emit('showLogInPopup', "true");
-        this.$root.$emit('userName', this.userName);
         this.$root.$emit('loggedOut', "true");
         this.loggedIn = false;
       })

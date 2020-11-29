@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class notes extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'fileName',
+        'uploaded_subject_id',
+        'uploaded_by',
+    ];
 }
