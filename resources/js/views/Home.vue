@@ -30,6 +30,7 @@ export default {
       ]
   }),
   mounted(){
+    console.log(PDFObject.pdfobjectversion);
     user.auth()
     .then((res)=>{
         this.userName = res.data.full_name;
