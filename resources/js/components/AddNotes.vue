@@ -93,7 +93,6 @@ export default{
       this.form.fileName = file;
     },
     updateUserData () {
-      
       user.auth()
       .then((res)=>{
         this.userID = res.data.id;
@@ -106,6 +105,7 @@ export default{
         this.$root.$emit('loggedOut', "true");
         this.loggedIn = false;
       })
+      
     }
   },
   mounted(){

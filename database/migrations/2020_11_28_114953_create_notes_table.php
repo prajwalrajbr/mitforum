@@ -17,7 +17,7 @@ class CreateNotesTable extends Migration
             $table->id();   
             $table->string('name');
             $table->string('fileName');
-            $table->string('fileId');
+            $table->string('fileLink');
             $table->integer('uploaded_subject_id')->unsigned();
             $table->foreign('uploaded_subject_id')->references('id')->on('subjects');
             $table->integer('uploaded_by')->unsigned();

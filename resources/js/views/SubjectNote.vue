@@ -12,18 +12,18 @@
         </v-row>
       </v-card>
       
-        <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
-          <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.sub_code" >
-            <v-card elevation="5" class="ma-10 " max-width="800" link :to="toSubPage(item.branch, item.sem, item.sub_code)">
-              <v-card-title>{{ item.sub_code }}</v-card-title> 
+        <v-layout row wrap align-center class="grey" v-if="items"> 
+          <v-flex xs12 sm12 md12 lg12 v-for="item in items" :key="item.id" >
+            <v-card elevation="5" class="mx-10 my-5 mb-3 " max-width="1100" link :to="toPDFViewPage(item.id)">
+              <v-card-title>{{ item.name }}</v-card-title> 
               <v-card-text>
-              <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+              <div>ssssssssssssssss{{ item.uploaded_by_name }}</div>
               </v-card-text>             
             </v-card>
           </v-flex>
         </v-layout>
         <v-layout v-else>
-              <p>Oops! Subjects unavailable....</p> 
+              <p>Oops! Notes unavailable....</p> 
         </v-layout>
         
     </v-container>
@@ -50,17 +50,17 @@ AddNotes
   }),
   computed:{
     filteredItems () {
-      // const sem= this.semester 
-      // const branch= this.branch 
-      // let fItems = this.items.filter(function(i){
-      //   return i.sem == sem && i.branch == branch;
-      // })
-      // if (fItems.length == 0)
-      //   return null;
-      return null
+      console.log(this.items)
+      let fItems = this.items
+      if (fItems.length == 0)
+        return null;
+      return fItems
     },
   },
   methods:{
+    toPDFViewPage(id){
+      return "/pdfview/"+id
+    },
     showAddNotesPopup(){
       this.$root.$emit('showAddNotesPopup', "true");
     },
@@ -70,11 +70,39 @@ AddNotes
       axios.put('/api/get-uploaded-subject-id',{'sem':this.$route.params.sem, 'branch':branchUpdated, 'sub_code':sub_codeUpdated})
         .then((res)=>{
           this.uploaded_subject_id = res.data[0].id;
+          this.get_notes();
         })
         .catch((error) =>{
           console.log(error)
         })
     },
+    initializeItems(items){
+      this.items = items
+    },
+    get_notes(){
+      axios.put('/api/get-notes',{'uploaded_subject_id':this.uploaded_subject_id})
+        .then((res)=>{
+          console.log(res)
+          var items = res.data
+          var len = items.length
+          console.log(len) 
+          items.forEach((i)=>{
+            axios.put('/api/get-fullname',{'id':i.uploaded_by})
+            .then((res)=>{
+              i['uploaded_by_name'] = res.data[0].full_name;
+              len = len - 1
+              if(len == 0 )
+                this.initializeItems(items)
+            })
+            .catch((error) =>{
+              console.log(error)
+            })
+          })
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+    }
   },
   mounted(){
     this.add_uploaded_subject_id();

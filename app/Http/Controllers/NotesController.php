@@ -42,13 +42,12 @@ class NotesController extends Controller
 
         $f = $request->file('fileName');
         Storage::disk('googleNotes')->put(str_replace(' ', '_', $f->getClientOriginalName().''), fopen($f, 'r+'));
-        $fileId = Storage::disk('googleNotes')->url(str_replace(' ', '_', $f->getClientOriginalName().''));
-        $fileId = substr($fileId,strpos($fileId,"="),-13);
-        $fileId = substr($fileId,1);
+        $fileLink = Storage::disk('googleNotes')->url(str_replace(' ', '_', $f->getClientOriginalName().''));
+        
         notes::create([
             'name' => $request->name,
             'fileName' => $request->fileName,
-            'fileId' => $fileId,
+            'fileLink' => $fileLink,
             'uploaded_by' => $request->uploaded_by,
             'uploaded_subject_id' => $request->uploaded_subject_id,
         ]);
@@ -99,8 +98,13 @@ class NotesController extends Controller
         //
     }
 
-    public function getNotesName(Request $request){
+    public function getNotes(Request $request){
+        $uploaded_subject_id = $request->uploaded_subject_id;
+        return notes::where('uploaded_subject_id',$uploaded_subject_id)->get(['id','name','uploaded_by']);
+    }
+
+    public function getNotesLink(Request $request){
         $id = $request->id;
-        return notes::where('id',$id)->get(['fileName','name']);
+        return notes::where('id',$id)->get(['fileLink','name']);
     }
 }

@@ -11,7 +11,7 @@ class notes extends Model
     protected $fillable = [
         'name',
         'fileName',
-        'fileId',
+        'fileLink',
         'uploaded_subject_id',
         'uploaded_by',
     ];
