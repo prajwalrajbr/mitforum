@@ -9,7 +9,9 @@ class notes extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'name',
         'fileName',
+        'fileId',
         'uploaded_subject_id',
         'uploaded_by',
     ];

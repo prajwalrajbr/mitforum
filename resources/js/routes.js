@@ -2,6 +2,7 @@ import Home from './views/Home';
 import About from './views/About';
 import Notes from './views/Notes';
 import SubjectNote from './views/SubjectNote';
+import PDFView from './views/PDFView';
 
 import PageNotFound from './views/PageNotFound';
 
@@ -56,6 +57,12 @@ export default{
             component: SubjectNote,
             name: 'SubjectNote',
             
-        }
+        },
+        {
+            path: '/pdfview/:id',
+            component: PDFView,
+            name: 'PDFView',
+            
+        },
     ]
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\notes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NotesController extends Controller
 {
@@ -13,8 +14,11 @@ class NotesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {$size = Storage::size('381xKFTrG6bOnAnHNetfkjltaIDtgiiEgLlTdtCl.pdf');
+        if (Storage::disk('google')->exists('381xKFTrG6bOnAnHNetfkjltaIDtgiiEgLlTdtCl.pdf')) {
+            return true;
+        }
+        return $size;
     }
 
     /**
@@ -35,20 +39,19 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('fileName');
-        
 
-        $filename = $file->getClientOriginalName();
-        $filename = time(). '.' . $filename;
-
-        $path = $file->storeAs('public',$filename);
-
+        $f = $request->file('fileName');
+        Storage::disk('googleNotes')->put(str_replace(' ', '_', $f->getClientOriginalName().''), fopen($f, 'r+'));
+        $fileId = Storage::disk('googleNotes')->url(str_replace(' ', '_', $f->getClientOriginalName().''));
+        $fileId = substr($fileId,strpos($fileId,"="),-13);
+        $fileId = substr($fileId,1);
         notes::create([
-            'fileName' => $path,
+            'name' => $request->name,
+            'fileName' => $request->fileName,
+            'fileId' => $fileId,
             'uploaded_by' => $request->uploaded_by,
             'uploaded_subject_id' => $request->uploaded_subject_id,
         ]);
-
     }
 
     /**
@@ -94,5 +97,10 @@ class NotesController extends Controller
     public function destroy(notes $notes)
     {
         //
+    }
+
+    public function getNotesName(Request $request){
+        $id = $request->id;
+        return notes::where('id',$id)->get(['fileName','name']);
     }
 }

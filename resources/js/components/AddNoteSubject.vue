@@ -21,7 +21,7 @@
             </v-col>
             
             <v-col cols="12" sm="6" md="6" >
-              <v-text-field v-model="form.sub_code" :error-messages="sub_codeErrors" label="Subject Code" required @input="$v.form.sub_code.$touch()" @blur="$v.sub_code.usn.$touch()"></v-text-field>
+              <v-text-field v-model="form.sub_code" :error-messages="sub_codeErrors" label="Subject Code" required @input="$v.form.sub_code.$touch()" @blur="$v.form.sub_code.$touch()"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="6" >  
               <v-select v-model="form.sem" :items="form.semesterItems" :error-messages="semErrors" label="Semester*" required @change="$v.form.sem.$touch()" @blur="$v.form.sem.$touch()"></v-select>

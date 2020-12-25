@@ -32,3 +32,5 @@ Route::put('/get-fullname', 'App\Http\Controllers\LoginController@getFullname');
 Route::resource('subject', 'App\Http\Controllers\SubjectsController');
 Route::put('/get-uploaded-subject-id', 'App\Http\Controllers\SubjectsController@getSubjectId');
 Route::resource('notes', 'App\Http\Controllers\NotesController');
+
+Route::put('/get-notes-name', 'App\Http\Controllers\NotesController@getNotesName');

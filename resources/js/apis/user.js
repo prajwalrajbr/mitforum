@@ -27,5 +27,9 @@ export default {
 
     async getAllEmailAndUSN() {
         return api.get("/get-all-emails-and-usn");
+    },
+
+    async getFile() {
+        return api.get("/notes");
     }
 };

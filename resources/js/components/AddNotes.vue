@@ -12,8 +12,11 @@
         </v-card-title>
         <v-card-text>
           <v-row>
+            <v-col cols="12">
+              <v-text-field v-model="form.name" :error-messages="nameErrors" label="Notes Name" required @input="$v.form.name.$touch()" @blur="$v.form.name.$touch()"></v-text-field>
+            </v-col>
             <v-col>
-              <v-file-input show-size label="File input" @change="selectFile"></v-file-input>
+              <v-file-input show-size label="File input" :error-messages="fileErrors" @change="selectFile" ></v-file-input>
             </v-col>
           </v-row>
         </v-card-text>
@@ -30,13 +33,15 @@
 
 import user from "../apis/user";
 
-import { validationMixin } from 'vuelidate'
-import { required} from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate';
+import { required, maxLength} from 'vuelidate/lib/validators';
 
 export default{
   mixins: [validationMixin],
   validations: {
     form: { 
+      name: { required, maxLength: maxLength(30) },
+      fileName: { required },
     }
   },
   props: ['uploaded_subject_id'],
@@ -44,38 +49,45 @@ export default{
     dialog: false,
     userID: null,
     form:{ 
+        name: '',
         fileName: null,
-        uploaded_by: 1
     },     
   }),
   computed: {
-    
+    nameErrors () {
+      const errors = []
+      if (!this.$v.form.name.$dirty) return errors
+      !this.$v.form.name.maxLength && errors.push('This field must be at most 30 characters long')
+      !this.$v.form.name.required && errors.push('This field is required')
+      return errors
+    },
+    fileErrors () {
+      const errors = []
+      if (!this.$v.form.fileName.$dirty) return errors
+      !this.$v.form.fileName.required && errors.push('This field is required')
+      return errors
+    },
   },
   methods: {
     submit () {
       this.$v.$touch()
-    //   this.formTouched = !this.$v.form.$anyDirty;
-    //   this.errors = this.$v.form.$anyError;
-    //   if (this.errors === false && this.formTouched === false) {
-    //     this.form.created_by = this.userID
-            console.log(this.form.fileName);
-            var data = new FormData()
-    data.append('fileName', this.form.fileName)
-    data.append('uploaded_by', this.userID)
-    data.append('uploaded_subject_id', this.uploaded_subject_id)
-        axios.post('/api/notes',data ,{headers:{'Content-Type': 'multipart/form-data'}})
-        .then((res)=>{
-            console.log(res);
-            console.log(this.form.fileName);
-        //   this.dialog = false
-        //   this.$root.$emit('showSnackbar', "Subject Created Successfully");
-        //   this.$root.$emit('addSubject', this.form);
-        })
-    //     .catch((error) =>{
-    //       this.errors = error.response.data.errors
-    //       console.log(this.errors);
-    //     })
-    //   }
+      this.formTouched = !this.$v.form.$anyDirty;
+      this.errors = this.$v.form.$anyError;
+      if (this.errors === false && this.formTouched === false) {
+        var data = new FormData()
+            data.append('name', this.form.name);
+        data.append('fileName', this.form.fileName)
+            data.append('uploaded_by', this.userID);
+            data.append('uploaded_subject_id', this.uploaded_subject_id);
+          axios.post('/api/notes',data ,{headers:{'Content-Type': 'multipart/form-data'}})
+          .then((res)=>{
+            console.log(res.data);
+          })
+          .catch((error) =>{
+            this.errors = error.response.data.errors;
+            console.log(this.errors);
+          })
+      }
     },
     selectFile(file) {
       this.form.fileName = file;

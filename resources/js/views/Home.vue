@@ -27,10 +27,9 @@ export default {
         { name: 'Assignments', img: 'Graphic designer', to:'/assignments' },
         { name: 'Assessments', img: 'Web developer', to:'/assessments' },
         { name: 'Announcements & Queries', img: 'Social media maverick', to:'/announcements-queries' }
-      ]
+      ],
   }),
   mounted(){
-    console.log(PDFObject);
     user.auth()
     .then((res)=>{
         this.userName = res.data.full_name;
