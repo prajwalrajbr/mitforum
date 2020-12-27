@@ -34,16 +34,9 @@
       rounded
       color="primary"
       dark
+      @click="toPDFViewPage(item.id)"
     >
-      Rounded Button
-    </v-btn>
-  </div> <v-spacer></v-spacer>  <div class="text-end">
-    <v-btn
-      rounded
-      color="primary"
-      dark
-    >
-      Rounded Button
+      View Questions
     </v-btn>
   </div>
                     </v-row>
@@ -80,8 +73,8 @@
         </v-layout>
      </div>  
      <div v-else-if="!is_f">
-        <v-layout row wrap align-center class="grey pa-4" v-if="itemss"> 
-          <v-flex xs12 v-for="item in itemss"  :key="item.id" >
+        <v-layout row wrap align-center class="grey pa-4" v-if="computed_id"> 
+          <v-flex xs12 v-for="item in computed_id"  :key="item.id" >
             <div v-if="item.sem == sem && item.branch == branch">
             <v-expansion-panels class="pa-4">
               <v-expansion-panel>
@@ -96,7 +89,31 @@
                   </template>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-aa
+<v-row>
+
+<div class="text-start">
+    <v-btn
+      rounded
+      color="primary"
+      dark
+      @click="toPDFViewPage(item.id)"
+    >
+      View Questions
+    </v-btn>
+  </div> <v-spacer></v-spacer>  
+  <div class="text-end" v-if="item.uploaded == 'true'">
+    <v-btn
+      rounded
+      color="success"
+      dark 
+    >
+      Submitted
+    </v-btn>
+  </div>
+  <div class="text-end" v-else>
+    <AddAssignmentAnswer :uploaded_Assignment_id='item.id'/>
+  </div>
+                    </v-row>
                   </v-expansion-panel-content>
               </v-expansion-panel>
             </v-expansion-panels>
@@ -119,14 +136,17 @@ aa
 <script>
 
 import AddAssignment from "../components/AddAssignment";
+import AddAssignmentAnswer from "../components/AddAssignmentAnswer";
 import user from "../apis/user";
 
 export default {
   components: {
-AddAssignment
+AddAssignment,
+AddAssignmentAnswer
   },
   data: () => ({
     userName: '',
+    userId: '',
     sem: null,
     is_f: false,
     dialog: false,
@@ -135,12 +155,14 @@ AddAssignment
     itemss: null,
     subjects: [],
     users: []
-  }),
-  computed: {
-    
+  }),computed: {
+    computed_id: function() {
+      return this.itemss;
+    }
   },
   methods:{
-    toSubPage(branch, sem, sub_code){
+    toPDFViewPage(id){
+      this.$router.push('/pdfview/assignments/'+id)
     },
     initializeItems(items){
       this.itemss = items
@@ -168,7 +190,7 @@ AddAssignment
           i['branch'] = res.data[0].branch;
           len = len - 1
           if(len == 0 )
-            this.initializeItems(this.items)
+            this.refreshAssignmentsUploaded();
         })
         .catch((error) =>{
           console.log(error)
@@ -191,6 +213,27 @@ AddAssignment
             .catch((error) =>{;
               console.log(this.errors);
             })
+    },
+    refreshAssignmentsUploaded(){
+      let len = this.items.length
+      this.items.forEach((i)=>{
+        axios.get('/api/assignmenta')
+        .then((res)=>{
+          i['uploaded'] = 'false';
+          res.data.forEach((r)=>{
+            if(r.uploaded_by==this.userId && r.Assignment_id==i.id)
+            i['uploaded']='true';
+          })
+          len = len - 1
+          if(len == 0 )
+            this.initializeItems(this.items)
+        })
+
+        .catch((error) =>{
+          console.log(error)
+        })
+
+      })
     }
   },
   mounted(){
@@ -204,6 +247,7 @@ AddAssignment
         this.is_f = res.data.is_faculty;
         this.branch = res.data.branch;
         this.sem = String(res.data.semester)
+        this.userId = res.data.id;
         axios.put('/api/get-subjects',{'branch':this.branch})
                 .then((res)=>{
                     this.subjects = res.data
@@ -214,6 +258,9 @@ AddAssignment
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
+    this.$root.$on('refreshAssignmentsUploaded', () =>{
+      this.refreshAssignmentsUploaded();
+    });
   }
 }
 </script>

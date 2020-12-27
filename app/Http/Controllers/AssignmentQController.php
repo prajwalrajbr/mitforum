@@ -96,4 +96,10 @@ class AssignmentQController extends Controller
     {
         //
     }
+
+    
+    public function getAssignmentQLink(Request $request){
+        $id = $request->id;
+        return AssignmentQ::where('id',$id)->get(['fileLink','name']);
+    }
 }

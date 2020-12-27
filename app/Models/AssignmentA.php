@@ -9,10 +9,8 @@ class AssignmentA extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'fileName',
         'fileLink',
-        'subject_id',
+        'Assignment_id',
         'uploaded_by',
     ];
 }

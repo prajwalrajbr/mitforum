@@ -24,11 +24,22 @@ axios.put('/api/get-notes-link',{'id':this.$route.params.id})
         .catch((error) =>{
           console.log(error)
         })
+      },
+      showAssignmentsQ(){
+axios.put('/api/get-assignmentq-link',{'id':this.$route.params.id})
+        .then((res)=>{          
+          this.url = res.data[0].fileLink
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
       }
     },
     mounted(){this.height= $(window).height()-80
     if(this.$route.params.type=='notes'){
       this.showNotes()
+    }else if(this.$route.params.type=='assignments'){
+      this.showAssignmentsQ()
     }
            
 

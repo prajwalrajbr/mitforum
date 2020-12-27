@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignmentA;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AssignmentAController extends Controller
 {
@@ -14,7 +15,7 @@ class AssignmentAController extends Controller
      */
     public function index()
     {
-        //
+        return AssignmentA::latest()->get(['id','fileLink','Assignment_id','uploaded_by']);
     }
 
     /**
@@ -35,7 +36,15 @@ class AssignmentAController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $f = $request->file('fileName');
+        Storage::disk('googleAssignmentAnswers')->put(str_replace(' ', '_', $f->getClientOriginalName().''), fopen($f, 'r+'));
+        $fileLink = Storage::disk('googleAssignmentAnswers')->url(str_replace(' ', '_', $f->getClientOriginalName().''));
+        
+        AssignmentA::create([
+            'fileLink' => $fileLink,
+            'Assignment_id' => $request->Assignment_id,
+            'uploaded_by' => $request->uploaded_by,
+        ]);
     }
 
     /**

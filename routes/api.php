@@ -40,3 +40,6 @@ Route::put('/get-notes', 'App\Http\Controllers\NotesController@getNotes');
 Route::put('/get-notes-link', 'App\Http\Controllers\NotesController@getNotesLink');
 
 Route::resource('assignmentq', 'App\Http\Controllers\AssignmentQController');
+Route::put('/get-assignmentq-link', 'App\Http\Controllers\AssignmentQController@getAssignmentQLink');
+
+Route::resource('assignmenta', 'App\Http\Controllers\AssignmentAController');

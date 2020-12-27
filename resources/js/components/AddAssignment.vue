@@ -138,6 +138,8 @@ filteredSubjects(){
             .then((res)=>{
               console.log(res.data);
             this.$root.$emit('refreshAssignments', "true");
+        this.$root.$emit('showSnackbar', "Successfully Created");
+            this.$router.push('/')
             this.dialog = false
             })
             .catch((error) =>{
