@@ -4,9 +4,9 @@
     <v-layout row wrap align-center>
       <v-flex xs12 sm12 md6 lg6 v-for="item in items" :key="item.name" >
         <v-card elevation="5" class="ma-10 " max-width="800" link :to=item.to>
-          <v-img height="300" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
-          <v-card-title>{{ item.name }}</v-card-title> 
-          <v-card-text>
+          <v-img height="300" :src='item.img'></v-img>
+          <v-card-title :class='item.color'>{{ item.name }}</v-card-title> 
+          <v-card-text :class='item.color'>
           <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
           </v-card-text> 
         </v-card>
@@ -23,10 +23,10 @@ export default {
   data: () => ({
       userName: null,
       items: [
-        { name: 'Notes', img: 'https://bit.ly/3pdRYV0', to:'/notes' },
-        { name: 'Assignments', img: 'Graphic designer', to:'/assignments' },
-        { name: 'Assessments', img: 'Web developer', to:'/assessments' },
-        { name: 'Announcements & Queries', img: 'Social media maverick', to:'/announcements-queries' }
+        { name: 'Notes', img: 'https://bit.ly/3nRLZEh', to:'/notes', color:'grey darken-1' },
+        { name: 'Assignments', img: 'https://bit.ly/3aH7m7v', to:'/assignments', color:'yellow accent-4' },
+        { name: 'Assessments', img: 'https://bit.ly/2M08Jnu', to:'/assessments', color:'light-green darken-3' },
+        { name: 'Announcements & Queries', img: 'https://bit.ly/3nTuyTR', to:'/announcements-queries', color:'light-blue darken-3' }
       ],
   }),
   mounted(){

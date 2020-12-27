@@ -13,7 +13,7 @@
         <v-card-text>
           <v-row>
             <v-col cols="12">
-              <v-text-field v-model="form.subject" :error-messages="subjectErrors" label="Subject Name" required @input="$v.form.subject.$touch()" @blur="$v.form.subject.$touch()"></v-text-field>
+              <v-text-field v-model="form.subject_name" :error-messages="subjectErrors" label="Subject Name" required @input="$v.form.subject_name.$touch()" @blur="$v.form.subject_name.$touch()"></v-text-field>
             </v-col>
             
             <v-col cols="12">  
@@ -49,7 +49,7 @@ export default{
   mixins: [validationMixin],
   validations: {
     form: { 
-      subject: { required, maxLength: maxLength(40) },
+      subject_name: { required, maxLength: maxLength(40) },
       sub_code: { required, minLength: minLength(6), maxLength: maxLength(10) },
       sem: { required },
       branch: { required },
@@ -59,7 +59,7 @@ export default{
     dialog: false,
     userID: null,
     form:{ 
-      subject: '',
+      subject_name: '',
       sub_code: '',
       sem: '',
       semesterItems: [
@@ -79,9 +79,9 @@ export default{
   computed: {
     subjectErrors () {
       const errors = []
-      if (!this.$v.form.subject.$dirty) return errors
-      !this.$v.form.subject.maxLength && errors.push('This field must be at most 40 characters long')
-      !this.$v.form.subject.required && errors.push('This field is required.')
+      if (!this.$v.form.subject_name.$dirty) return errors
+      !this.$v.form.subject_name.maxLength && errors.push('This field must be at most 40 characters long')
+      !this.$v.form.subject_name.required && errors.push('This field is required.')
       return errors
     },
     sub_codeErrors () {

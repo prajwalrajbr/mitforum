@@ -11,7 +11,7 @@ class subjects extends Model
 
     protected $fillable = [
         'sub_code',
-        'subject',
+        'subject_name',
         'sem',
         'branch',
         'created_by',

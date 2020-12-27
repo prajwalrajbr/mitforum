@@ -14,11 +14,8 @@ class NotesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {$size = Storage::size('381xKFTrG6bOnAnHNetfkjltaIDtgiiEgLlTdtCl.pdf');
-        if (Storage::disk('google')->exists('381xKFTrG6bOnAnHNetfkjltaIDtgiiEgLlTdtCl.pdf')) {
-            return true;
-        }
-        return $size;
+    {
+        
     }
 
     /**
@@ -51,6 +48,8 @@ class NotesController extends Controller
             'uploaded_by' => $request->uploaded_by,
             'uploaded_subject_id' => $request->uploaded_subject_id,
         ]);
+
+        return $fileLink;
     }
 
     /**

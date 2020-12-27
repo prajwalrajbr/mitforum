@@ -11,7 +11,7 @@
             <v-select v-model="branch" :items="branchItems" label="Branch" outlined @change="sortByBranch"></v-select>
           </v-col>
           <v-spacer></v-spacer>
-          <v-col class="d-flex" cols="12" sm="2">
+          <v-col class="d-flex" cols="12" sm="2" v-if="is_f">
             <AddNoteSubject/>
           </v-col>
         </v-row>
@@ -50,6 +50,8 @@ export default {
 AddNoteSubject
   },
   data: () => ({
+    userName: '',
+    is_f: false,
     dialog: false,
     semester: '',
     semesterItems: [
@@ -110,6 +112,7 @@ AddNoteSubject
     user.auth()
     .then((res)=>{
         this.userName = res.data.full_name;
+        this.is_f = res.data.is_faculty;
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })

@@ -28,10 +28,15 @@ Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
 
 Route::get('/get-all-emails-and-usn', 'App\Http\Controllers\LoginController@getAllEmailAndUSN');
 Route::put('/get-fullname', 'App\Http\Controllers\LoginController@getFullname');
+Route::get('/get-all-users', 'App\Http\Controllers\LoginController@getAllUsers');
 
 Route::resource('subject', 'App\Http\Controllers\SubjectsController');
 Route::put('/get-uploaded-subject-id', 'App\Http\Controllers\SubjectsController@getSubjectId');
-Route::resource('notes', 'App\Http\Controllers\NotesController');
+Route::put('/get-subjects', 'App\Http\Controllers\SubjectsController@getSubjects');
+Route::put('/get-subject-sem-branch', 'App\Http\Controllers\SubjectsController@getSubjectSemAndBranch');
 
+Route::resource('notes', 'App\Http\Controllers\NotesController');
 Route::put('/get-notes', 'App\Http\Controllers\NotesController@getNotes');
 Route::put('/get-notes-link', 'App\Http\Controllers\NotesController@getNotesLink');
+
+Route::resource('assignmentq', 'App\Http\Controllers\AssignmentQController');

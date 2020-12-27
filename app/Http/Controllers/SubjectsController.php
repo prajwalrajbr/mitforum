@@ -14,7 +14,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        return subjects::latest()->get(['sub_code','subject','sem','branch','created_by']);
+        return subjects::latest()->get(['sub_code','subject_name','sem','branch','created_by']);
     }
 
     /**
@@ -37,14 +37,14 @@ class SubjectsController extends Controller
     {
         $request->validate([
             'sub_code' => ['required', 'unique:subjects'],
-            'subject' => ['required'],
+            'subject_name' => ['required'],
             'sem' => ['required'],
             'branch' => ['required'],
             'created_by' => ['required'],
         ]);
         subjects::create([
             'sub_code' => $request->sub_code,
-            'subject' => $request->subject,
+            'subject_name' => $request->subject_name,
             'sem' => $request->sem,
             'branch' => $request->branch,
             'created_by' => $request->created_by,
@@ -102,5 +102,15 @@ class SubjectsController extends Controller
             ['branch',$request->branch],
             ['sub_code',$request->sub_code],
         ])->get(['id']);
+    }
+
+    public function getSubjects(Request $request){
+        $branch = $request->branch;
+        return subjects::where('branch',$branch)->get(['id','sem','sub_code','subject_name']);
+    }
+
+    public function getSubjectSemAndBranch(Request $request){
+        $id = $request->id;
+        return subjects::where('id',$id)->get(['sem','branch']);
     }
 }

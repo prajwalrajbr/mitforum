@@ -1,12 +1,219 @@
 <template>
-    <div class="ma-6">
-        <v-btn>cl</v-btn>
-    </div>
+  <v-card flat>
+    <v-container>
+      <div class="pa-9"></div>
+      <v-card flat tile class="d-flex flex-row-reverse pa-3" app>
+        <v-row>
+          <v-spacer></v-spacer>
+          <v-col class="d-flex" cols="12" sm="2" v-if="is_f">
+            <AddAssignment :subjects='subjects'/>
+          </v-col>
+        </v-row>
+      </v-card>
+      <div v-if="is_f">
+        <v-layout row wrap align-center class="grey pa-4" v-if="items"> 
+          <v-flex xs12 v-for="item in items" class="pa-4" :key="item.id" >
+            
+            <v-expansion-panels>
+              <v-expansion-panel>
+                <v-expansion-panel-header disable-icon-rotate>
+                  Assignment Name : {{item.name}} --- Created By : {{item.created_by_name}} --- Sem : {{item.sem}}
+                  <v-spacer></v-spacer>
+                  Last Date : {{item.last_date_time}}  
+                  <template v-slot:actions>
+                    <v-icon color="primary">
+                      $expand
+                    </v-icon>
+                  </template>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <v-row>
 
+<div class="text-start">
+    <v-btn
+      rounded
+      color="primary"
+      dark
+    >
+      Rounded Button
+    </v-btn>
+  </div> <v-spacer></v-spacer>  <div class="text-end">
+    <v-btn
+      rounded
+      color="primary"
+      dark
+    >
+      Rounded Button
+    </v-btn>
+  </div>
+                    </v-row>
+<v-layout row wrap align-center  v-if="users"> 
+          <v-flex xs12 v-for="u in users" :key="u.id" >
+            <div v-if="u.semester == item.sem && u.branch == item.branch && !u.is_faculty">
+                  <v-expansion-panels>
+              <v-expansion-panel>
+                <v-expansion-panel-header disable-icon-rotate>
+                  {{u.full_name}}[ {{u.usn}} ]
+                  <template v-slot:actions>
+                    <v-icon color="error">
+                      mdi-alert-circle
+                    </v-icon>
+                  </template>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+
+</div>
+          </v-flex>
+        </v-layout>
+                  </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+            
+          </v-flex>
+        </v-layout>
+        <v-layout v-else>
+              <p>Oops! Assignments unavailable....</p> 
+        </v-layout>
+     </div>  
+     <div v-else-if="!is_f">
+        <v-layout row wrap align-center class="grey pa-4" v-if="itemss"> 
+          <v-flex xs12 v-for="item in itemss"  :key="item.id" >
+            <div v-if="item.sem == sem && item.branch == branch">
+            <v-expansion-panels class="pa-4">
+              <v-expansion-panel>
+                <v-expansion-panel-header disable-icon-rotate>
+                  Assignment Name : {{item.name}} --- Created By : {{item.created_by_name}} --- Sem : {{item.sem}}
+                  <v-spacer></v-spacer>
+                  Last Date : {{item.last_date_time}}  
+                  <template v-slot:actions>
+                    <v-icon color="primary">
+                      $expand
+                    </v-icon>
+                  </template>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+aa
+                  </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+            </div>
+          </v-flex>
+        </v-layout>
+        <v-layout v-else>
+              <p>Oops! Assignments unavailable....</p> 
+        </v-layout>
+     </div> 
+    </v-container >
+    <v-fab-transition >
+      <v-btn fab large dark bottom right fixed  @click="showAddAssignmentPopup" :disabled="dialog">
+        <v-icon>exit_to_app</v-icon>
+      </v-btn>
+    </v-fab-transition> 
+  </v-card>
 </template>
 
 <script>
-export default{
+
+import AddAssignment from "../components/AddAssignment";
+import user from "../apis/user";
+
+export default {
+  components: {
+AddAssignment
+  },
+  data: () => ({
+    userName: '',
+    sem: null,
+    is_f: false,
+    dialog: false,
+    branch: '',
+    items: null,
+    itemss: null,
+    subjects: [],
+    users: []
+  }),
+  computed: {
     
+  },
+  methods:{
+    toSubPage(branch, sem, sub_code){
+    },
+    initializeItems(items){
+      this.itemss = items
+    },
+    showAddAssignmentPopup(){
+      this.$root.$emit('showAddAssignmentPopup', "true");
+    },
+    addCreatedBy(){
+      this.items.forEach((i)=>{
+        i['last_date_time'] = i['last_date_time'].substr(0,25)
+        axios.put('/api/get-fullname',{'id':i.created_by})
+        .then((res)=>{
+          i['created_by_name'] = res.data[0].full_name;
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+      })
+      var len = this.items.length
+      this.items.forEach((i)=>{
+        i['last_date_time'] = i['last_date_time'].substr(0,25)
+        axios.put('/api/get-subject-sem-branch',{'id':i.subject_id})
+        .then((res)=>{
+          i['sem'] = String(res.data[0].sem);
+          i['branch'] = res.data[0].branch;
+          len = len - 1
+          if(len == 0 )
+            this.initializeItems(this.items)
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+      })
+    },
+    get_assignments(){
+          axios.get('/api/assignmentq')
+            .then((res)=>{
+              this.items = res.data
+              this.addCreatedBy();
+            })
+            .catch((error) =>{
+              console.log(this.errors);
+            })
+          axios.get('/api/get-all-users')
+            .then((res)=>{
+              this.users = res.data
+            })
+            .catch((error) =>{;
+              console.log(this.errors);
+            })
+    }
+  },
+  mounted(){
+    this.get_assignments();
+            this.$root.$on('refreshAssignments', () =>{
+              this.get_assignments();
+            });
+    user.auth()
+    .then((res)=>{
+        this.userName = res.data.full_name;
+        this.is_f = res.data.is_faculty;
+        this.branch = res.data.branch;
+        this.sem = String(res.data.semester)
+        axios.put('/api/get-subjects',{'branch':this.branch})
+                .then((res)=>{
+                    this.subjects = res.data
+                })
+                .catch((error) =>{
+                console.log(error)
+                })
+    }).catch((err)=>{
+      this.$root.$emit('showSnackbar', "Please log-in to continue");
+    })
+  }
 }
 </script>

@@ -3,6 +3,7 @@ import About from './views/About';
 import Notes from './views/Notes';
 import SubjectNote from './views/SubjectNote';
 import PDFView from './views/PDFView';
+import Assignments from './views/Assignments'; 
 
 import PageNotFound from './views/PageNotFound';
 
@@ -59,9 +60,15 @@ export default{
             
         },
         {
-            path: '/pdfview/:id',
+            path: '/pdfview/:type/:id',
             component: PDFView,
             name: 'PDFView',
+            
+        },  
+        {
+            path: '/assignments',
+            component: Assignments,
+            name: 'Assignments',
             
         },
     ]

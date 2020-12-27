@@ -5,7 +5,7 @@
       <v-card flat tile class="d-flex flex-row-reverse pa-3" app>
         <v-row>
           <v-spacer></v-spacer>
-          <v-col class="d-flex" cols="12" sm="2">
+          <v-col class="d-flex" cols="12" sm="2" v-if="is_f">
               
             <AddNotes :uploaded_subject_id='uploaded_subject_id' />
           </v-col>
@@ -38,6 +38,7 @@
 <script>
 
 import AddNotes from "../components/AddNotes";
+import user from "../apis/user";
 
 export default {
   components:{
@@ -45,21 +46,13 @@ AddNotes
   },
   data: () => ({
       dialog: false,
+      is_f: false,
       uploaded_subject_id:'',
     items: []
   }),
-  computed:{
-    filteredItems () {
-      console.log(this.items)
-      let fItems = this.items
-      if (fItems.length == 0)
-        return null;
-      return fItems
-    },
-  },
   methods:{
     toPDFViewPage(id){
-      return "/pdfview/"+id
+      return "/pdfview/notes/"+id
     },
     showAddNotesPopup(){
       this.$root.$emit('showAddNotesPopup', "true");
@@ -93,6 +86,7 @@ AddNotes
               len = len - 1
               if(len == 0 )
                 this.initializeItems(items)
+                this.$root.$emit('cancelAddNotesPopup', "true");
             })
             .catch((error) =>{
               console.log(error)
@@ -106,6 +100,15 @@ AddNotes
   },
   mounted(){
     this.add_uploaded_subject_id();
+    this.$root.$on('refreshNotes', () =>{
+              this.get_notes();
+            });
+    user.auth()
+    .then((res)=>{
+        this.is_f = res.data.is_faculty;
+    }).catch((err)=>{
+      this.$root.$emit('showSnackbar', "Please log-in to continue");
+    })
   }
 }
 </script>

@@ -76,12 +76,13 @@ export default{
       if (this.errors === false && this.formTouched === false) {
         var data = new FormData()
             data.append('name', this.form.name);
-        data.append('fileName', this.form.fileName)
+            data.append('fileName', this.form.fileName)
             data.append('uploaded_by', this.userID);
             data.append('uploaded_subject_id', this.uploaded_subject_id);
           axios.post('/api/notes',data ,{headers:{'Content-Type': 'multipart/form-data'}})
           .then((res)=>{
             console.log(res.data);
+            this.$root.$emit('refreshNotes', "true");
           })
           .catch((error) =>{
             this.errors = error.response.data.errors;
@@ -121,6 +122,9 @@ export default{
     });
     this.$root.$on('showAddNotesPopup', () =>{
       this.dialog = true
+    });
+    this.$root.$on('cancelAddNotesPopup', () =>{
+      this.dialog = false
     });
   }
 }

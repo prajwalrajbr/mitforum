@@ -9,6 +9,8 @@ import routes from './routes';
 import Vuelidate from 'vuelidate'
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiAccount } from '@mdi/js'
+import DatetimePicker from 'vuetify-datetime-picker'
+
 
 global.jQuery = require('jquery');
 var $ = global.jQuery;
@@ -17,6 +19,7 @@ window.$ = $;
 Vue.use(Vuelidate);
 Vue.use(VueRouter);
 Vue.use(SvgIcon);
+Vue.use(DatetimePicker)
 
 import App from "./App.vue";
 

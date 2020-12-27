@@ -36,6 +36,10 @@ class LoginController extends Controller
         return User::latest()->get(['email','usn']);
     }
 
+    public function getAllUsers(){
+        return User::latest()->orderBy('full_name')->get(['id','full_name','usn','semester','branch','is_faculty']);
+    }
+
     public function getFullname(Request $request){
         $id = $request->id;
         return User::where('id',$id)->get(['full_name']);
