@@ -33,6 +33,20 @@ axios.put('/api/get-assignmentq-link',{'id':this.$route.params.id})
         .catch((error) =>{
           console.log(error)
         })
+      },
+      showAssignmentsA(){
+var id=this.$route.params.id
+axios.get('/api/assignmenta')
+        .then((res)=>{     
+          res.data.forEach((r)=>{
+            if(r.id==id)
+            this.url = r.fileLink
+          })     
+          
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
       }
     },
     mounted(){this.height= $(window).height()-80
@@ -40,6 +54,8 @@ axios.put('/api/get-assignmentq-link',{'id':this.$route.params.id})
       this.showNotes()
     }else if(this.$route.params.type=='assignments'){
       this.showAssignmentsQ()
+    }else if(this.$route.params.type=='assignments-anwers'){
+      this.showAssignmentsA()
     }
            
 

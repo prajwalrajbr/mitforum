@@ -15,7 +15,7 @@ class AssignmentAController extends Controller
      */
     public function index()
     {
-        return AssignmentA::latest()->get(['id','fileLink','Assignment_id','uploaded_by']);
+        return AssignmentA::latest()->get(['id','fileLink','Assignment_id','uploaded_by','created_at']);
     }
 
     /**

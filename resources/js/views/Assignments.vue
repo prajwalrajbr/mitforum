@@ -11,8 +11,8 @@
         </v-row>
       </v-card>
       <div v-if="is_f">
-        <v-layout row wrap align-center class="grey pa-4" v-if="items"> 
-          <v-flex xs12 v-for="item in items" class="pa-4" :key="item.id" >
+        <v-layout row wrap align-center class="grey pa-4" v-if="itemss"> 
+          <v-flex xs12 v-for="item in itemss" class="pa-4" :key="item.id" >
             
             <v-expansion-panels>
               <v-expansion-panel>
@@ -45,7 +45,31 @@
             <div v-if="u.semester == item.sem && u.branch == item.branch && !u.is_faculty">
                   <v-expansion-panels>
               <v-expansion-panel>
-                <v-expansion-panel-header disable-icon-rotate>
+                <div v-if="u[item.id] === 'true'">
+<v-expansion-panel-header disable-icon-rotate>
+                  {{u.full_name}}[ {{u.usn}} ]
+                  <template v-slot:actions>
+                    <v-icon color="teal">
+                      mdi-check
+                    </v-icon>
+                  </template>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  Uploaded at :- {{u[item.id+'c']}}
+                  <v-spacer></v-spacer>  
+  <div class="text-end" >
+    <v-btn
+      rounded
+      color="success"
+      dark 
+      @click="toPDFViewPageAnswer(u[item.id+'l'])"
+    >
+      View 
+    </v-btn></div>
+                  </v-expansion-panel-content>
+                </div>
+                <div v-else>
+                  <v-expansion-panel-header disable-icon-rotate>
                   {{u.full_name}}[ {{u.usn}} ]
                   <template v-slot:actions>
                     <v-icon color="error">
@@ -54,8 +78,9 @@
                   </template>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </v-expansion-panel-content>
+                  Not Uploaded...
+                  </v-expansion-panel-content>
+                </div>
               </v-expansion-panel>
             </v-expansion-panels>
 
@@ -83,8 +108,11 @@
                   <v-spacer></v-spacer>
                   Last Date : {{item.last_date_time}}  
                   <template v-slot:actions>
-                    <v-icon color="primary">
-                      $expand
+                    <v-icon color="teal" v-if="item.uploaded == 'true'">
+                      mdi-check
+                    </v-icon>
+                    <v-icon color="error" v-else>
+                      mdi-alert-circle
                     </v-icon>
                   </template>
                 </v-expansion-panel-header>
@@ -154,18 +182,23 @@ AddAssignmentAnswer
     items: null,
     itemss: null,
     subjects: [],
-    users: []
+    users: [],
+    assignmentsa: []
   }),computed: {
     computed_id: function() {
       return this.itemss;
     }
   },
   methods:{
+    toPDFViewPageAnswer(id){
+this.$router.push('/pdfview/assignments-anwers/'+id)
+    },
     toPDFViewPage(id){
       this.$router.push('/pdfview/assignments/'+id)
     },
     initializeItems(items){
       this.itemss = items
+      this.items = items
     },
     showAddAssignmentPopup(){
       this.$root.$emit('showAddAssignmentPopup', "true");
@@ -216,24 +249,46 @@ AddAssignmentAnswer
     },
     refreshAssignmentsUploaded(){
       let len = this.items.length
-      this.items.forEach((i)=>{
-        axios.get('/api/assignmenta')
+      var z =  this.items
+      axios.get('/api/assignmenta')
         .then((res)=>{
+          this.assignmentsa = res.data
+      z.forEach((i)=>{
+        
           i['uploaded'] = 'false';
           res.data.forEach((r)=>{
-            if(r.uploaded_by==this.userId && r.Assignment_id==i.id)
+            if(this.is_f){
+
+this.users.forEach((u)=>{
+  if(r.uploaded_by==u.id && r.Assignment_id==i.id){
             i['uploaded']='true';
+            u[i.id]='true'
+            u[i.id+'c']=r.created_at
+            u[i.id+'l']=r.id}
+})
+            
+
+
+            }
+            else{
+              if(r.uploaded_by==this.userId && r.Assignment_id==i.id){
+            i['uploaded']='true';}
+            }
+            
           })
+          
           len = len - 1
-          if(len == 0 )
-            this.initializeItems(this.items)
+          if(len == 0 ){
+            
+            this.initializeItems(z)}
         })
 
-        .catch((error) =>{
-          console.log(error)
-        })
+        
 
       })
+      .catch((error) =>{
+          console.log(error)
+        })
     }
   },
   mounted(){
