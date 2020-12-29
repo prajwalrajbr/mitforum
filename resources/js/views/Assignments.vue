@@ -191,7 +191,7 @@ AddAssignmentAnswer
   },
   methods:{
     toPDFViewPageAnswer(id){
-this.$router.push('/pdfview/assignments-anwers/'+id)
+this.$router.push('/pdfview/assignments-answers/'+id)
     },
     toPDFViewPage(id){
       this.$router.push('/pdfview/assignments/'+id)

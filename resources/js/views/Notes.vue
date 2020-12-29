@@ -18,7 +18,7 @@
       </v-card>
       
         <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
-          <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.sub_code" >
+          <v-flex xs12 sm6 md4 lg4 v-for="item in filteredItems" :key="item.id" >
             <v-card elevation="5" class="ma-10 " max-width="800" link :to="toSubPage(item.branch, item.sem, item.sub_code)">
               <v-card-title>{{ item.sub_code }}</v-card-title> 
               <v-card-text>
@@ -51,6 +51,7 @@ AddNoteSubject
   },
   data: () => ({
     userName: '',
+    userID: null,
     is_f: false,
     dialog: false,
     semester: '',
@@ -112,12 +113,21 @@ AddNoteSubject
     user.auth()
     .then((res)=>{
         this.userName = res.data.full_name;
+        this.userID = res.data.id;
         this.is_f = res.data.is_faculty;
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
     this.$root.$on('addSubject', (data) =>{
-      this.items.push(data)
+      var i = new Object();
+      i['branch']=data.branch;
+      i['created_by']=this.userID;
+      i['created_by_name']=this.userName;
+      i['sub_code']=data.sub_code;
+      i['subject_name']=data.subject_name;
+      i['sem']=data.sem;
+      i['id']=data.subject_name
+      this.items.push(i)
     });
   }
 }

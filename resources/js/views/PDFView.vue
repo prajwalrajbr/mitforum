@@ -47,6 +47,19 @@ axios.get('/api/assignmenta')
         .catch((error) =>{
           console.log(error)
         })
+      },
+      showAnnouncementsAndQueries(){
+var id=this.$route.params.id
+        axios.get('/api/announcements-and-queries')
+                .then((res)=>{
+                    res.data.forEach((r)=>{
+            if(r.id==id)
+            this.url = r.fileLink
+          }) 
+                })
+                .catch((error) =>{
+                console.log(error)
+                })
       }
     },
     mounted(){this.height= $(window).height()-80
@@ -54,8 +67,10 @@ axios.get('/api/assignmenta')
       this.showNotes()
     }else if(this.$route.params.type=='assignments'){
       this.showAssignmentsQ()
-    }else if(this.$route.params.type=='assignments-anwers'){
+    }else if(this.$route.params.type=='assignments-answers'){
       this.showAssignmentsA()
+    }else if(this.$route.params.type=='announcements-queries'){
+      this.showAnnouncementsAndQueries()
     }
            
 
