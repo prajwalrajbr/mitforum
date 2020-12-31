@@ -60,7 +60,35 @@ var id=this.$route.params.id
                 .catch((error) =>{
                 console.log(error)
                 })
-      }
+      },
+      showAssessmentsQ(){
+var id=this.$route.params.id
+axios.get('/api/assessmentq')
+        .then((res)=>{     
+          res.data.forEach((r)=>{
+            if(r.id==id)
+            this.url = r.fileLink
+          })     
+          
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+      },
+      showAssessmentsA(){
+var id=this.$route.params.id
+axios.get('/api/assessmenta')
+        .then((res)=>{     
+          res.data.forEach((r)=>{
+            if(r.id==id)
+            this.url = r.fileLink
+          })     
+          
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+      },
     },
     mounted(){this.height= $(window).height()-80
     if(this.$route.params.type=='notes'){
@@ -71,6 +99,10 @@ var id=this.$route.params.id
       this.showAssignmentsA()
     }else if(this.$route.params.type=='announcements-queries'){
       this.showAnnouncementsAndQueries()
+    }else if(this.$route.params.type=='assessments'){
+      this.showAssessmentsQ()
+    }else if(this.$route.params.type=='assessments-answers'){
+      this.showAssessmentsA()
     }
            
 

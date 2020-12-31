@@ -45,3 +45,7 @@ Route::put('/get-assignmentq-link', 'App\Http\Controllers\AssignmentQController@
 Route::resource('assignmenta', 'App\Http\Controllers\AssignmentAController');
 
 Route::resource('announcements-and-queries', 'App\Http\Controllers\AandQController');
+
+Route::resource('assessmentq', 'App\Http\Controllers\AssessmentQController');
+
+Route::resource('assessmenta', 'App\Http\Controllers\AssessmentAController');

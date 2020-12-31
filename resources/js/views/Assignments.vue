@@ -267,8 +267,6 @@ this.users.forEach((u)=>{
             u[i.id+'l']=r.id}
 })
             
-
-
             }
             else{
               if(r.uploaded_by==this.userId && r.Assignment_id==i.id){

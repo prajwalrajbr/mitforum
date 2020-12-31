@@ -5,6 +5,7 @@ import SubjectNote from './views/SubjectNote';
 import PDFView from './views/PDFView';
 import Assignments from './views/Assignments'; 
 import AandQ from './views/AandQ';
+import Assessments from './views/Assessments'; 
 
 import PageNotFound from './views/PageNotFound';
 
@@ -76,6 +77,12 @@ export default{
             path: '/announcements-queries',
             component: AandQ,
             name: 'AandQ',
+            
+        }, 
+        {
+            path: '/assessments',
+            component: Assessments,
+            name: 'Assessments',
             
         },
     ]
