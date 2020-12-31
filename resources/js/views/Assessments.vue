@@ -288,7 +288,7 @@ if(days>0){
       res = String(days)+'Day(s) '+String(startsin.substring(0,2))+' Hour(s) '+String(startsin.substring(3,5))+' Minute(s)';
       return res;
 }else if(days==0){
-  if((i.startTime) < (this.time) && (this.time) < (i.endTime))
+  if((i.startTime) <= (this.time) && (this.time) <= (i.endTime))
             i['assessment']=0
           else if((i.startTime) > (this.time))
             i['assessment']=1
@@ -331,9 +331,13 @@ return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minut
     showAddAssessmentPopup(){
       this.$root.$emit('showAddAssessmentPopup', "true");
     },
-    updateAssessmentsSubmission(){
-            
-    }
+    todo: function(){           
+    this.intervalid1 = setInterval(function(){
+        
+      var t = new Date();
+      this.time = t.toString().substring(16, 21)
+    }.bind(this), 10000);
+}
     
   },
   mounted(){  
@@ -405,6 +409,7 @@ return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minut
   this.$root.$on('AssessmentUploaded', (data) =>{
     this.$router.push('/')
   })
+  this.todo()     
   }
 }
 </script>

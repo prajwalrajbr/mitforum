@@ -14,6 +14,7 @@ export default {
             fileName: '',
             name: '',
             height: '',
+            prevRoute: null,
     }},
     methods: {
       showNotes(){
@@ -104,9 +105,6 @@ axios.get('/api/assessmenta')
     }else if(this.$route.params.type=='assessments-answers'){
       this.showAssessmentsA()
     }
-           
-
-        
     }
   }
 
