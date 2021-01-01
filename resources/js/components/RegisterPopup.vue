@@ -205,6 +205,7 @@ export default{
           .then(()=>{
             this.dialog = false
             this.initializeEmailAndUSN()
+        this.resetForm();
             this.$root.$emit('showSnackbar', "User created successfully");
           })
           .catch((error) =>{

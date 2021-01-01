@@ -49,6 +49,8 @@ class SubjectsController extends Controller
             'branch' => $request->branch,
             'created_by' => $request->created_by,
         ]);
+
+        return subjects::latest()->take(1)->get();
     }
 
     /**
@@ -111,6 +113,6 @@ class SubjectsController extends Controller
 
     public function getSubjectSemAndBranch(Request $request){
         $id = $request->id;
-        return subjects::where('id',$id)->get(['sem','branch']);
+        return subjects::where('id',$id)->get(['sem','branch','sub_code','subject_name']);
     }
 }

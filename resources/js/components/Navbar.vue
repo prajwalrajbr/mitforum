@@ -119,7 +119,7 @@ export default{
         this.loggedIn = false
         this.$root.$emit('loggedOut', "true");
         this.userName = "";
-        this.$root.$emit('userName', this.userName);
+        this.$root.$emit('userName', ' ');
         this.$root.$emit('showSnackbar', "Successfully logged out");
       })
     },
@@ -137,6 +137,12 @@ export default{
     this.$root.$on('showSnackbar', (text) =>{
       this.snackbarText = text;
       this.snackbar = true;
+    });
+    this.$root.$on('userName', (text) =>{
+      if(text){
+      this.userName = text}else{
+this.userName = null
+      }
     });
     this.$root.$on('loggedIn', () =>{
       this.loggedIn = true

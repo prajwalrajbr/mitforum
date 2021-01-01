@@ -49,7 +49,7 @@ class NotesController extends Controller
             'uploaded_subject_id' => $request->uploaded_subject_id,
         ]);
 
-        return $fileLink;
+        return notes::latest()->take(1)->get();
     }
 
     /**

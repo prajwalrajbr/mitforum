@@ -94,6 +94,17 @@ export default{
     },
   },
   methods: {
+    resetForm () {
+      this.formHasErrors = false
+      this.$v.$reset();
+      var self = this;
+      Object.keys(this.form).forEach(function(key,index) {
+        if(typeof self.form[key] === "string") 
+          self.form[key] = ''; 
+        else if (typeof self.form[key] === "boolean") 
+          self.form[key] = false;
+      });
+    },
     submit () {
       user.login(this.form)
       .then(()=>{
@@ -102,11 +113,12 @@ export default{
         this.loggedIn = true
         this.$root.$emit('loggedIn', "true");
         this.updateUserData();
+        this.resetForm();
         this.$root.$emit('showSnackbar', "Successfully logged in");
       })
       .catch((error) =>{
         this.errors = error.response.data.errors
-        console.log(this.errors);
+        console.log(error);
       })
     },
     logout () {

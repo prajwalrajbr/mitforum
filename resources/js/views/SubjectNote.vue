@@ -4,10 +4,12 @@
       <div class="pa-9"></div>
       <v-card flat tile class="d-flex flex-row-reverse pa-3" app>
         <v-row>
+          <v-col class="d-flex" cols="12" sm="8">
+            <div class="headline" v-if="subject_name">{{subject_name}} [ {{sub_code}} ]</div>
+          </v-col>
           <v-spacer></v-spacer>
-          <v-col class="d-flex" cols="12" sm="2" v-if="is_f">
-              
-            <AddNotes :uploaded_subject_id='uploaded_subject_id' />
+          <v-col class="d-flex" cols="12" sm="4" v-if="is_f">            
+            <AddNotes :uploaded_subject_id='this.$route.params.id' />
           </v-col>
         </v-row>
       </v-card>
@@ -17,7 +19,7 @@
             <v-card elevation="5" class="mx-10 my-5 mb-3 " max-width="1100" link :to="toPDFViewPage(item.id)">
               <v-card-title>{{ item.name }}</v-card-title> 
               <v-card-text>
-              <div>ssssssssssssssss{{ item.uploaded_by_name }}</div>
+              <div>Uploaded By :- {{ item.created_by_name }}</div>
               </v-card-text>             
             </v-card>
           </v-flex>
@@ -29,7 +31,7 @@
     </v-container>
     <v-fab-transition >
       <v-btn fab large dark bottom right fixed  @click="showAddNotesPopup" :disabled="dialog">
-        <v-icon>exit_to_app</v-icon>
+        <v-icon large>add</v-icon>
       </v-btn>
     </v-fab-transition> 
   </v-card> 
@@ -47,7 +49,10 @@ AddNotes
   data: () => ({
       dialog: false,
       is_f: false,
-      uploaded_subject_id:'',
+      users: [],
+      sub_code: null,
+      subject_name: null,
+      users: [],
     items: []
   }),
   methods:{
@@ -57,49 +62,39 @@ AddNotes
     showAddNotesPopup(){
       this.$root.$emit('showAddNotesPopup', "true");
     },
-    add_uploaded_subject_id(){
-      let branchUpdated = this.$route.params.branch.replace(/\-/g,' ')
-      let sub_codeUpdated = this.$route.params.sub_code.replace(/\-/g,' ')
-      axios.put('/api/get-uploaded-subject-id',{'sem':this.$route.params.sem, 'branch':branchUpdated, 'sub_code':sub_codeUpdated})
-        .then((res)=>{
-          this.uploaded_subject_id = res.data[0].id;
-          this.get_notes();
-        })
-        .catch((error) =>{
-          console.log(error)
-        })
-    },
     initializeItems(items){
       this.items = items
     },
     get_notes(){
-      axios.put('/api/get-notes',{'uploaded_subject_id':this.uploaded_subject_id})
+      axios.put('/api/get-notes',{'uploaded_subject_id':this.$route.params.id})
         .then((res)=>{
-          console.log(res)
           var items = res.data
           var len = items.length
-          console.log(len) 
           items.forEach((i)=>{
-            axios.put('/api/get-fullname',{'id':i.uploaded_by})
-            .then((res)=>{
-              i['uploaded_by_name'] = res.data[0].full_name;
-              len = len - 1
-              if(len == 0 )
-                this.initializeItems(items)
-                this.$root.$emit('cancelAddNotesPopup', "true");
+            for(var j=0;j<this.users.length;j++){
+          if(this.users[j].id == i.uploaded_by){
+            i['created_by_name'] = this.users[j].full_name;
+            break;
+          }
+        }
+                
             })
-            .catch((error) =>{
-              console.log(error)
-            })
+            this.initializeItems(items)
           })
-        })
         .catch((error) =>{
           console.log(error)
         })
     }
   },
   mounted(){
-    this.add_uploaded_subject_id();
+    axios.get('/api/get-all-users')
+    .then((res)=>{
+      this.users = res.data
+      this.get_notes();
+    })
+    .catch((error) =>{
+        console.log(error)
+      })
     this.$root.$on('refreshNotes', () =>{
               this.get_notes();
             });
@@ -109,6 +104,16 @@ AddNotes
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
+    axios.put('/api/get-subject-sem-branch',{'id':this.$route.params.id})
+        .then((res)=>{
+          this.subject_name = res.data[0].subject_name
+          this.sub_code = res.data[0].sub_code
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+        
+              
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <v-row justify="end" block>
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog">
+        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog" large>
             <span class="grey--text text--darken-4 font-weight-bold">+ Add Subject</span>
         </v-btn>
       </template>
@@ -49,7 +49,7 @@ export default{
   mixins: [validationMixin],
   validations: {
     form: { 
-      subject_name: { required, maxLength: maxLength(40) },
+      subject_name: { required, maxLength: maxLength(50) },
       sub_code: { required, minLength: minLength(6), maxLength: maxLength(10) },
       sem: { required },
       branch: { required },
@@ -106,6 +106,17 @@ export default{
     },
   },
   methods: {
+    resetForm () {
+      this.formHasErrors = false
+      this.$v.$reset();
+      var self = this;
+      Object.keys(this.form).forEach(function(key,index) {
+        if(typeof self.form[key] === "string") 
+          self.form[key] = ''; 
+        else if (typeof self.form[key] === "boolean") 
+          self.form[key] = false;
+      });
+    },
     submit () {
       this.$v.$touch()
       this.formTouched = !this.$v.form.$anyDirty;
@@ -113,14 +124,14 @@ export default{
       if (this.errors === false && this.formTouched === false) {
         this.form.created_by = this.userID
         axios.post('/api/subject',this.form)
-        .then(()=>{
+        .then((res)=>{
           this.dialog = false
           this.$root.$emit('showSnackbar', "Subject Created Successfully");
-          this.$root.$emit('addSubject', this.form);
+          this.$root.$emit('addSubject', res.data);
+          this.resetForm();
         })
         .catch((error) =>{
-          this.errors = error.response.data.errors
-          console.log(this.errors);
+          console.log(error);
         })
       }
     },
@@ -129,7 +140,6 @@ export default{
       user.auth()
       .then((res)=>{
         this.userID = res.data.id;
-        this.$root.$emit('userName', this.userName);
         this.loggedIn = true;
         this.$root.$emit('loggedIn', "true");
       })

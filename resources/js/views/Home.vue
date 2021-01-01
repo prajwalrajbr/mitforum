@@ -7,7 +7,7 @@
           <v-img height="300" :src='item.img'></v-img>
           <v-card-title :class='item.color'>{{ item.name }}</v-card-title> 
           <v-card-text :class='item.color'>
-          <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div></div>
           </v-card-text> 
         </v-card>
       </v-flex>

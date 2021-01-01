@@ -28,7 +28,7 @@
                 </v-btn>
                 <v-spacer></v-spacer>
                 <v-btn depressed color="blue lighten-1" @click="toPDFViewPage(item.id)" v-if="item.fileLink">
-                  View
+                  View File
                   </v-btn>
                   </v-card-title> 
               <v-card-text>
@@ -39,31 +39,6 @@
     </v-flex>
     </v-card>
 </div>
-
-
-        <!-- <v-layout row wrap :class="classname" v-if="filteredItems" > 
-          <v-flex xs8 v-for="item in filteredItems" :key="item.id" >
-            <div v-if="check(item.is_f)"></div>
-            <v-card  elevation="5" class="mx-10 my-5 " max-width="800" >
-              <v-card-title>
-                <v-btn depresse color="grey lighten-1">
-                  {{ item.name }}
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn depressed color="blue lighten-1" @click="toPDFViewPage(item.id)" v-if="item.fileLink">
-                  View
-                  </v-btn>
-                  </v-card-title> 
-              <v-card-text>
-              <div>{{item.description}} --{{ item.username }}</div>
-              </v-card-text>             
-            </v-card>
-          </v-flex>
-        </v-layout>
-        <v-layout v-else>
-              <p>Oops! Announcements unavailable....</p> 
-        </v-layout> 
-         -->
     </v-container>
     <v-fab-transition >
       <v-btn fab large dark bottom right fixed  @click="showAddAandQPopup" :disabled="dialog">
