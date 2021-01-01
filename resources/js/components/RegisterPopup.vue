@@ -84,6 +84,7 @@ export default{
   data: () => ({
     dialog: false,
     existingEmailAndUSN: [],
+    facultyList: [],
     form:{ 
       full_name: '',
       usn: '',
@@ -192,16 +193,27 @@ export default{
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
       if (this.errors === false && this.formTouched === false) {
-        user.register(this.form)
-        .then(()=>{
-          this.dialog = false
-          this.initializeEmailAndUSN()
-          this.$root.$emit('showSnackbar', "User created successfully");
+        var matches=false
+        this.facultyList.forEach(f=>{
+          if(this.form.usn == f.FID && this.form.email == f.email)
+          matches = true
         })
-        .catch((error) =>{
-          this.errors = error.response.data.errors
-          console.log(this.errors);
-        })
+        if(!this.form.is_faculty)
+        matches=true
+        if(matches === true){
+          user.register(this.form)
+          .then(()=>{
+            this.dialog = false
+            this.initializeEmailAndUSN()
+            this.$root.$emit('showSnackbar', "User created successfully");
+          })
+          .catch((error) =>{
+            this.errors = error.response.data.errors
+            console.log(this.errors);
+          })
+        }else{
+          this.$root.$emit('showSnackbar', "Wrong Faculty Details");
+        }
       }else{
         this.formHasErrors = true
       }           
@@ -218,7 +230,17 @@ export default{
     }
   },
   created(){
-    this.initializeEmailAndUSN();
+    this.initializeEmailAndUSN();   
+    axios.get('/api/get-faculty-table')
+    .then((res)=>{
+      this.facultyList = res.data;
+    })
+    .catch((error) =>{
+        console.log(error)
+      })
+  },
+  mounted(){
+    
   }
 }
 </script>

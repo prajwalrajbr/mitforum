@@ -49,3 +49,5 @@ Route::resource('announcements-and-queries', 'App\Http\Controllers\AandQControll
 Route::resource('assessmentq', 'App\Http\Controllers\AssessmentQController');
 
 Route::resource('assessmenta', 'App\Http\Controllers\AssessmentAController');
+
+Route::resource('get-faculty-table', 'App\Http\Controllers\FacultyTableController');
