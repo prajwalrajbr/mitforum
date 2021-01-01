@@ -51,7 +51,7 @@
       </v-navigation-drawer>
       </div>
       <div v-else>
-      <v-navigation-drawer v-model="drawer" dark fixed temporary>
+      <v-navigation-drawer v-model="drawer" dark fixed temporary v-bind:width="375">
         <v-list nav dense>
           <v-list-item v-model="group" active-class="light-blue--text text--accent-4" v-for="item in items" :key="item.title" link :to=item.to  >
             <v-list-item-icon class="font-weight-medium text-h6 ">
@@ -104,6 +104,10 @@ export default{
       userName: null,
       items: [
         { title: 'Home', icon: 'home', to:'/' },
+        { title: 'Notes', icon: 'import_contacts', to:'/notes' },
+        { title: 'Assignments', icon: 'assignment', to:'/assignments' },
+        { title: 'Assessments', icon: 'border_color', to:'/assessments' },
+        { title: 'Announcements and Queries', icon: 'info', to:'/announcements-queries' },
         { title: 'About', icon: 'help_center', to:'/about' },
       ]
     }
@@ -124,8 +128,11 @@ export default{
     },
   },
   mounted(){
-    this.$root.$on('userName', (text)=>{
-      this.userName = text;
+    user.auth()
+    .then((res)=>{
+        this.userName = res.data.full_name;
+    }).catch((err)=>{
+      this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
     this.$root.$on('showSnackbar', (text) =>{
       this.snackbarText = text;
