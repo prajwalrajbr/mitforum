@@ -1,29 +1,4 @@
 <template>
     <div class="pa-9">
-        <v-btn @click="mounted">cl</v-btn>
-        <div class="" v-if="userName">
-            <h3>{{ userName }}</h3>
-        </div>
     </div>
 </template>
-
-<script>
-
-import user from "../apis/user";
-export default{
-    data() {
-        return {
-            userName: null
-    }},
-    methods:{ 
-        
-    },
-    mounted(){
-        user.auth()
-        .then((res)=>{
-            this.userName = res.data.full_name;
-        })       
-    }
-  }
-
-</script>

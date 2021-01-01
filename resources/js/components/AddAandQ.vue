@@ -36,7 +36,7 @@
     ></v-checkbox>
           </v-col>
             <v-col cols="12">
-              <v-file-input :disabled="!includeFiles" show-size label="File input" @change="selectFile" ></v-file-input>
+              <v-file-input :disabled="!includeFiles" v-model="form.fileName" show-size label="File input" @change="selectFile" ></v-file-input>
             </v-col>
           </v-row>
         </v-card-text>
@@ -60,7 +60,7 @@ export default{
   mixins: [validationMixin],
   validations: {
     form: { 
-      name: { required, maxLength: maxLength(30) },
+      name: { required, maxLength: maxLength(45) },
     }
   },
   data: () => ({
@@ -78,7 +78,7 @@ export default{
     nameErrors () {
       const errors = []
       if (!this.$v.form.name.$dirty) return errors
-      !this.$v.form.name.maxLength && errors.push('This field must be at most 30 characters long')
+      !this.$v.form.name.maxLength && errors.push('This field must be at most 45 characters long')
       !this.$v.form.name.required && errors.push('This field is required')
       return errors
     },
@@ -90,13 +90,28 @@ export default{
       this.errors = this.$v.form.$anyError;
       if (this.errors === false && this.formTouched === false) {
           if(this.includeFiles){
-            if(this.form.fileName===null){}else
+            if(this.form.fileName===null){
+
+          this.$root.$emit('showSnackbar', "Select a file to upload");
+            }else
           this.AddAnnouncementOrQuery()
 
           }else
           this.AddAnnouncementOrQuery()
     //     
       }
+    },
+    resetForm () {
+      this.formHasErrors = false
+      this.$v.$reset();
+      var self = this;
+      this.form.fileName = null;
+      Object.keys(this.form).forEach(function(key,index) {
+        if(typeof self.form[key] === "string") 
+          self.form[key] = ''; 
+        else if (typeof self.form[key] === "boolean") 
+          self.form[key] = false;
+      });
     },
     AddAnnouncementOrQuery(){
 var data = new FormData()
@@ -109,11 +124,13 @@ var data = new FormData()
           axios.post('/api/announcements-and-queries',data ,{headers:{'Content-Type': 'multipart/form-data'}})
           .then((res)=>{
         this.$root.$emit('addAandQ', data);
+        
+          this.$root.$emit('showSnackbar', "Submitted Successfully");
             this.dialog = false;
+        this.resetForm ()
           })
           .catch((error) =>{
-            this.errors = error.response.data.errors;
-            console.log(this.errors);
+            console.log(error);
           })
     },
     selectFile(file) {

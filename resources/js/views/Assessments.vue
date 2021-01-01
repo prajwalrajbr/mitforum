@@ -332,7 +332,7 @@ return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minut
       this.$root.$emit('showAddAssessmentPopup', "true");
     },
     todo: function(){           
-    this.intervalid1 = setInterval(function(){
+    this.interval = setInterval(function(){
         
       var t = new Date();
       this.time = t.toString().substring(16, 21)
@@ -410,6 +410,10 @@ return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minut
     this.$router.push('/')
   })
   this.todo()     
-  }
+  },
+  beforeDestroy () {
+
+       clearInterval(this.interval)
+    },
 }
 </script>

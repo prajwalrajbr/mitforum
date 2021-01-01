@@ -95,6 +95,7 @@ export default{
           .then((res)=>{
             this.resetForm();
             this.$root.$emit('refreshNotes', "true");
+          this.$root.$emit('showSnackbar', "Notes Uploaded Successfully");
             this.dialog = false
           })
           .catch((error) =>{

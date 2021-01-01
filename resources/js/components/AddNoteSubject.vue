@@ -80,7 +80,7 @@ export default{
     subjectErrors () {
       const errors = []
       if (!this.$v.form.subject_name.$dirty) return errors
-      !this.$v.form.subject_name.maxLength && errors.push('This field must be at most 40 characters long')
+      !this.$v.form.subject_name.maxLength && errors.push('This field must be at most 50 characters long')
       !this.$v.form.subject_name.required && errors.push('This field is required.')
       return errors
     },

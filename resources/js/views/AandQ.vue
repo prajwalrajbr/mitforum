@@ -32,8 +32,9 @@
                   </v-btn>
                   </v-card-title> 
               <v-card-text>
-                <div class="">{{item.created_at}}</div>
-              <div>{{item.description}} --{{ item.username }}</div>
+                <div class=""><spam class="font-weight-black">Date :-</spam> {{item.created_at.substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{item.created_at.substring(11, 19)}}</div>
+              <div>{{item.description}}</div>
+              <div class="d-flex flex-row-reverse font-weight-black">~{{ item.username }}</div>
               </v-card-text>             
             </v-card>
     </v-flex>
@@ -42,7 +43,7 @@
     </v-container>
     <v-fab-transition >
       <v-btn fab large dark bottom right fixed  @click="showAddAandQPopup" :disabled="dialog">
-        <v-icon>exit_to_app</v-icon>
+        <v-icon>add</v-icon>
       </v-btn>
     </v-fab-transition> 
   </v-card>
@@ -102,7 +103,12 @@ axios.get('/api/announcements-and-queries')
                 .catch((error) =>{
                 console.log(error)
                 })
-    }
+    },
+    todo: function(){           
+    this.interval = setInterval(function(){
+        this.refreshAandQ()
+    }.bind(this), 3000);
+}
     
   },
   mounted(){  
@@ -123,6 +129,13 @@ axios.get('/api/announcements-and-queries')
     this.$root.$on('addAandQ', (data) =>{
       this.refreshAandQ();
     });
-  }
+    
+  this.todo()   
+  },
+  beforeDestroy () {
+
+       clearInterval(this.interval)
+    },
+  
 }
 </script>
