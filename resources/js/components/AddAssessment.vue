@@ -23,27 +23,27 @@
             <v-col cols="12" sm="6">
       <v-menu v-model="menu3" :close-on-content-click="false" :nudge-right="40" transition="scale-transition" offset-y min-width="290px" >
         <template v-slot:activator="{ on, attrs }">
-          <v-text-field v-model="date" label="Select date" :error-messages="dateErrors" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on" ></v-text-field>
+          <v-text-field v-model="form.date" label="Select date" :error-messages="dateErrors" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on" ></v-text-field>
         </template>
-        <v-date-picker v-model="date" @input="menu3 = false" :min="nowDate"></v-date-picker>
+        <v-date-picker v-model="form.date" @input="menu3 = false" :min="nowDate"></v-date-picker>
       </v-menu>
     </v-col>  
 
 <v-col cols="12" sm="6" >
-      <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" :nudge-right="40" :return-value.sync="startTime" transition="scale-transition" offset-y max-width="290px" min-width="290px">
+      <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" :nudge-right="40" :return-value.sync="form.startTime" transition="scale-transition" offset-y max-width="290px" min-width="290px">
         <template v-slot:activator="{ on, attrs }">
-          <v-text-field v-model="startTime" label="Select start time" :error-messages="startTimeErrors" prepend-icon="mdi-clock-time-four-outline" readonly v-bind="attrs" v-on="on" ></v-text-field>
+          <v-text-field v-model="form.startTime" label="Select start time" :error-messages="startTimeErrors" prepend-icon="mdi-clock-time-four-outline" readonly v-bind="attrs" v-on="on" ></v-text-field>
         </template>
-        <v-time-picker :max="endTime" v-if="menu1" v-model="startTime" full-width @click:minute="$refs.menu1.save(startTime)" ></v-time-picker>
+        <v-time-picker :max="form.endTime" v-if="menu1" v-model="form.startTime" full-width @click:minute="$refs.menu1.save(form.startTime)" ></v-time-picker>
       </v-menu>
     </v-col>
 
 <v-col cols="12" sm="6" >
-      <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" :nudge-right="40" :return-value.sync="endTime" transition="scale-transition" offset-y max-width="290px" min-width="290px">
+      <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" :nudge-right="40" :return-value.sync="form.endTime" transition="scale-transition" offset-y max-width="290px" min-width="290px">
         <template v-slot:activator="{ on, attrs }">
-          <v-text-field v-model="endTime" label="Select end time" :error-messages="endTimeErrors" prepend-icon="mdi-clock-time-four-outline" readonly v-bind="attrs" v-on="on" ></v-text-field>
+          <v-text-field v-model="form.endTime" label="Select end time" :error-messages="endTimeErrors" prepend-icon="mdi-clock-time-four-outline" readonly v-bind="attrs" v-on="on" ></v-text-field>
         </template>
-        <v-time-picker :min="startTime" v-if="menu2" v-model="endTime" full-width @click:minute="$refs.menu2.save(endTime)" ></v-time-picker>
+        <v-time-picker :min="form.startTime" v-if="menu2" v-model="form.endTime" full-width @click:minute="$refs.menu2.save(form.endTime)" ></v-time-picker>
       </v-menu>
     </v-col>
 
@@ -81,18 +81,15 @@ export default{
       sem: { required },
       subject: { required },
       fileName: { required },
-    },
       startTime: { required },
       endTime: { required },
       date: { required },
+    },
   },
   props: ['subjects','userName','is_f','branch','sem','userId','nowDate'],
   data: () => ({
     dialog: false,
     sub: [],
-    startTime: null,
-    endTime: null,
-    date: null,
     menu1: false,
     menu2: false,
     menu3: false,
@@ -104,6 +101,9 @@ export default{
             '1','2','3','4','5','6','7','8'
         ],
         subject: '',
+    startTime: null,
+    endTime: null,
+    date: null,
     },     
   }),
   computed: {  
@@ -122,20 +122,20 @@ export default{
     },
     dateErrors () {
       const errors = []
-      if (!this.$v.date.$dirty) return errors
-      !this.$v.date.required && errors.push('This field is required')
+      if (!this.$v.form.date.$dirty) return errors
+      !this.$v.form.date.required && errors.push('This field is required')
       return errors
     },
     startTimeErrors () {
       const errors = []
-      if (!this.$v.startTime.$dirty) return errors
-      !this.$v.startTime.required && errors.push('This field is required')
+      if (!this.$v.form.startTime.$dirty) return errors
+      !this.$v.form.startTime.required && errors.push('This field is required')
       return errors
     },
     endTimeErrors () {
       const errors = []
-      if (!this.$v.endTime.$dirty) return errors
-      !this.$v.endTime.required && errors.push('This field is required')
+      if (!this.$v.form.endTime.$dirty) return errors
+      !this.$v.form.endTime.required && errors.push('This field is required')
       return errors
     },
     subErrors () {
@@ -168,9 +168,9 @@ filteredSubjects(){
       this.$v.$reset();
       var self = this;
       this.form.fileName = null;
-    this.startTime= null;
-    this.endTime= null;
-    this.date= null;
+    this.form.startTime= null;
+    this.form.endTime= null;
+    this.form.date= null;
       Object.keys(this.form).forEach(function(key,index) {
         if(typeof self.form[key] === "string") 
           self.form[key] = ''; 
@@ -198,10 +198,10 @@ filteredSubjects(){
                     data.append('sub_code', String(i.sub_code));
                     }
             })
-            data.append('startTime', String(this.startTime));
+            data.append('startTime', String(this.form.startTime));
             data.append('uploaded_at', this.nowDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString());
-            data.append('endTime', String(this.endTime));
-            data.append('date', String(this.date));
+            data.append('endTime', String(this.form.endTime));
+            data.append('date', String(this.form.date));
            axios.post('/api/assessmentq',data ,{headers:{'Content-Type': 'multipart/form-data'}})
              .then((res)=>{
                this.resetForm();

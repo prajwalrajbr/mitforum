@@ -29,7 +29,7 @@
         </v-layout>
         
     </v-container>
-    <v-fab-transition >
+    <v-fab-transition v-if="is_f">
       <v-btn fab large dark bottom right fixed  @click="showAddNotesPopup" :disabled="dialog">
         <v-icon large>add</v-icon>
       </v-btn>

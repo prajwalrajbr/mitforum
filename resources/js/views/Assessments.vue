@@ -74,7 +74,7 @@
                     <v-expansion-panel-content>
                         <v-row>
                             <div class="text-start" v-if="item.assessment == 0">
-                              Started
+                              Started, Ends in : {{item.endsin}}
                             <v-btn rounded color="primary" dark @click="toPDFViewPage(item.id)">View Questions</v-btn>
                             </div>
                             <div class="text-start" v-else-if="item.assessment == 1 && is_f">
@@ -110,7 +110,7 @@
                                         <v-expansion-panel>
                                             <div v-if="u[item.id] === 'true'">
                                                 <v-expansion-panel-header disable-icon-rotate>
-                                                {{u.full_name}}[ {{u.usn}} ]
+                                                {{u.full_name}} [ {{u.usn}} ]
                                                 <template v-slot:actions>
                                                     <v-icon color="teal">
                                                     mdi-check
@@ -156,7 +156,7 @@
         </v-layout>
      
     </v-container>
-    <v-fab-transition >
+    <v-fab-transition v-if="is_f">
       <v-btn fab large dark bottom right fixed  @click="showAddAssessmentPopup" :disabled="dialog">
         <v-icon large>add</v-icon>
       </v-btn>
@@ -207,7 +207,7 @@ AddAssessment,AddAssessmentAnswer
                   if(r.uploaded_by==u.id && r.Assessment_id==item.id){
                   item['uploaded']='true';
                   u[item.id]='true'
-                  u[item.id+'c']=r.created_at
+                  u[item.id+'c']=r.uploaded_at
                   u[item.id+'l']=r.id}
                 })
             }
@@ -217,6 +217,7 @@ AddAssessment,AddAssessmentAnswer
             }
         })
         item['startsin'] = this.timeSub(item.startTime,this.time,item.date,item)
+        item['endsin'] = this.timeSub(this.time,item.endTime,item.date,item)
       })
       if(this.is_f){
       for(var i=0;i<this.items.length;i++){
@@ -269,11 +270,14 @@ if(days>0){
             i['assessment']=1
           else
             i['assessment']=-1 
+    
     if(start>b){
       var startsin = this.diff_time(b,start)
       res = String(startsin.substring(0,2))+' Hour(s) '+String(startsin.substring(3,5))+' Minute(s)';
       return res;
     }else{
+      var startsin = this.diff_time(start,b)
+      res = String(startsin.substring(0,2))+' Hour(s) '+String(startsin.substring(3,5))+' Minute(s)';
       return res;
     }
 }else{
@@ -308,10 +312,23 @@ return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minut
     },
     todo: function(){           
     this.interval = setInterval(function(){
-        
+       axios.get('/api/assessmentq')
+                .then((res)=>{
+                    this.items = res.data
+                })
+                .catch((error) =>{
+                console.log(error)
+                })
+    axios.get('/api/assessmenta')
+                .then((res)=>{
+                    this.assessmenta = res.data
+                })
+                .catch((error) =>{
+                console.log(error)
+                }) 
       var t = new Date();
       this.time = t.toString().substring(16, 21)
-    }.bind(this), 10000);
+    }.bind(this), 5000);
 }
     
   },

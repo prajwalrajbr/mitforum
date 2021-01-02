@@ -64,8 +64,9 @@
                     </v-icon>
                   </template>
                 </v-expansion-panel-header>
-                <v-expansion-panel-content>
-                  Uploaded at :- {{u[item.id+'c']}}
+                <v-expansion-panel-content><div class=""><spam class="font-weight-black">Uploaded at, Date :-</spam> {{u[item.id+'c'].substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{u[item.id+'c'].substring(11, 19)}}</div>
+              
+                   
                   <v-spacer></v-spacer>  
   <div class="text-end" >
     <v-btn
@@ -108,8 +109,8 @@
         </v-layout>
      </div>  
      <div v-else-if="!is_f">
-        <v-layout row wrap align-center class="grey pa-4" v-if="computed_id"> 
-          <v-flex xs12 v-for="item in computed_id"  :key="item.id" >
+        <v-layout row wrap align-center class="grey pa-4" v-if="itemss"> 
+          <v-flex xs12 v-for="item in itemss"  :key="item.id" >
             <div v-if="item.sem == sem && item.branch == branch">
             <v-expansion-panels class="pa-4">
               <v-expansion-panel>
@@ -173,7 +174,7 @@
         </v-layout>
      </div> 
     </v-container >
-    <v-fab-transition >
+    <v-fab-transition v-if="is_f">
       <v-btn fab large dark bottom right fixed  @click="showAddAssignmentPopup" :disabled="dialog">
         <v-icon>add</v-icon>
       </v-btn>
@@ -202,8 +203,7 @@ AddAssignmentAnswer
     items: null,
     itemss: null,
     subjects: [],
-    users: [],
-    assignmentsa: []
+    users: []
   }),computed: {
     computed_id: function() {
       return this.itemss;
@@ -224,37 +224,34 @@ this.$router.push('/pdfview/assignments-answers/'+id)
       this.$root.$emit('showAddAssignmentPopup', "true");
     },
     addCreatedBy(){
-      this.items.forEach((i)=>{
-        i['last_date_time'] = i['last_date_time'].substr(0,25)
-        axios.put('/api/get-fullname',{'id':i.created_by})
-        .then((res)=>{
-          i['created_by_name'] = res.data[0].full_name;
-        })
-        .catch((error) =>{
-          console.log(error)
-        })
-      })
       var len = this.items.length
       this.items.forEach((i)=>{
         i['last_date_time'] = i['last_date_time'].substr(0,25)
-        axios.put('/api/get-subject-sem-branch',{'id':i.subject_id})
-        .then((res)=>{
-          i['sem'] = String(res.data[0].sem);
-          i['branch'] = res.data[0].branch;
-          i['sub_code'] = res.data[0].sub_code;
+        for(var j=0;j<this.users.length;j++){
+          if(this.users[j].id == i.created_by)
+          i['created_by_name'] = this.users[j].full_name;
+          break;
+        }
+for(var j=0;j<this.subjects.length;j++){
+          if(this.subjects[j].id == i.subject_id){
+          i['sem'] = String(this.subjects[j].sem);
+          i['branch'] = this.subjects[j].branch;
+          i['sub_code'] = this.subjects[j].sub_code;
+          break}
+        }
+          
           len = len - 1
           if(len == 0 )
             this.refreshAssignmentsUploaded();
-        })
-        .catch((error) =>{
-          console.log(error)
-        })
+        
       })
     },
     get_assignments(){
+      var count =0;
           axios.get('/api/assignmentq')
             .then((res)=>{
               this.items = res.data
+              count++;if(count == 3)
               this.addCreatedBy();
             })
             .catch((error) =>{
@@ -263,19 +260,28 @@ this.$router.push('/pdfview/assignments-answers/'+id)
           axios.get('/api/get-all-users')
             .then((res)=>{
               this.users = res.data
+              count++;if(count == 3)
+              this.addCreatedBy();
             })
             .catch((error) =>{;
               console.log(this.errors);
             })
+            axios.get('/api/subject')
+                .then((res)=>{
+                    this.subjects = res.data
+              count++;if(count == 3)
+              this.addCreatedBy();
+                })
+                .catch((error) =>{
+                console.log(error)
+                })
     },
     refreshAssignmentsUploaded(){
       let len = this.items.length
       var z =  this.items
       axios.get('/api/assignmenta')
-        .then((res)=>{
-          this.assignmentsa = res.data
-      z.forEach((i)=>{   
-           
+      .then((res)=>{
+        z.forEach((i)=>{   
           i['uploaded'] = 'false';
           res.data.forEach((r)=>{
             if(this.is_f){
@@ -301,7 +307,12 @@ this.users.forEach((u)=>{
       .catch((error) =>{
           console.log(error)
         })
-    }
+    },
+    todo: function(){           
+    this.interval = setInterval(function(){
+      this.get_assignments();
+    }.bind(this), 10000);
+}
   },
   mounted(){
     this.get_assignments();
@@ -315,19 +326,18 @@ this.users.forEach((u)=>{
         this.branch = res.data.branch;
         this.sem = String(res.data.semester)
         this.userId = res.data.id;
-        axios.put('/api/get-subjects',{'branch':this.branch})
-                .then((res)=>{
-                    this.subjects = res.data
-                })
-                .catch((error) =>{
-                console.log(error)
-                })
+        
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
     this.$root.$on('refreshAssignmentsUploaded', () =>{
       this.refreshAssignmentsUploaded();
     });
-  }
+  this.todo()
+  },
+  beforeDestroy () {
+
+       clearInterval(this.interval)
+    },
 }
 </script>
