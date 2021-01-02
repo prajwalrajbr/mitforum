@@ -20,20 +20,20 @@
         </v-row>
       </v-card>
       
-        <v-layout row wrap align-center class="grey pa-4" v-if="filteredItems"> 
-          <v-flex xs12 v-for="item in filteredItems" class="pa-4" :key="item.id" >
-            <v-expansion-panels>
-              <v-expansion-panel>
+        <v-layout row wrap align-center class="grey" v-if="filteredItems"> 
+          <v-flex xs12 v-for="item in filteredItems" class="" :key="item.id" >
+            <v-expansion-panels class="pa-4" v-if="(item.sem == sem && item.branch == branch )|| is_f">
+              <v-expansion-panel >
                 <v-expansion-panel-header disable-icon-rotate>
                     
                     <v-list-item three-line>
                         <v-list-item-content>
                             <v-list-item-title>Assessment Name : {{item.name}}</v-list-item-title>
                             <v-list-item-subtitle>
-                            Created By : {{item.created_by_name}}
+                            Subject : {{item.subject_name}} [ {{item.sub_code}} ]
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                            Sem : {{item.sem}}
+                            Created By : {{item.created_by_name}}, Sem : {{item.sem}}
                             </v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
@@ -118,7 +118,7 @@
                                                 </template>
                                                 </v-expansion-panel-header>
                                                 <v-expansion-panel-content>
-                                                Uploaded at :- {{u[item.id+'c']}}
+                <div class=""><spam class="font-weight-black">Uploaded at, Date :-</spam> {{u[item.id+'c'].substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{u[item.id+'c'].substring(11, 19)}}</div>
                                                 <v-spacer></v-spacer>  
   <div class="text-end" >
     <v-btn rounded color="success" dark @click="toPDFViewPageAnswer(u[item.id+'l'])">
@@ -155,35 +155,10 @@
               <p>Oops! Assessment unavailable....</p> 
         </v-layout>
      
-
-
-
-<!-- <div v-for="item in filteredItems" :key="item.id">
-<v-card class="grey d-flex" flat tile >
-    <v-flex >
-      <v-card  elevation="5" class="mx-10 my-5 " max-width="800" >
-              <v-card-title>
-                <v-btn depresse color="grey lighten-1">
-                  {{ item.name }}
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn depressed color="blue lighten-1" @click="toPDFViewPage(item.id)" v-if="item.fileLink">
-                  View
-                  </v-btn>
-                  </v-card-title> 
-              <v-card-text>
-                <div class="">{{item.created_at}}</div>
-              <div>{{item.description}} --{{ item.username }}</div>
-              </v-card-text>             
-            </v-card>
-    </v-flex>
-    </v-card>
-</div> -->
-
     </v-container>
     <v-fab-transition >
       <v-btn fab large dark bottom right fixed  @click="showAddAssessmentPopup" :disabled="dialog">
-        <v-icon>exit_to_app</v-icon>
+        <v-icon large>add</v-icon>
       </v-btn>
     </v-fab-transition> 
   </v-card>
@@ -380,10 +355,6 @@ return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minut
                 })
         var tzoffset = (new Date()).getTimezoneOffset() * 60000;  
         this.nowDate = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 10);
-    // this.refreshAandQ();
-    // this.$root.$on('addAandQ', (data) =>{
-    //   this.refreshAandQ();
-    // });
     this.$root.$on('addAssessment', (data) =>{
       var i = new Object();
       i['date']=data[0].date;

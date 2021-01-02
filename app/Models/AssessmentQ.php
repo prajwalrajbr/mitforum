@@ -16,6 +16,7 @@ class AssessmentQ extends Model
         'fileName',
         'fileLink',
         'startTime',
+        'uploaded_at',
         'endTime',
         'subject_id',
         'subject_name',

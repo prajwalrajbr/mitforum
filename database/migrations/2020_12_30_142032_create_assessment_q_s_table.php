@@ -20,6 +20,7 @@ class CreateAssessmentQSTable extends Migration
             $table->string('sem');
             $table->boolean('is_f');
             $table->string('fileName');
+            $table->string('uploaded_at');
             $table->string('fileLink');
             $table->string('startTime');
             $table->string('endTime');

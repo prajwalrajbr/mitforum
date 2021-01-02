@@ -50,6 +50,7 @@ class AssessmentQController extends Controller
             'fileLink' => $fileLink,
             'startTime' => $request->startTime,
             'endTime' => $request->endTime,
+            'uploaded_at' => $request->uploaded_at,
             'subject_id' => $request->subject_id,
             'subject_name' => $request->subject_name,
             'sub_code' => $request->sub_code,

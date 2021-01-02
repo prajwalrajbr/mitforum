@@ -15,7 +15,7 @@ class AandQController extends Controller
      */
     public function index()
     {
-        return AandQ::latest()->get(['id','name','description','fileLink','is_f','uploaded_by','created_at']);
+        return AandQ::latest()->get();
     }
 
     /**
@@ -49,6 +49,7 @@ class AandQController extends Controller
             'description' => $request->description,
             'fileLink' => $fileLink,
             'is_f' => $request->is_f,
+            'uploaded_at' => $request->uploaded_at,
             'uploaded_by' => $request->uploaded_by,
         ]);
     }

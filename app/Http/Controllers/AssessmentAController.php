@@ -43,6 +43,7 @@ class AssessmentAController extends Controller
         AssessmentA::create([
             'fileLink' => $fileLink,
             'Assessment_id' => $request->Assessment_id,
+            'uploaded_at' => $request->uploaded_at,
             'uploaded_by' => $request->uploaded_by,
         ]);
 

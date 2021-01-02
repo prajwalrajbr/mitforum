@@ -11,6 +11,7 @@ class AssignmentA extends Model
     protected $fillable = [
         'fileLink',
         'Assignment_id',
+        'uploaded_at',
         'uploaded_by',
     ];
 }

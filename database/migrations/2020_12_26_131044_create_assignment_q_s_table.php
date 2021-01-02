@@ -18,6 +18,7 @@ class CreateAssignmentQSTable extends Migration
             $table->string('name');
             $table->string('fileName');
             $table->string('fileLink');
+            $table->string('uploaded_at');
             $table->string('last_date_time');
             $table->integer('subject_id')->unsigned();
             $table->foreign('subject_id')->references('id')->on('subjects');

@@ -2,7 +2,7 @@
   <v-row justify="end" block>
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog">
+        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog" large>
             <span class="grey--text text--darken-4 font-weight-bold">+ Add Assignment</span>
         </v-btn>
       </template>
@@ -21,14 +21,14 @@
             </v-col>
                 
             <v-col cols="12" >
-                <v-datetime-picker label="Last day to Submit [Default : 1 week]" v-model="form.datetime" @change="$v.form.datetime.$touch()" @blur="$v.form.datetime.$touch()"> </v-datetime-picker>
+                <v-datetime-picker clearable label="Last day to Submit [Default : 1 week]" v-model="form.datetime" @change="$v.form.datetime.$touch()" @blur="$v.form.datetime.$touch()"> </v-datetime-picker>
             </v-col>
             <v-col cols="12" >  
               <v-select v-model="form.subject" :items="sub" :error-messages="subErrors" label="Subject*" required @change="$v.form.subject.$touch()" @blur="$v.form.subject.$touch()"></v-select>
             </v-col>
 
             <v-col>
-              <v-file-input show-size label="File input" :error-messages="fileErrors" @change="selectFile" ></v-file-input>
+              <v-file-input v-model="form.fileName" show-size label="File input" :error-messages="fileErrors" @change="selectFile" ></v-file-input>
             </v-col>
           </v-row>
         </v-card-text>
@@ -113,11 +113,28 @@ filteredSubjects(){
           }
       },
 
+    resetForm () {
+      this.formHasErrors = false
+      this.$v.$reset();
+      var self = this;
+      this.form.fileName = null;
+      try {
+        document.getElementById('input-74').value = null
+      } catch (error) {    
+      }
+      this.form.datetime = null;
+      Object.keys(this.form).forEach(function(key,index) {
+        if(typeof self.form[key] === "string") 
+          self.form[key] = ''; 
+        else if (typeof self.form[key] === "boolean") 
+          self.form[key] = false;
+      });
+    },
     submit () {
       this.$v.$touch();
-    //   this.formTouched = !this.$v.form.$anyDirty;
-    //   this.errors = this.$v.form.$anyError;
-    //    if (this.errors === false && this.formTouched === false) {
+      this.formTouched = !this.$v.form.$anyDirty;
+      this.errors = this.$v.form.$anyError;
+       if (this.errors === false && this.formTouched === false) {
           var data = new FormData()
           if(this.form.datetime==null){
                 var d = new Date();
@@ -127,6 +144,7 @@ filteredSubjects(){
             data.append('last_date_time', String(this.form.datetime));
           }
         data.append('name', this.form.name);
+            data.append('uploaded_at', this.nowDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString());
             data.append('fileName', this.form.fileName)
             data.append('created_by', this.userID);
             this.subjects.forEach((i)=>{
@@ -136,17 +154,15 @@ filteredSubjects(){
             })
           axios.post('/api/assignmentq',data ,{headers:{'Content-Type': 'multipart/form-data'}})
             .then((res)=>{
-              console.log(res.data);
-            this.$root.$emit('refreshAssignments', "true");
+              this.resetForm();
+            this.$root.$emit('refreshAssignments', res.data);
         this.$root.$emit('showSnackbar', "Successfully Created");
-            this.$router.push('/')
             this.dialog = false
             })
             .catch((error) =>{
-              this.errors = error.response.data.errors;
-              console.log(this.errors);
+              console.log(error);
             })
-        
+       }
     },
     selectFile(file) {
       this.form.fileName = file;

@@ -2,7 +2,7 @@
   <v-row justify="end" block>
     <v-dialog v-model="dialog" max-width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog">
+        <v-btn v-bind="attrs" v-on="on" class="white mr-5" :disabled="dialog" large>
             <span class="grey--text text--darken-4 font-weight-bold">+ Add Announcement or Query</span>
         </v-btn>
       </template>
@@ -119,6 +119,7 @@ var data = new FormData()
             data.append('fileName', this.form.fileName)
             data.append('uploaded_by', this.userID);
             data.append('is_f', this.is_f);
+            data.append('uploaded_at', this.nowDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString());
             data.append('description', this.form.description);
             data.append('includeFiles', this.includeFiles);
           axios.post('/api/announcements-and-queries',data ,{headers:{'Content-Type': 'multipart/form-data'}})

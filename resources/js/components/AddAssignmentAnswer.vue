@@ -60,13 +60,14 @@ export default{
   methods: {
     submit () {
       this.$v.$touch();
-    //   this.formTouched = !this.$v.form.$anyDirty;
-    //   this.errors = this.$v.form.$anyError;
-    //    if (this.errors === false && this.formTouched === false) {
+       this.formTouched = !this.$v.form.$anyDirty;
+       this.errors = this.$v.form.$anyError;
+        if (this.errors === false && this.formTouched === false) {
           var data = new FormData()
           
         data.append('uploaded_by', this.userID);
             data.append('fileName', this.form.fileName)
+            data.append('uploaded_at', this.nowDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString());
             data.append('Assignment_id', this.uploaded_Assignment_id);
             
           axios.post('/api/assignmenta',data ,{headers:{'Content-Type': 'multipart/form-data'}})
@@ -81,6 +82,7 @@ export default{
               this.errors = error.response.data.errors;
               console.log(this.errors);
             })
+        }
     },
     selectFile(file) {
       this.form.fileName = file;

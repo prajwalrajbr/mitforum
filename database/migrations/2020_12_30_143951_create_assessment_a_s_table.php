@@ -16,6 +16,7 @@ class CreateAssessmentASTable extends Migration
         Schema::create('assessment_a_s', function (Blueprint $table) {
             $table->id();
             $table->string('fileLink');
+            $table->string('uploaded_at');
             $table->integer('Assessment_id')->unsigned();
             $table->foreign('Assessment_id')->references('id')->on('assessment_q_s');
             $table->integer('uploaded_by')->unsigned();

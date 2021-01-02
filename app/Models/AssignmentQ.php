@@ -13,6 +13,7 @@ class AssignmentQ extends Model
         'fileName',
         'fileLink',
         'subject_id',
+        'uploaded_at',
         'last_date_time',
         'created_by',
     ];

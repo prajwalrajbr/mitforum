@@ -32,7 +32,7 @@
                   </v-btn>
                   </v-card-title> 
               <v-card-text>
-                <div class=""><spam class="font-weight-black">Date :-</spam> {{item.created_at.substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{item.created_at.substring(11, 19)}}</div>
+                <div class=""><spam class="font-weight-black">Date :-</spam> {{item.uploaded_at.substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{item.uploaded_at.substring(11, 19)}}</div>
               <div>{{item.description}}</div>
               <div class="d-flex flex-row-reverse font-weight-black">~{{ item.username }}</div>
               </v-card-text>             
@@ -133,7 +133,6 @@ axios.get('/api/announcements-and-queries')
   this.todo()   
   },
   beforeDestroy () {
-
        clearInterval(this.interval)
     },
   

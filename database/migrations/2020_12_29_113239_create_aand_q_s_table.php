@@ -19,6 +19,7 @@ class CreateAandQSTable extends Migration
             $table->string('description')->nullable();
             $table->string('fileLink')->nullable();
             $table->boolean('is_f');
+            $table->string('uploaded_at');
             $table->integer('uploaded_by')->unsigned();
             $table->foreign('uploaded_by')->references('id')->on('users');
             $table->timestamps();

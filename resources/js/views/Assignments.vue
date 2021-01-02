@@ -17,7 +17,17 @@
             <v-expansion-panels>
               <v-expansion-panel>
                 <v-expansion-panel-header disable-icon-rotate>
-                  Assignment Name : {{item.name}} --- Created By : {{item.created_by_name}} --- Sem : {{item.sem}}
+                  <v-list-item three-line>
+                        <v-list-item-content>
+                            <v-list-item-title>Assignment Name : {{item.name}} [ {{item.sub_code}} ]</v-list-item-title>
+                            <v-list-item-subtitle>
+                              <div class=""><spam class="font-weight-black">Uploaded on, Date :-</spam> {{item.uploaded_at.substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{item.uploaded_at.substring(11, 19)}}</div>
+              </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                            Created By : {{item.created_by_name}}, Sem : {{item.sem}}
+                            </v-list-item-subtitle>
+                        </v-list-item-content>
+                    </v-list-item>
                   <v-spacer></v-spacer>
                   Last Date : {{item.last_date_time}}  
                   <template v-slot:actions>
@@ -104,8 +114,18 @@
             <v-expansion-panels class="pa-4">
               <v-expansion-panel>
                 <v-expansion-panel-header disable-icon-rotate>
-                  Assignment Name : {{item.name}} --- Created By : {{item.created_by_name}} --- Sem : {{item.sem}}
-                  <v-spacer></v-spacer>
+                  <v-list-item three-line>
+                        <v-list-item-content>
+                            <v-list-item-title>Assignment Name : {{item.name}} [ {{item.sub_code}} ]</v-list-item-title>
+                            <v-list-item-subtitle>
+                              <div class=""><spam class="font-weight-black">Uploaded on, Date :-</spam> {{item.uploaded_at.substring(0, 10)}} <spam class="font-weight-black"> Time :-</spam> {{item.uploaded_at.substring(11, 19)}}</div>
+              </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                            Created By : {{item.created_by_name}}, Sem : {{item.sem}}
+                            </v-list-item-subtitle>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-spacer></v-spacer>
                   Last Date : {{item.last_date_time}}  
                   <template v-slot:actions>
                     <v-icon color="teal" v-if="item.uploaded == 'true'">
@@ -155,7 +175,7 @@
     </v-container >
     <v-fab-transition >
       <v-btn fab large dark bottom right fixed  @click="showAddAssignmentPopup" :disabled="dialog">
-        <v-icon>exit_to_app</v-icon>
+        <v-icon>add</v-icon>
       </v-btn>
     </v-fab-transition> 
   </v-card>
@@ -221,6 +241,7 @@ this.$router.push('/pdfview/assignments-answers/'+id)
         .then((res)=>{
           i['sem'] = String(res.data[0].sem);
           i['branch'] = res.data[0].branch;
+          i['sub_code'] = res.data[0].sub_code;
           len = len - 1
           if(len == 0 )
             this.refreshAssignmentsUploaded();
@@ -253,36 +274,29 @@ this.$router.push('/pdfview/assignments-answers/'+id)
       axios.get('/api/assignmenta')
         .then((res)=>{
           this.assignmentsa = res.data
-      z.forEach((i)=>{
-        
+      z.forEach((i)=>{   
+           
           i['uploaded'] = 'false';
           res.data.forEach((r)=>{
             if(this.is_f){
-
 this.users.forEach((u)=>{
   if(r.uploaded_by==u.id && r.Assignment_id==i.id){
             i['uploaded']='true';
             u[i.id]='true'
-            u[i.id+'c']=r.created_at
-            u[i.id+'l']=r.id}
-})
+            u[i.id+'c']=r.uploaded_at
             
+            u[i.id+'l']=r.id}
+})           
             }
             else{
               if(r.uploaded_by==this.userId && r.Assignment_id==i.id){
             i['uploaded']='true';}
-            }
-            
-          })
-          
+            }            
+          })          
           len = len - 1
-          if(len == 0 ){
-            
+          if(len == 0 ){           
             this.initializeItems(z)}
         })
-
-        
-
       })
       .catch((error) =>{
           console.log(error)

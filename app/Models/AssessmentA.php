@@ -11,6 +11,7 @@ class AssessmentA extends Model
     protected $fillable = [
         'fileLink',
         'Assessment_id',
+        'uploaded_at',
         'uploaded_by',
     ];
 }

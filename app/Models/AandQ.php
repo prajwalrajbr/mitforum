@@ -12,6 +12,7 @@ class AandQ extends Model
         'name',
         'description',
         'fileLink',
+        'uploaded_at',
         'is_f',
         'uploaded_by',
     ];

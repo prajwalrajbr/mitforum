@@ -16,6 +16,7 @@ class CreateAssignmentASTable extends Migration
         Schema::create('assignment_a_s', function (Blueprint $table) {
             $table->id(); 
             $table->string('fileLink');
+            $table->string('uploaded_at');
             $table->integer('Assignment_id')->unsigned();
             $table->foreign('Assignment_id')->references('id')->on('assignment_q_s');
             $table->integer('uploaded_by')->unsigned();

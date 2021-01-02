@@ -15,7 +15,7 @@ class AssignmentQController extends Controller
      */
     public function index()
     {
-        return AssignmentQ::latest()->get(['name','created_by','last_date_time','subject_id','id','fileLink']);
+        return AssignmentQ::latest()->get();
     }
 
     /**
@@ -45,11 +45,12 @@ class AssignmentQController extends Controller
             'fileName' => $request->fileName,
             'fileLink' => $fileLink,
             'created_by' => $request->created_by,
+            'uploaded_at' => $request->uploaded_at,
             'last_date_time' => $request->last_date_time,
             'subject_id' => $request->subject_id,
         ]);
 
-        return $fileLink;
+        return AssignmentQ::latest()->take(1)->get();
     }
 
     /**
