@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 |
 */
 
+use App\Mail\WelcomeMail;
+
+Route::get('/email', function () {
+    return new WelcomeMail();
+});
+
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
