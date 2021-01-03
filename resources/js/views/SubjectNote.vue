@@ -14,7 +14,7 @@
         </v-row>
       </v-card>
       
-        <v-layout row wrap align-center class="grey" v-if="items"> 
+        <v-layout row wrap align-center class="grey" v-if="items.length!=0"> 
           <v-flex xs12 sm12 md12 lg12 v-for="item in items" :key="item.id" >
             <v-card elevation="5" class="mx-10 my-5 mb-3 " max-width="1100" link :to="toPDFViewPage(item.id)">
               <v-card-title>{{ item.name }}</v-card-title> 

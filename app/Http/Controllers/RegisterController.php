@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;   
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,10 @@ class RegisterController extends Controller
             'semester' => $request->semester,
             'branch' => $request->branch,
             'is_faculty' => $request->is_faculty,
-        ]);
+        ])->sendEmailVerificationNotification();
+
+
+        Mail::to($request->email)->send(new WelcomeMail());
 
     }
 }

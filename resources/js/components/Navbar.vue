@@ -148,6 +148,7 @@ this.userName = null
       this.loggedIn = true
     });
     this.$root.$on('loggedOut', () =>{
+      this.$router.push('/')
       this.loggedIn = false
     });
   }

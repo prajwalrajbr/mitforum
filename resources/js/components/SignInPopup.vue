@@ -117,7 +117,7 @@ export default{
         this.$root.$emit('showSnackbar', "Successfully logged in");
       })
       .catch((error) =>{
-        this.errors = error.response.data.errors
+        this.$root.$emit('showSnackbar', "Incorrect Username or Password");
         console.log(error);
       })
     },

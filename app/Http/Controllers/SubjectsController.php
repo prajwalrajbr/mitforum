@@ -36,8 +36,8 @@ class SubjectsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'sub_code' => ['required', 'unique:subjects'],
-            'subject_name' => ['required'],
+            'subject_name' => ['required', 'unique:subjects'],
+            'sub_code' => ['required'],
             'sem' => ['required'],
             'branch' => ['required'],
             'created_by' => ['required'],

@@ -51,3 +51,9 @@ Route::resource('assessmentq', 'App\Http\Controllers\AssessmentQController');
 Route::resource('assessmenta', 'App\Http\Controllers\AssessmentAController');
 
 Route::resource('get-faculty-table', 'App\Http\Controllers\FacultyTableController');
+
+Route::get('email/verify/{id}', 'App\Http\Controllers\VerificationController@verify')->name('verification.verify');
+Route::get('email/resend', 'App\Http\Controllers\VerificationController@resend')->name('verification.resend');
+
+Route::post('password/email', 'App\Http\Controllers\ForgotPasswordController@forgot');
+Route::post('password/reset', 'App\Http\Controllers\ForgotPasswordController@reset');

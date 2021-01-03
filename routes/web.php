@@ -14,11 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-use App\Mail\WelcomeMail;
-
-Route::get('/email', function () {
-    return new WelcomeMail();
-});
+Route::view('forgot_password', 'auth.reset_password')->name('password.reset');
 
 Route::get('/{any}', function () {
     return view('welcome');

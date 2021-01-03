@@ -53,8 +53,15 @@ export default{
     },
     methods: {
       submit () {
+        axios.post('/api/password/email',{'email':this.form.email})
+        .then((res)=>{
+          console.log(res)
         this.dialog = false
-        this.$v.$touch()
+        this.$root.$emit('showSnackbar', "Reset Link Sent to email");
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
       },
       clear () {
         this.$v.$reset()

@@ -19,8 +19,9 @@
       :class="check(item.is_f)"
       flat
       tile
+      v-if="item.branch == branch"
     >
-    <v-flex xs8>
+    <v-flex xs8 >
       <v-card  elevation="5" class="mx-10 my-5 " max-width="800" >
               <v-card-title>
                 <v-btn depresse color="grey lighten-1">
@@ -64,6 +65,7 @@ AddAandQ
     is_f: false,
     dialog: false,
     items: [],
+    branch: '',
     users: [],
     classname: 'grey d-flex justify-end mb-6',
   }),
@@ -74,6 +76,7 @@ AddAandQ
           this.users.forEach(user =>{
               if(item.uploaded_by==user.id)
               item['username']=user.full_name
+              item['branch']=user.branch
           })
       })
       if (fItems.length == 0)
@@ -122,6 +125,7 @@ axios.get('/api/announcements-and-queries')
     .then((res)=>{
         this.userName = res.data.full_name;
         this.is_f = res.data.is_faculty;
+        this.branch = res.data.branch;
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
