@@ -2,7 +2,7 @@
   <v-container>
     <div class="pa-5"></div>
     <v-layout row wrap align-center>
-      <v-flex xs12 sm12 md6 lg6 v-for="item in items" :key="item.name" >
+      <v-flex xs12 sm12 md6 lg6 v-for="item in items" :key="item.name" @click="showSigninPopup">
         <v-card elevation="5" class="ma-10 " max-width="800" link :to=item.to>
           <v-img height="300" :src='item.img'></v-img>
           <v-card-title :class='item.color'>{{ item.name }}</v-card-title> 
@@ -29,6 +29,14 @@ export default {
         { name: 'Announcements & Queries', img: 'https://bit.ly/3nTuyTR', to:'/announcements-queries', color:'light-blue darken-3' }
       ],
   }),
+  methods:{
+    showSigninPopup(){
+      if(this.userName===null){
+        this.$root.$emit('showSnackbar', "Please log-in to continue");
+        this.$root.$emit('showLogInPopup', "true");
+      }
+    }
+  },
   mounted(){
     user.auth()
     .then((res)=>{
@@ -36,6 +44,12 @@ export default {
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
+    this.$root.$on('userName', (text) =>{
+      if(text){
+      this.userName = text}else{
+this.userName = null
+      }
+    });
   }
 }
 </script>

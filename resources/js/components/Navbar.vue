@@ -53,7 +53,7 @@
       <div v-else>
       <v-navigation-drawer v-model="drawer" dark fixed temporary v-bind:width="375">
         <v-list nav dense>
-          <v-list-item v-model="group" active-class="light-blue--text text--accent-4" v-for="item in items" :key="item.title" link :to=item.to  >
+          <v-list-item v-model="group" active-class="light-blue--text text--accent-4" v-for="item in items" :key="item.title" link :to=item.to @click="showSigninPopup">
             <v-list-item-icon class="font-weight-medium text-h6 ">
               <v-icon class="pa-2 px-1">{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -126,6 +126,12 @@ export default{
     login(){
       this.$root.$emit('showLogInPopup', "true");
     },
+    showSigninPopup(){
+      if(this.userName===null){
+        this.$root.$emit('showSnackbar', "Please log-in to continue");
+        this.$root.$emit('showLogInPopup', "true");
+      }
+    }
   },
   mounted(){
     user.auth()
