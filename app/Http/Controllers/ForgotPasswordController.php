@@ -15,7 +15,7 @@ class ForgotPasswordController extends Controller
 
         Password::sendResetLink($credentials);
 
-        return $this->respondWithMessage("Password Reset link sent on your email id");
+        return "Password Reset link sent on your email id";
     }
 
 

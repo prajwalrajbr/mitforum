@@ -62,6 +62,7 @@ export default{
           console.log(res)
         this.dialog = false
         this.$root.$emit('showSnackbar', "Reset Link Sent to email");
+        this.clear()
         })
         .catch((err)=>{
           console.log(err)
