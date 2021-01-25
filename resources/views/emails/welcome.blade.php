@@ -1,7 +1,7 @@
 @component('mail::message')
 # Hello from MITForum,
 
-Welcome to our new Web Application. 
+Welcome to our Cool Web Application. 
 
 Thanks,<br>
 Team {{ config('app.name') }}

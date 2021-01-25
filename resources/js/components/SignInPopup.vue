@@ -57,7 +57,7 @@ export default{
   mixins: [validationMixin],
   validations: {
     form: { 
-      email: { required, minLength: minLength(5), maxLength: maxLength(20) },
+      email: { required, minLength: minLength(5), maxLength: maxLength(40) },
       password: { required, minLength: minLength(8), maxLength: maxLength(20) },
     }
   },
@@ -79,7 +79,7 @@ export default{
     emailErrors () {
       const errors = []
       if (!this.$v.form.email.$dirty) return errors
-      !this.$v.form.email.maxLength && errors.push('Email/USN must be at most 20 characters long')
+      !this.$v.form.email.maxLength && errors.push('Email/USN must be at most 40 characters long')
       !this.$v.form.email.minLength && errors.push('Email/USN must be at least 5 characters')
       !this.$v.form.email.required && errors.push('Email/USN is required.')
       return errors
@@ -106,6 +106,10 @@ export default{
       });
     },
     submit () {
+      this.$v.$touch()
+      this.formTouched = !this.$v.form.$anyDirty;
+      this.errors = this.$v.form.$anyError;
+      if (this.errors === false && this.formTouched === false) {
       user.login(this.form)
       .then(()=>{
         this.dialog = false
@@ -119,7 +123,7 @@ export default{
       .catch((error) =>{
         this.$root.$emit('showSnackbar', "Incorrect Username or Password");
         console.log(error);
-      })
+      })}
     },
     logout () {
         user.logout().then(()=>{

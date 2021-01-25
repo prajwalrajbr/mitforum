@@ -64,16 +64,47 @@
 </head>
 <body>
 <div class="flex-center position-ref full-height">
-    <form class="form-container" action="api/password/reset" method="POST">
+    <form class="form-container" action="api/password/reset" method="POST" id="form">
+        <h1>MITForum</h1>
         <h2>Forgot Password?</h2>
-        @csrf <!-- {{ csrf_field() }} -->
-        <input name="email" placeholder="Enter email" value="{{request()->get('email')}}">
-        <input name="password" placeholder="Enter new password">
-        <input name="password_confirmation" placeholder="Confirm new password">
+        @csrf
+        <input hidden type="email" name="email" placeholder="Enter email" value="{{request()->get('email')}}">
+        <input type="password" id="p1" name="password" placeholder="Enter new password">
+        <input type="password" id="p2" name="password_confirmation" placeholder="Confirm new password">
         <input hidden name="token" placeholder="token" value="{{request()->get('token')}}">
-
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="validate">Submit</button>
     </form>
 </div>
 </body>
+<script>
+var my_func = function(event) {
+    var p1 = document.getElementById('p1').value;
+    var p2 = document.getElementById('p2').value;
+    if(p1===p2){
+        if(p1.length<8){     
+            alert("Password must be at least 8 characters");
+            event.preventDefault();
+        }
+        else if(p2.length>20){
+            alert("Password must be at most 20 characters long");
+            event.preventDefault();
+        }
+    }else{
+        alert("Passwords must be same");
+        event.preventDefault();
+    }
+};
+var form = document.getElementById("form");
+
+// attach event listener
+form.addEventListener("submit", my_func, true);
+function validate(){
+
+    if(p1!=p2){
+        alert('')
+        
+
+    }
+}
+</script>
 </html>

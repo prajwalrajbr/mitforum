@@ -33,7 +33,7 @@ export default{
   mixins: [validationMixin],
   validations: {
     form:{ 
-      email: { required, maxLength: maxLength(20) },
+      email: { required, maxLength: maxLength(40) },
     }
   },
   data: () => ({
@@ -46,13 +46,17 @@ export default{
       emailErrors () {
         const errors = []
         if (!this.$v.form.email.$dirty) return errors
-        !this.$v.form.email.maxLength && errors.push('Email/USN must be at most 20 characters long')
+        !this.$v.form.email.maxLength && errors.push('Email/USN must be at most 40 characters long')
         !this.$v.form.email.required && errors.push('Email/USN is required.')
         return errors
       },
     },
     methods: {
       submit () {
+      this.$v.$touch()
+      this.formTouched = !this.$v.form.$anyDirty;
+      this.errors = this.$v.form.$anyError;
+      if (this.errors === false && this.formTouched === false) {
         axios.post('/api/password/email',{'email':this.form.email})
         .then((res)=>{
           console.log(res)
@@ -61,7 +65,7 @@ export default{
         })
         .catch((err)=>{
           console.log(err)
-        })
+        })}
       },
       clear () {
         this.$v.$reset()

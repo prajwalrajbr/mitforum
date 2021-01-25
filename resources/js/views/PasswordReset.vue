@@ -6,7 +6,7 @@
 <script>
 export default {
   mounted(){
-    this.$root.$emit('showSnackbar', "E-Mail Successfully Verified");
+    this.$root.$emit('showSnackbar', "Password Successfully changed");
     this.$router.push('/')
   }
 }

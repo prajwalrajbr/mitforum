@@ -131,6 +131,7 @@ export default{
           this.resetForm();
         })
         .catch((error) =>{
+          this.$root.$emit('showSnackbar', "Subject Name Already Exists");
           console.log(error);
         })
       }

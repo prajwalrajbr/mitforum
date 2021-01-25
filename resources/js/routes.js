@@ -7,6 +7,7 @@ import Assignments from './views/Assignments';
 import AandQ from './views/AandQ';
 import Assessments from './views/Assessments'; 
 import Verify from './views/Verify'; 
+import PasswordReset from './views/PasswordReset'; 
 
 import PageNotFound from './views/PageNotFound';
 
@@ -125,8 +126,12 @@ export default{
         {
             path: '/verify-email-or-reset',
             component: Verify,
-            name: 'Verify',
-            
+            name: 'Verify',     
+        },
+        {
+            path: '/password-reset',
+            component: PasswordReset,
+            name: 'PasswordReset',     
         },
     ]
 }

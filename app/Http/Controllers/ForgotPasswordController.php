@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash; 
+use Illuminate\Http\Request;
 
 
 class ForgotPasswordController extends Controller
@@ -14,7 +15,7 @@ class ForgotPasswordController extends Controller
 
         Password::sendResetLink($credentials);
 
-        return "dd";
+        return $this->respondWithMessage("Password Reset link sent on your email id");
     }
 
 
@@ -24,7 +25,6 @@ class ForgotPasswordController extends Controller
             $user->save();
         });
 
-
-        return "Password has been successfully changed";
+        return redirect()->to('/password-reset');
     }
 }
