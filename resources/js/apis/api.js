@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let api = axios.create({
-    baseURL: "http://localhost:8000/api"
+    baseURL: "https://mitforum.herokuapp.com/api"
 });
 
 api.defaults.withCredentials = true;
