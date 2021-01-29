@@ -11,6 +11,9 @@
         "heroku-postbuild": "npm run prod",
         "postinstall": "npm run prod"
     },
+    "engines": {
+        "node": "15.x"
+      },
     "devDependencies": {
         "@mdi/font": "^5.8.55",
         "axios": "^0.19",
