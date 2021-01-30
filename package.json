@@ -12,10 +12,6 @@
         "heroku-prebuild": "npm install -f",
         "heroku-postbuild": "npm run production"
     },
-    "engines": {
-        "node": ">= 6.9.4",
-        "npm": ">= 4.4.0"
-    },
     "devDependencies": {
         "@mdi/font": "^5.8.55",
         "axios": "^0.19",
