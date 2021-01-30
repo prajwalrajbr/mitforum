@@ -137,6 +137,7 @@ export default{
     user.auth()
     .then((res)=>{
         this.userName = res.data.full_name;
+      this.loggedIn = true
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })

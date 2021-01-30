@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //use App\ApiCode;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class VerificationController extends Controller {
 
@@ -19,18 +21,19 @@ class VerificationController extends Controller {
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
+
     public function verify($user_id, Request $request) {
         if (! $request->hasValidSignature()) {
-            return $this->respondUnAuthorizedRequest($request);
+            return Redirect::to('https://mitforum.herokuapp.com/page-not-found');
         }
 
         $user = User::findOrFail($user_id);
 
         if (!$user->hasVerifiedEmail()) {
-            $user->markEmailAsVerified();
+            return Redirect::to('https://mitforum.herokuapp.com/verify-email-or-reset');
         }
 
-        return redirect()->to('/verify-email-or-reset');
+        return Redirect::to('https://mitforum.herokuapp.com/verify-email-or-reset');
     }
 
     /**

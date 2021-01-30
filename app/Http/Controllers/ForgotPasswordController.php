@@ -6,6 +6,7 @@ use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 
 class ForgotPasswordController extends Controller
@@ -25,6 +26,6 @@ class ForgotPasswordController extends Controller
             $user->save();
         });
 
-        return redirect()->to('/password-reset');
+        return Redirect::to('https://mitforum.herokuapp.com/password-reset');
     }
 }

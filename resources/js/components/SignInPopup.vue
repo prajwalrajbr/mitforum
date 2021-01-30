@@ -147,7 +147,6 @@ export default{
         this.userName = "";
         this.$root.$emit('showLogInPopup', "true");
         this.$root.$emit('userName', this.userName);
-        this.$root.$emit('loggedOut', "true");
         this.loggedIn = false;
       })
     }
