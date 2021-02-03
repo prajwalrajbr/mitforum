@@ -19,7 +19,7 @@
         </v-card-text>
         <v-card-actions>  
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Submit</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-flex" @click.prevent="submit">Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -63,6 +63,7 @@ export default{
        this.formTouched = !this.$v.form.$anyDirty;
        this.errors = this.$v.form.$anyError;
         if (this.errors === false && this.formTouched === false) {
+      this.$root.$emit('showProgressBar', true);
           var data = new FormData()
           
         data.append('uploaded_by', this.userID);
@@ -72,15 +73,14 @@ export default{
             
           axios.post('/api/assignmenta',data ,{headers:{'Content-Type': 'multipart/form-data'}})
             .then((res)=>{
-              console.log(res.data);
+        this.$root.$emit('stopProgressBar', true);
             this.$root.$emit('refreshAssignmentsUploaded', "true");
         this.$root.$emit('showSnackbar', "Successfully Uploaded");
             this.$router.push('/')
             this.dialog = false
             })
             .catch((error) =>{
-              this.errors = error.response.data.errors;
-              console.log(this.errors);
+        this.$root.$emit('stopProgressBar', true);
             })
         }
     },

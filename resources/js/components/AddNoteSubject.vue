@@ -31,7 +31,7 @@
         </v-card-text>
         <v-card-actions>  
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Create</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-flex" @click.prevent="submit">Create</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -122,15 +122,18 @@ export default{
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
       if (this.errors === false && this.formTouched === false) {
+      this.$root.$emit('showProgressBar', true);
         this.form.created_by = this.userID
         axios.post('/api/subject',this.form)
         .then((res)=>{
+        this.$root.$emit('stopProgressBar', true);
           this.dialog = false
           this.$root.$emit('showSnackbar', "Subject Created Successfully");
           this.$root.$emit('addSubject', res.data);
           this.resetForm();
         })
         .catch((error) =>{
+        this.$root.$emit('stopProgressBar', true);
           this.$root.$emit('showSnackbar', "Subject Name Already Exists");
           console.log(error);
         })

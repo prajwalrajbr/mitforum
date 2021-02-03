@@ -22,7 +22,7 @@
         </v-card-text>
         <v-card-actions>  
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Upload</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-flex" @click.prevent="submit">Upload</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -86,6 +86,7 @@ export default{
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
       if (this.errors === false && this.formTouched === false) {
+      this.$root.$emit('showProgressBar', true);
         var data = new FormData()
             data.append('name', this.form.name);
             data.append('fileName', this.form.fileName)
@@ -93,14 +94,14 @@ export default{
             data.append('uploaded_subject_id', this.uploaded_subject_id);
           axios.post('/api/notes',data ,{headers:{'Content-Type': 'multipart/form-data'}})
           .then((res)=>{
+        this.$root.$emit('stopProgressBar', true);
             this.resetForm();
             this.$root.$emit('refreshNotes', "true");
           this.$root.$emit('showSnackbar', "Notes Uploaded Successfully");
             this.dialog = false
           })
           .catch((error) =>{
-            this.errors = error.response.data.errors;
-            console.log(this.errors);
+        this.$root.$emit('stopProgressBar', true);
           })
       }
     },

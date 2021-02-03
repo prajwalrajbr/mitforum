@@ -29,7 +29,8 @@
           <RegisterPopup/>
           <div class="d-none d-sm-flex">
             <ForgotPassword/>
-          </div>    
+          </div>    <btn hidden>
+          <ProgressCircular/></btn>
           <v-spacer></v-spacer>
           <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Sign-in</v-btn>
         </v-card-actions>
@@ -47,6 +48,7 @@
 
 import ForgotPassword from "./ForgotPassword";
 import RegisterPopup from "./RegisterPopup";
+import ProgressCircular from "./ProgressCircular";
 
 import user from "../apis/user";
 
@@ -63,7 +65,8 @@ export default{
   },
   components: {
     RegisterPopup,
-    ForgotPassword
+    ForgotPassword,
+    ProgressCircular
   },
   data: () => ({
     dialog: false,
@@ -110,8 +113,10 @@ export default{
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
       if (this.errors === false && this.formTouched === false) {
+      this.$root.$emit('showProgressBar', true);
       user.login(this.form)
       .then(()=>{
+        this.$root.$emit('stopProgressBar', true);  
         this.dialog = false
         localStorage.setItem("auth","true");
         this.loggedIn = true
@@ -121,6 +126,7 @@ export default{
         this.$root.$emit('showSnackbar', "Successfully logged in");
       })
       .catch((error) =>{
+        this.$root.$emit('stopProgressBar', true); 
         this.$root.$emit('showSnackbar', "Incorrect Username or Password");
         console.log(error);
       })}

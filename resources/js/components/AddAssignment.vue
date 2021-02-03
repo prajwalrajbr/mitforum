@@ -34,7 +34,7 @@
         </v-card-text>
         <v-card-actions>  
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Submit</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-flex" @click.prevent="submit">Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -135,6 +135,7 @@ filteredSubjects(){
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
        if (this.errors === false && this.formTouched === false) {
+      this.$root.$emit('showProgressBar', true);
           var data = new FormData()
           if(this.form.datetime==null){
                 var d = new Date();
@@ -154,13 +155,14 @@ filteredSubjects(){
             })
           axios.post('/api/assignmentq',data ,{headers:{'Content-Type': 'multipart/form-data'}})
             .then((res)=>{
+        this.$root.$emit('stopProgressBar', true);
               this.resetForm();
             this.$root.$emit('refreshAssignments', res.data);
         this.$root.$emit('showSnackbar', "Successfully Created");
             this.dialog = false
             })
             .catch((error) =>{
-              console.log(error);
+        this.$root.$emit('stopProgressBar', true);
             })
        }
     },

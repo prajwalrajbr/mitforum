@@ -16,7 +16,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <div v-if="userName">
-          <spam class="font-weight-bold text-title pr-10">Logged in as {{ userName }}</spam>
+          <spam class="font-weight-bold text-title pr-10 d-none d-sm-flex">Logged in as {{ userName }}</spam>
         </div>
         <div>
           <SignInPopup />
@@ -33,10 +33,16 @@
               <v-list-item-title class="font-weight-medium text-h6 ">{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item>
+          </v-list-item>
         </v-list>
         <template v-slot:append >
           <div class="pa-3" v-if="loggedIn">
-            <v-btn class="white mr-5" @click='logout' block>
+            <v-btn class="white mr-5" block disabled>
+              <v-icon right class="black--text font-weight-bold pr-3">person</v-icon>
+              <span class="grey--text text--darken-4 font-weight-bold" >Logged in as {{ userName }}</span>
+            </v-btn>
+            <v-btn class="white mr-5 mt-2" @click='logout' block>
               <span class="grey--text text--darken-4 font-weight-bold" >logout</span>
               <v-icon right class="black--text font-weight-bold">exit_to_app</v-icon>
             </v-btn>
@@ -62,6 +68,7 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
+        
         <template v-slot:append >
           <div class="pa-3" v-if="loggedIn">
             <v-btn class="white mr-5" @click='logout' block>

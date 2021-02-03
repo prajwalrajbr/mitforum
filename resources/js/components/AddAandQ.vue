@@ -42,7 +42,7 @@
         </v-card-text>
         <v-card-actions>  
           <v-spacer></v-spacer>
-          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-sm-flex" @click.prevent="submit">Submit</v-btn>
+          <v-btn color="info darken-1 font-weight-bold ma-5 d-none d-flex" @click.prevent="submit">Submit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -114,6 +114,7 @@ export default{
       });
     },
     AddAnnouncementOrQuery(){
+      this.$root.$emit('showProgressBar', true);
 var data = new FormData()
             data.append('name', this.form.name);
             data.append('fileName', this.form.fileName)
@@ -124,6 +125,7 @@ var data = new FormData()
             data.append('includeFiles', this.includeFiles);
           axios.post('/api/announcements-and-queries',data ,{headers:{'Content-Type': 'multipart/form-data'}})
           .then((res)=>{
+        this.$root.$emit('stopProgressBar', true);
         this.$root.$emit('addAandQ', data);
         
           this.$root.$emit('showSnackbar', "Submitted Successfully");
@@ -131,7 +133,7 @@ var data = new FormData()
         this.resetForm ()
           })
           .catch((error) =>{
-            console.log(error);
+        this.$root.$emit('stopProgressBar', true);
           })
     },
     selectFile(file) {

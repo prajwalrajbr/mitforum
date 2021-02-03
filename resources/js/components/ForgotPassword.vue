@@ -57,15 +57,17 @@ export default{
       this.formTouched = !this.$v.form.$anyDirty;
       this.errors = this.$v.form.$anyError;
       if (this.errors === false && this.formTouched === false) {
+      this.$root.$emit('showProgressBar', true);
         axios.post('/api/password/email',{'email':this.form.email})
         .then((res)=>{
-          console.log(res)
+        this.$root.$emit('stopProgressBar', true);
         this.dialog = false
         this.$root.$emit('showSnackbar', "Reset Link Sent to email");
         this.clear()
         })
         .catch((err)=>{
-          console.log(err)
+        this.$root.$emit('stopProgressBar', true);
+        this.$root.$emit('showSnackbar', "Enter a valid email");
         })}
       },
       clear () {

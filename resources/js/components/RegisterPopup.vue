@@ -14,7 +14,7 @@
               <v-text-field v-model="form.full_name" :error-messages="full_nameErrors" label="Full Name*" required @input="$v.form.full_name.$touch()" @blur="$v.form.full_name.$touch()"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="6" >
-              <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN/FID*" counter="10" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
+              <v-text-field v-model="form.usn" :error-messages="usnErrors" label="USN*" counter="10" required @input="$v.form.usn.$touch()" @blur="$v.form.usn.$touch()"></v-text-field>
             </v-col>
             
             <v-col cols="12" sm="6" md="6" >
@@ -201,14 +201,17 @@ export default{
         if(!this.form.is_faculty)
         matches=true
         if(matches === true){
+      this.$root.$emit('showProgressBar', true);
           user.register(this.form)
           .then(()=>{
+        this.$root.$emit('stopProgressBar', true);  
             this.dialog = false
             this.initializeEmailAndUSN()
         this.resetForm();
             this.$root.$emit('showSnackbar', "User created successfully");
           })
           .catch((error) =>{
+        this.$root.$emit('stopProgressBar', true);  
             this.errors = error.response.data.errors
             console.log(this.errors);
           })
