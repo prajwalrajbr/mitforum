@@ -74,9 +74,9 @@ AddAandQ
       let fItems = this.items
       fItems.forEach(item =>{
           this.users.forEach(user =>{
-              if(item.uploaded_by==user.id)
+              if(item.uploaded_by==user.id){
               item['username']=user.full_name
-              item['branch']=user.branch
+              item['branch']=user.branch}
           })
       })
       if (fItems.length == 0)
