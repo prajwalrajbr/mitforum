@@ -118,6 +118,7 @@ axios.get('/api/announcements-and-queries')
     axios.get('/api/get-all-users')
     .then((res)=>{
         this.users = res.data
+    this.refreshAandQ();
     }).catch((err)=>{
       console.log(error)
     })
@@ -129,7 +130,6 @@ axios.get('/api/announcements-and-queries')
     }).catch((err)=>{
       this.$root.$emit('showSnackbar', "Please log-in to continue");
     })
-    this.refreshAandQ();
     this.$root.$on('addAandQ', (data) =>{
       this.refreshAandQ();
     });
